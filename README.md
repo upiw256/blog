@@ -74,3 +74,10 @@ php artisan migrate
 php artisan make:filament-user
 php artisan storage:link
 ```
+
+## Pada AppServiceProvider.php
+
+```php
+use Illuminate\Support\Facades\Schema;
+Schema::defaultStringLength(191);
+```
