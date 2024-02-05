@@ -57,7 +57,7 @@ class ArticleResource extends Resource
                     ->maxSize(1024),
                 Forms\Components\TextInput::make('user_id')
                     ->default(Auth::id())
-                    ->hidden()
+                    // ->hidden()
                     ->readOnly()
                     ->label('Author')
                     ->reactive()
