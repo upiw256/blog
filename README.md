@@ -18,3 +18,10 @@ php artisan storage:link
 use Illuminate\Support\Facades\Schema;
 Schema::defaultStringLength(191);
 ```
+
+## .env
+
+```env
+APP_URL_API=http://192.168.5.163:3001/api/
+``
+```

@@ -13,10 +13,12 @@ class Teacher extends Model
 
     public function sync()
     {
+        $url = env('APP_URL_API', 'http://192.168.5.163:3001/api/');
+        // set_time_limit(10015);
         // TODO: Implement sync() method.
         $response = Http::withHeaders([
             'X-Barrier' => 'margaasih',
-        ])->get('https://103.229.14.226:3000/api/guru');
+        ])->get($url.'guru');
 
         // dd($response);
         if ($response->ok()) {
