@@ -29,7 +29,7 @@ class Teacher extends Model
                     $this->updateOrCreate([
                         'ptk_id' => $item['ptk_id'],
                         'nama' => $item['nama'],
-                        'jenis_kelamin' => $item['jenis_kelamin'],
+                        'jenis_kelamin' => $item['jenis_kelamin']=='P'?'Perempuan':'Laki-Laki',
                         'tempat_lahir' => $item['tempat_lahir'],
                         'tanggal_lahir' => $item['tanggal_lahir'],
                         'nuptk' => $item['nuptk'],
