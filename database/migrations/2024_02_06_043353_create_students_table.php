@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('sekolah_asal')->nullable();
             $table->string('nama');
             $table->string('nisn')->nullable();
-            $table->char('jenis_kelamin', 1)->nullable();
+            $table->string('jenis_kelamin')->nullable();
             $table->string('nik')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();

@@ -33,25 +33,24 @@ class Student extends Model
     ];
     public function sync()
     {
-        
+
         $url = env('APP_URL_API', 'http://192.168.5.163:3001/api/');
-        // set_time_limit(10015);
         // TODO: Implement sync() method.
         $response = Http::withHeaders([
             'X-Barrier' => 'margaasih',
-        ])->get($url.'siswa');
+        ])->get($url . 'siswa');
 
-        // dd($response);
         if ($response->ok()) {
             $datas = $response->json();
             foreach ($datas['rows'] as $data) {
-                    $this->updateOrCreate(
-                        ['peserta_didik_id' => $data['peserta_didik_id']],
-                        ['peserta_didik_id' => $data['peserta_didik_id'],
+                $this->updateOrCreate(
+                    ['peserta_didik_id' => $data['peserta_didik_id']],
+                    [
+                        'peserta_didik_id' => $data['peserta_didik_id'],
                         'nipd' => $data['nipd'],
                         'sekolah_asal' => $data['sekolah_asal'],
                         'nama' => $data['nama'],
-                        'jenis_kelamin' => $data['jenis_kelamin'],
+                        'jenis_kelamin' => $data['jenis_kelamin'] == 'P' ? 'Perempuan' : 'Laki-Laki',
                         'nik' => $data['nik'],
                         'tempat_lahir' => $data['tempat_lahir'],
                         'tanggal_lahir' => $data['tanggal_lahir'],
@@ -66,7 +65,8 @@ class Student extends Model
                         'pekerjaan_wali_id_str' => $data['pekerjaan_wali_id_str'],
                         'anak_keberapa' => $data['anak_keberapa'],
                         'nama_rombel' => $data['nama_rombel'],
-                    ]);
+                    ]
+                );
             }
 
             return true;
