@@ -4,6 +4,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Install
 
+Rekomendasi database menggunakan Mysql dari aiven
+
 ```console
 composer install
 npm install
@@ -23,5 +25,4 @@ Schema::defaultStringLength(191);
 
 ```env
 APP_URL_API=http://192.168.5.163:3001/api/
-``
 ```
