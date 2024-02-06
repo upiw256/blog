@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -42,4 +43,38 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function sync()
+    {
+        $url = env('APP_URL_API', 'http://192.168.5.163:3001/api/');
+        // set_time_limit(10015);
+        // TODO: Implement sync() method.
+        $response = Http::withHeaders([
+            'X-Barrier' => 'margaasih',
+        ])->get($url . 'guru');
+
+        // dd($response);
+        if ($response->ok()) {
+            $data = $response->json();
+
+            foreach ($data['rows'] as $item) {
+                if ($item['jenis_ptk_id_str'] === 'Guru Mapel' || $item['jenis_ptk_id_str'] === 'Guru BK' || $item['jenis_ptk_id_str'] === 'Guru TIK' || $item['jenis_ptk_id_str'] === 'Kepala Sekolah') {
+                    // dd(strtolower(str_replace(' ', '-', $item['nama'] . '@sman1mga.sch.id')));
+                    $this->updateOrCreate(
+                        ['email' => str_replace(['.', ','], '', strtolower(str_replace(' ', '-', $item['nama']))) . '@sman1mga.sch.id'],
+                        [
+                            'name' => $item['nama'],
+                            'email' => str_replace(['.', ','], '', strtolower(str_replace(' ', '-', $item['nama']))) . '@sman1mga.sch.id',
+                            'password' => '#sman1mga',
+
+                        ]
+                    );
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
 }
