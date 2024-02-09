@@ -23,7 +23,7 @@
     <link href="{{ asset('/') }}assets/pendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}assets/pendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}assets/pendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="{{ asset('/') }}assets/pendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('/') }}assets/css/style.css" rel="stylesheet">
@@ -36,6 +36,14 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
     <style>
+        .news-wrapper {
+        display: flex;
+        }
+
+        .news-slide {
+            flex: 0 0 33.3333%;
+            max-width: 33.3333%;
+        }
         /* .swiper-slide {
             margin-left: 80px;
         } */
@@ -84,19 +92,7 @@
             padding-left: 10px;
         }
 
-        /* .swiper {
-            margin: 10px;
-            Ubah nilai sesuai kebutuhan Anda
-        } */
-
-
-        /* Media query untuk ukuran hp */
-        /* @media (max-width: 768px) {
-            .swiper-slide {
-                font-size: 16px;
-                Menyesuaikan ukuran teks untuk layar kecil
-            }
-        } */
+        
     </style>
 </head>
 
@@ -249,28 +245,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3 ">
-                    <div class="swiper-container">
-                        <!-- Isi swiper slides di sini -->
-                        <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="card" style="height: 500px;">
-                                        <img src="" class="card-img-top img-fluid" alt="Placeholder Image">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                Title
-                                            </h5>
-                                            <p class="card-text">
-                                                Kontent
-                                            </p>
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <a href="#" class="btn btn-primary">Read More</a>
-                                        </div>
-                                    </div>
+                <!-- Slider main container -->
+                <div class="swiper-container-news">
+                    <div class="swiper-wrapper">
+                        @foreach($article as $article)
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <img src="{{ asset('/') }}storage/{{$article->image}}" alt="Image">
+                                <div class="card-content p-3">
+                                    <h3>{{$article->title}}</h3>
+                                    <p>{!! substr(strip_tags($article->content), 0, 150) !!}</p>
                                 </div>
+                            </div>
                         </div>
-                        <!-- Tambahkan tombol navigasi jika diinginkan -->
+                        @endforeach
+                        <!-- Tambah slide tambahan sesuai kebutuhan -->
                     </div>
                 </div>
         </section><!-- End Clients Section -->
@@ -888,14 +877,23 @@
     <script src="{{ asset('/') }}assets/pendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('/') }}assets/pendor/glightbox/js/glightbox.min.js"></script>
     <script src="{{ asset('/') }}assets/pendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="{{ asset('/') }}assets/pendor/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('/') }}assets/pendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('/') }}assets/js/main.js"></script>
     <script>
-        var swiper = new Swiper('.swiper-container', {
+        var swiper = new Swiper('.swiper-container-news', {
+            breakpoints: {
+        // Ketika lebar layar >= 1200px
+        1200: {
+            slidesPerView: 3,
+        },
+        // Ketika lebar layar < 1200px
+        0: {
             slidesPerView: 1,
+        },
+    },
             spaceBetween: 10,
             pagination: {
                 el: '.swiper-pagination',

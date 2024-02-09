@@ -51,7 +51,6 @@ class ArticleResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->directory('articles')
-                    ->preserveFilenames()
                     ->imageEditor()
                     ->nullable()
                     ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/jpg'])

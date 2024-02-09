@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\home;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [home::class, 'index']);
+Route::get('/article/{id}', [home::class, 'show'])->name('article.show');
