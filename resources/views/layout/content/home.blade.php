@@ -1,147 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.header')
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Gp Bootstrap Template - Index</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-    <base href="{{'/home'}}/" />
-    <!-- Favicons -->
-    <link href="{{ asset('/') }}assets/img/favicon.png" rel="icon">
-    <link href="{{ asset('/') }}assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    @vite('resources/css/app.css')
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-    <!-- pendor CSS Files -->
-    <link href="{{ asset('/') }}assets/pendor/aos/aos.css" rel="stylesheet">
-    <link href="{{ asset('/') }}assets/pendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('/') }}assets/pendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="{{ asset('/') }}assets/pendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="{{ asset('/') }}assets/pendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="{{ asset('/') }}assets/pendor/remixicon/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('/') }}assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: Gp
-  * Updated: Nov 25 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-    <style>
-        .news-wrapper {
-        display: flex;
-        }
-
-        .news-slide {
-            flex: 0 0 33.3333%;
-            max-width: 33.3333%;
-        }
-        /* .swiper-slide {
-            margin-left: 80px;
-        } */
-        /* .news {
-            height: 30rem;
-            width: 25rem;
-        } */
-
-        .btn-primary {
-            background-color: #FFC451 !important;
-            border-color: #FFC451 !important;
-        }
-
-        .btn-warning:hover {
-            color: black !important;
-            background-color: #FFC451 !important;
-            border-color: #FFC451 !important;
-        }
-
-        /* 
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-        } */
-
-        /* .swiper-slide {
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin: 20px;
-        } */
-
-        .card {
-            height: 30rem;
-            width: 100%;
-        }
-
-        .card img {
-            height: 30%;
-        }
-
-        .putih {
-            background-color: white;
-            padding-left: 10px;
-        }
-
-        
-    </style>
-</head>
-
-<body>
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top z-3">
-        <div class="container d-flex align-items-center justify-content-lg-between">
-
-            <h1 class="logo me-auto me-lg-0"><a href="index.html">M<span>.</span>G<span>.</span>A</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-            <nav id="navbar" class="navbar order-last order-lg-0">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#clients">News</a></li>
-                    <li><a class="nav-link scrollto" href="#features">Galery</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Ekstra kulikuler</a></li>
-                    <li><a class="nav-link scrollto" href="#cta">Data Guru</a></li>
-                    <li><a class="nav-link scrollto " href="#portfolio">Achievement</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                    <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
-                        </ul>
-                    </li> -->
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-
-        </div>
-    </header><!-- End Header -->
-
-    <!-- ======= Hero Section ======= -->
+@section('title', 'Home')
+@section('content')
+  <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center justify-content-center">
         <div class="container" data-aos="fade-up">
 
@@ -203,27 +64,73 @@
                         <img src="{{ asset('/') }}assets/img/about.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-                        <h3>Sejarah singkat SMAN 1 Margaasih</h3>
+                        <h3>Informasi singkat SMAN 1 Margaasih</h3>
                         <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore
-                            magna aliqua.
+                            SMAN 1 Margaasih adalah sekolah negeri yang didirikan pada tahun 2006. denagn SK 421.5/Kep.359-Disdikbud/2015
                         </p>
                         <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat.</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate
-                                velit.</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda
-                                mastiro dolore eu fugiat nulla pariatur.</li>
+                            <li><i class="ri-check-double-line"></i> ALAMAT SMAN 1 MARGAASIH</li>
+                            <p class="fst-italic">SMAN 1 MARGAASIH beralamat di JL. TERUSAN TAMAN KOPO INDAH 3, Mekar Rahayu, Kec. Margaasih, Kab. Bandung, Jawa Barat, dengan kode pos 40218.</p>
+                            <li><i class="ri-check-double-line"></i> JAM PEMBELAJARAN DI SMAN 1 MARGAASIH</li>
+                            <p class="fst-italic">
+                                Pembelajaran di SMAN 1 MARGAASIH dilakukan pada Sehari Penuh. Dalam seminggu, pembelajaran dilakukan selama 5 hari.
+                            </p>
+                            <li><i class="ri-check-double-line"></i> AKREDITASI SMAN 1 MARGAASIH</li>
+                            <p class="fst-italic">SMAN 1 MARGAASIH memiliki akreditasi A, berdasarkan sertifikat 763/BAN-SM/SK/2019.</p>
                         </ul>
-                        <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident
-                        </p>
+                        <div class="container">
+                            <h2 class="text-center">Identitas Satuan Pendidikan</h2>
+                            <div class="mx-auto"> <!-- Menengahkan tabel -->
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Nama</th>
+                                            <td>SMAN 1 MARGAASIH</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">NPSN</th>
+                                            <td>20227907</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Alamat</th>
+                                            <td>JL. TERUSAN TAMAN KOPO INDAH 3</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Kode Pos</th>
+                                            <td>40218</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Desa / Kelurahan</th>
+                                            <td>Mekar Rahayu</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Kecamatan / Kota (LN)</th>
+                                            <td>Kec. Margaasih</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Kab. / Kota / Negara (LN)</th>
+                                            <td>Kab. Bandung</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Provinsi / Luar Negeri</th>
+                                            <td>Jawa Barat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Status Sekolah</th>
+                                            <td>negeri</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Waktu Penyelenggaraan</th>
+                                            <td>5 / Sehari Penuh hari</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Jenjang Pendidikan</th>
+                                            <td>SMA</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -239,10 +146,12 @@
                         <div class="h3">News Update</div>
                     </div>
                     <div class="col-9">
+                        <form action="{{ route('search') }}" method="GET">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Search News" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-primary" type="button" id="button-addon2"><i class='bx bx-search-alt-2'></i></button>
+                            <input type="text" class="form-control" placeholder="Search News" aria-label="Recipient's username" aria-describedby="button-addon2" name="query">
+                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class='bx bx-search-alt-2'></i></button>
                         </div>
+                    </form>
                     </div>
                 </div>
                 <!-- Slider main container -->
@@ -250,16 +159,19 @@
                     <div class="swiper-wrapper">
                         @foreach($article as $article)
                         <div class="swiper-slide">
-                            <div class="card">
-                                <img src="{{ asset('/') }}storage/{{$article->image}}" alt="Image">
-                                <div class="card-content p-3">
-                                    <h3>{{$article->title}}</h3>
-                                    <p>{!! substr(strip_tags($article->content), 0, 150) !!}</p>
+                            <a href="{{ route('article.show', $article->id) }}">
+                                <div class="card">
+                                    <img src="{{ asset('/') }}storage/{{$article->image}}" alt="Image">
+                                    <div class="card-content p-3">
+                                        <h3>{{$article->title}}</h3>
+                                        <p>{!! substr(strip_tags($article->content), 0, 150) !!}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         @endforeach
                         <!-- Tambah slide tambahan sesuai kebutuhan -->
+                        <div class="swiper-pagination-news"></div>
                     </div>
                 </div>
         </section><!-- End Clients Section -->
@@ -296,7 +208,7 @@
                 </div>
 
                 <!-- Kolom 2: Swiper -->
-                <div class="col-12 col-sm-6 ps-5">
+                <div class="col-12 col-sm-6 ps-5" data-aos="fade-right" data-aos-delay="100">
                     <h1>Galery</h1>
                     <div class="swiper-container" style="height: 300px;">
                         <div class="swiper-wrapper">
@@ -312,6 +224,7 @@
                             </div>
                             <!-- Tambahkan slide sesuai kebutuhan -->
                         </div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
@@ -431,7 +344,7 @@
                                 <p>App</p>
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/') }}assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                    <a href="" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -793,135 +706,4 @@
         </section><!-- End Contact Section -->
 
     </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-info">
-                            <h3>Gp<span>.</span></h3>
-                            <p>
-                                A108 Adam Street <br>
-                                NY 535022, USA<br><br>
-                                <strong>Phone:</strong> +1 5589 55488 55<br>
-                                <strong>Email:</strong> info@example.com<br>
-                            </p>
-                            <div class="social-links mt-3">
-                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4>Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                        <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Subscribe">
-                        </form>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
-        </div>
-    </footer><!-- End Footer -->
-
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    @vite('resources/js/app.js')
-    <!-- pendor JS Files -->
-    <script src="{{ asset('/') }}assets/pendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="{{ asset('/') }}assets/pendor/aos/aos.js"></script>
-    <script src="{{ asset('/') }}assets/pendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('/') }}assets/pendor/glightbox/js/glightbox.min.js"></script>
-    <script src="{{ asset('/') }}assets/pendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="{{ asset('/') }}assets/pendor/php-email-form/validate.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="{{ asset('/') }}assets/js/main.js"></script>
-    <script>
-        var swiper = new Swiper('.swiper-container-news', {
-            breakpoints: {
-        // Ketika lebar layar >= 1200px
-        1200: {
-            slidesPerView: 3,
-        },
-        // Ketika lebar layar < 1200px
-        0: {
-            slidesPerView: 1,
-        },
-    },
-            spaceBetween: 10,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            autoplay: {
-                delay: 3000, // Delay between slides in milliseconds (3 seconds in this example)
-                disableOnInteraction: false,
-            },
-            loop: true,
-        });
-        window.addEventListener('orientationchange', function() {
-            swiper.destroy();
-            swiper = new Swiper('.swiper-container', {
-                slidesPerView: 1,
-                spaceBetween: 10,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 3000, // Delay between slides in milliseconds (3 seconds in this example)
-                    disableOnInteraction: false,
-                },
-            });
-        });
-    </script>
-
-</body>
-
-</html>
+    @endsection

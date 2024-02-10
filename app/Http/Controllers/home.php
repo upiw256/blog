@@ -9,13 +9,23 @@ class home extends Controller
 {
     public function index()
     {
-        return view('welcome', [
+        return view('layout.content.home', [
             'article' => article::all()
         ]);
     }
     public function show($id)
-{
-    $article = Article::find($id);
-    return view('article.show', ['article' => $article]);
-}
+    {
+        $article = Article::find($id);
+        return view('layout.content.article', ['article' => $article]);
+    }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $articles = Article::where('title', 'like', '%' . $query . '%')
+            ->orWhere('content', 'like', '%' . $query . '%')
+            ->get();
+
+        return view('layout.content.search_results', compact('articles', 'query'));
+    }
 }
