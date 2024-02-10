@@ -12,15 +12,15 @@
           <ol>
             <li><a href="/">Home</a></li>
             <li>Article {{$article->title}}</li>
-        </ol>
-    </div>
-    <h1>{{$article->title}}</h1>
-</div>
-</section><!-- End Breadcrumbs -->
+          </ol>
+        </div>
+          <h1>{{$article->title}}</h1>
+      </div>
+    </section><!-- End Breadcrumbs -->
 
 <!-- ======= Portfolio Details Section ======= -->
-<section id="portfolio-details" class="portfolio-details">
-    <div class="container">
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
         <div class="col-lg-12">
             <img src="{{ asset('/') }}storage/{{$article->image}}" alt="{{$article->image}}" style="width: 30%; height: 30%;" class="rounded mx-auto d-block">
             <p><em>Created by: {{$article->user->name}}</em></p>

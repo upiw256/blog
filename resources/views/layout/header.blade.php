@@ -23,11 +23,11 @@
     <link href="{{ asset('/') }}assets/pendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}assets/pendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}assets/pendor/remixicon/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('/') }}assets/css/style.css" rel="stylesheet">
-
+    @livewireStyles
     <!-- =======================================================
   * Template Name: Gp
   * Updated: Nov 25 2023 with Bootstrap v5.3.2
@@ -109,7 +109,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#clients">News</a></li>
+                    <li><a class="nav-link scrollto" href="#news">News</a></li>
                     <li><a class="nav-link scrollto" href="#features">Galery</a></li>
                     <li><a class="nav-link scrollto" href="#services">Ekstra kulikuler</a></li>
                     <li><a class="nav-link scrollto" href="#cta">Data Guru</a></li>

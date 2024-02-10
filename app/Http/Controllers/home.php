@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\article;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class home extends Controller
@@ -27,5 +28,11 @@ class home extends Controller
             ->get();
 
         return view('layout.content.search_results', compact('articles', 'query'));
+    }
+    public function teachers() {
+        Teacher::all();
+        return view('layout.content.teachers', [
+            'teachers' => Teacher::all()
+        ]);
     }
 }

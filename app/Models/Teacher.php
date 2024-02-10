@@ -18,7 +18,7 @@ class Teacher extends Model
         // TODO: Implement sync() method.
         $response = Http::withHeaders([
             'X-Barrier' => 'margaasih',
-        ])->get($url.'guru');
+        ])->get($url . 'guru');
 
         // dd($response);
         if ($response->ok()) {
@@ -26,17 +26,20 @@ class Teacher extends Model
 
             foreach ($data['rows'] as $item) {
                 if ($item['jenis_ptk_id_str'] === 'Guru Mapel' || $item['jenis_ptk_id_str'] === 'Guru BK' || $item['jenis_ptk_id_str'] === 'Guru TIK' || $item['jenis_ptk_id_str'] === 'Kepala Sekolah') {
-                    $this->updateOrCreate([
-                        'ptk_id' => $item['ptk_id'],
-                        'nama' => $item['nama'],
-                        'jenis_kelamin' => $item['jenis_kelamin']=='P'?'Perempuan':'Laki-Laki',
-                        'tempat_lahir' => $item['tempat_lahir'],
-                        'tanggal_lahir' => $item['tanggal_lahir'],
-                        'nuptk' => $item['nuptk'],
-                        'nik' => $item['nik'],
-                        'bidang_studi_terakhir' => $item['bidang_studi_terakhir'],
-                        'jenis_ptk_id_str' => $item['jenis_ptk_id_str'],
-                    ]);
+                    $this->updateOrCreate(
+                        ['ptk_id' => $item['ptk_id']],
+                        [
+                            'ptk_id' => $item['ptk_id'],
+                            'nama' => $item['nama'],
+                            'jenis_kelamin' => $item['jenis_kelamin'] == 'P' ? 'Perempuan' : 'Laki-Laki',
+                            'tempat_lahir' => $item['tempat_lahir'],
+                            'tanggal_lahir' => $item['tanggal_lahir'],
+                            'nuptk' => $item['nuptk'],
+                            'nik' => $item['nik'],
+                            'bidang_studi_terakhir' => $item['bidang_studi_terakhir'],
+                            'jenis_ptk_id_str' => $item['jenis_ptk_id_str'],
+                        ]
+                    );
                 }
             }
 

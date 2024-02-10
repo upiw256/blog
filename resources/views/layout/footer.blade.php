@@ -81,9 +81,9 @@
 <script src="{{ asset('/') }}assets/pendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('/') }}assets/pendor/glightbox/js/glightbox.min.js"></script>
 <script src="{{ asset('/') }}assets/pendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{{ asset('/') }}assets/pendor/php-email-form/validate.js"></script>
-
+@livewireScripts
 <!-- Template Main JS File -->
 <script src="{{ asset('/') }}assets/js/main.js"></script>
 <script>

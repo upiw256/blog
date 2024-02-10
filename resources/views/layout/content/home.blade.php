@@ -138,7 +138,7 @@
         </section><!-- End About Section -->
 
         <!-- ======= Clients Section ======= -->
-        <section id="clients" class="clients">
+        <section id="news" class="clients">
             <div class="container" data-aos="zoom-in">
                 <div class="row">
 
@@ -308,7 +308,7 @@
 
                         - Ki Hajar Dewantara
                     </p>
-                    <a class="cta-btn" href="#">Buka Data</a>
+                    <a class="cta-btn" href="{{ route('teachers') }}">Buka Data</a>
                 </div>
 
             </div>
