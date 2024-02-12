@@ -8,7 +8,7 @@
 
                 <div class="section-title">
                     <h2>Search Results</h2>
-                    <p>Hasil Pencarian untuk "{{ $query==""? "Semua Berita": $query }}"</p>
+                    <p> {{ $query==""? "Semua Berita": "Hasil Pencarian untuk ".$query }}</p>
                 </div>
                 @if($articles->count() > 0)
                 <div class="row">

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Http;
 
 class Student extends Model
@@ -30,6 +32,7 @@ class Student extends Model
         'pekerjaan_wali_id_str',
         'anak_keberapa',
         'nama_rombel',
+        'extracurricular_activity_id',
     ];
     public function sync()
     {
@@ -73,5 +76,9 @@ class Student extends Model
         }
 
         return false;
+    }
+    public function extracuriculars(): BelongsTo
+    {
+        return $this->BelongsTo(ExtracurricularActivity::class);
     }
 }
