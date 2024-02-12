@@ -77,8 +77,4 @@ class Student extends Model
 
         return false;
     }
-    public function extracuriculars(): BelongsTo
-    {
-        return $this->BelongsTo(ExtracurricularActivity::class);
-    }
 }

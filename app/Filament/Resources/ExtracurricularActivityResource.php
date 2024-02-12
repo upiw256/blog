@@ -80,7 +80,7 @@ class ExtracurricularActivityResource extends Resource
     public static function getRelations(): array
     {
         return [
-            
+            RelationManagers\MemberExtraRelationManager::class
         ];
     }
 

@@ -12,10 +12,9 @@ class ExtracurricularActivity extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['nama'];
 
-    public function student(): HasMany
+    public function member_extra(): HasMany
     {
-        return $this->HasMany(Student::class);
+        return $this->hasMany(member_extra::class);
     }
 }
