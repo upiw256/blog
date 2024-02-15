@@ -88,6 +88,7 @@
 <script src="{{ asset('/') }}assets/js/main.js"></script>
 <script>
     var swiper = new Swiper('.swiper-container-news', {
+
         breakpoints: {
             // Ketika lebar layar >= 1200px
             1200: {
@@ -109,21 +110,27 @@
         },
         loop: true,
     });
-    window.addEventListener('orientationchange', function() {
-        swiper.destroy();
-        swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
+    var swiper_galery = new Swiper('.swiper-container-galery', {
+        breakpoints: {
+            // Ketika lebar layar >= 1200px
+            1200: {
+                slidesPerView: 3,
             },
-            autoplay: {
-                delay: 1000, // Delay between slides in milliseconds (3 seconds in this example)
-                disableOnInteraction: false,
+            // Ketika lebar layar < 1200px
+            0: {
+                slidesPerView: 1,
             },
-            loop: true,
-        });
+        },
+        spaceBetween: 10,
+        pagination: {
+            el: '.swiper-pagination-galery',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 1000, // Delay between slides in milliseconds (3 seconds in this example)
+            disableOnInteraction: false,
+        },
+        loop: true,
     });
 </script>
 

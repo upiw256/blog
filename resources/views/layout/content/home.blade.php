@@ -180,52 +180,59 @@
         <section id="features" class="features">
             <div class="row">
                 <!-- Kolom 1: Text -->
-                <div class="col-12 col-sm-6 putih z-2">
-                    <div class="container">
-                        <div class="col-lg-6 mt-5" data-aos="fade-left" data-aos-delay="100">
+                <div class="container">
+                        <div class="col-12 col-sm-6 putih z-2">
+                        <div class="section-title" data-aos="fade-up">
+                            <h2>Extracurricular</h2>
+                            <p>Check our extracurricular</p>
+                        </div>
+                        <div class="col-lg-12 mt-5" data-aos="fade-left" data-aos-delay="100">
                             <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
                                 <i class="bx bx-receipt"></i>
                                 <h4>Visi</h4>
-                                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                                <p>Mewujudkan Peserta Didik yang Religius dalam Karakter,  Mumpuni dalam Akademik dan Non Akademik, serta Berprestasi dalam Kejuaraan dengan Menguasai Teknologi Informasi Komunikasi dan Berwawasan Lingkungan</p>
                             </div>
                             <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
                                 <i class="bx bx-cube-alt"></i>
                                 <h4>Misi</h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                                <p>1. Mengembangkan karakter religius dan mewujudkan profil pelajar Pancasila</p>
+                                <p>2. Mengembangkan porensi kecerdasan intelektual</p>
+                                <p>3. Mengembangkan prestasi untuk meraih berbagai kejuaraan</p>
+                                <p>4. Meningkatkan kualitas dan kuantitas lulusan untuk bisa diterima di Perguruan Tinggi terbaik</p>
+                                <p>5. Meningkatkan kemampuan dalam Teknologi Informasi dan Komunikasi</p>
+                                <p>6. Meningkatkan kepedulian terhadap lingkungan hidup</p>
                             </div>
                             <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
                                 <i class="bx bx-images"></i>
-                                <h4>Selogan</h4>
-                                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                            </div>
-                            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-                                <i class="bx bx-shield"></i>
-                                <h4>Beatae veritatis</h4>
-                                <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                                <h4>Semboyan</h4>
+                                <p>SMAN 1 Margaasih must be Magnificent, Good, and Amazing to reach our goal.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Kolom 2: Swiper -->
-                <div class="col-12 col-sm-6 ps-5" data-aos="fade-right" data-aos-delay="100">
-                    <h1>Galery</h1>
-                    <div class="swiper-container" style="height: 300px;">
-                        <div class="swiper-wrapper">
-                            <!-- Isi slide swiper di sini -->
-                            <div class="swiper-slide">
-                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0L_BfGdS-Ts?si=O8CAkSbgEY4jwfwv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>
-                            <div class="swiper-slide">
-                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/f6QUiHJDAd0?si=YsNe6jK1Env6Xhsn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>
-                            <div class="swiper-slide">
-                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JWBnyZySqkE?si=92AZWUw5-h7YYzB-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>
-                            <!-- Tambahkan slide sesuai kebutuhan -->
-                        </div>
-                        <div class="swiper-pagination"></div>
+                <div class="col-12 col-sm-6 ps-5 mt-5" data-aos="fade-right" data-aos-delay="100">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Extracurricular</h2>
+                        <p>Check our extracurricular</p>
                     </div>
+                        <div class="swiper-container swiper-container-galery" style="height: 300px;">
+                            <div class="swiper-wrapper">
+                                <!-- Isi slide swiper di sini -->
+                                <div class="swiper-slide">
+                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0L_BfGdS-Ts?si=O8CAkSbgEY4jwfwv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <div class="swiper-slide">
+                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/f6QUiHJDAd0?si=YsNe6jK1Env6Xhsn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <div class="swiper-slide">
+                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JWBnyZySqkE?si=92AZWUw5-h7YYzB-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <!-- Tambahkan slide sesuai kebutuhan -->
+                            </div>
+                            <div class="swiper-pagination swiper-pagination-galery"></div>
+                        </div>
                 </div>
             </div>
         </section><!-- End Features Section -->
