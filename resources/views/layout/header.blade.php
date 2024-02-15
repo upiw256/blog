@@ -111,7 +111,7 @@
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
                     <li><a class="nav-link scrollto" href="#news">News</a></li>
                     <li><a class="nav-link scrollto" href="#features">Galery</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Ekstra kulikuler</a></li>
+                    <li><a class="nav-link scrollto" href="#ekstra">Ekstra kulikuler</a></li>
                     <li><a class="nav-link scrollto" href="#cta">Data Guru</a></li>
                     <li><a class="nav-link scrollto " href="#portfolio">Achievement</a></li>
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>

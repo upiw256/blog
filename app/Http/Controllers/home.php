@@ -10,8 +10,9 @@ class home extends Controller
 {
     public function index()
     {
+        $articles = Article::where('is_published', true)->get();
         return view('layout.content.home', [
-            'article' => article::all()
+            'article' => $articles
         ]);
     }
     public function show($id)
@@ -29,7 +30,8 @@ class home extends Controller
 
         return view('layout.content.search_results', compact('articles', 'query'));
     }
-    public function teachers() {
+    public function teachers()
+    {
         Teacher::all();
         return view('layout.content.teachers', [
             'teachers' => Teacher::all()

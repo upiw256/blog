@@ -55,13 +55,6 @@ class ArticleResource extends Resource
                     ->nullable()
                     ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/jpg'])
                     ->maxSize(1024),
-                Forms\Components\TextInput::make('user_id')
-                    ->default(Auth::id())
-                    // ->hidden()
-                    ->readOnly()
-                    ->label('Author')
-                    ->reactive()
-                    ->required(),
                 Forms\Components\Toggle::make('is_published')
                     ->columnSpanFull()
                     ->default(false),
@@ -83,6 +76,7 @@ class ArticleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
 
             ])
             ->bulkActions([

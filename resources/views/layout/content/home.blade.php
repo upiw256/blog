@@ -231,7 +231,7 @@
         </section><!-- End Features Section -->
 
         <!-- ======= Services Section ======= -->
-        <section id="services" class="services">
+        <section id="ekstra" class="services">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
