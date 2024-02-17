@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\article;
+use App\Models\ExtracurricularActivity;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,10 @@ class home extends Controller
     public function index()
     {
         $articles = Article::where('is_published', true)->get();
+        $extras = ExtracurricularActivity::all();
         return view('layout.content.home', [
-            'article' => $articles
+            'article' => $articles,
+            'extras' => $extras
         ]);
     }
     public function show($id)
@@ -20,6 +23,8 @@ class home extends Controller
         $article = Article::find($id);
         return view('layout.content.article', ['article' => $article]);
     }
+
+
     public function search(Request $request)
     {
         $query = $request->input('query');

@@ -110,28 +110,7 @@
         },
         loop: true,
     });
-    var swiper_galery = new Swiper('.swiper-container-galery', {
-        breakpoints: {
-            // Ketika lebar layar >= 1200px
-            1200: {
-                slidesPerView: 3,
-            },
-            // Ketika lebar layar < 1200px
-            0: {
-                slidesPerView: 1,
-            },
-        },
-        spaceBetween: 10,
-        pagination: {
-            el: '.swiper-pagination-galery',
-            clickable: true,
-        },
-        autoplay: {
-            delay: 1000, // Delay between slides in milliseconds (3 seconds in this example)
-            disableOnInteraction: false,
-        },
-        loop: true,
-    });
+    
 </script>
 
 </body>

@@ -24,4 +24,10 @@ class member_extra extends Model
     {
         return $this->belongsTo(ExtracurricularActivity::class);
     }
+
+    public function count_member($id)
+    {
+        return $this->where('extracurricular_activity_id', $id)
+            ->count();
+    }
 }

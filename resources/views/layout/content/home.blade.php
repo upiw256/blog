@@ -140,12 +140,12 @@
         <!-- ======= Clients Section ======= -->
         <section id="news" class="clients">
             <div class="container" data-aos="zoom-in">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>News</h2>
+                    <p>News Update</p>
+                </div>
                 <div class="row">
-
-                    <div class="col-3">
-                        <div class="h3">News Update</div>
-                    </div>
-                    <div class="col-9">
+                    <div class="col-12">
                         <form action="{{ route('search') }}" method="GET">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search News" aria-label="Recipient's username" aria-describedby="button-addon2" name="query">
@@ -177,64 +177,39 @@
         </section><!-- End Clients Section -->
 
         <!-- ======= Features Section ======= -->
-        <section id="features" class="features">
+        <section id="visimisi" class="features">
+            <div class="container">
             <div class="row">
                 <!-- Kolom 1: Text -->
-                <div class="container">
                         <div class="col-12 col-sm-6 putih z-2">
-                        <div class="section-title" data-aos="fade-up">
-                            <h2>Extracurricular</h2>
-                            <p>Check our extracurricular</p>
-                        </div>
-                        <div class="col-lg-12 mt-5" data-aos="fade-left" data-aos-delay="100">
-                            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
-                                <i class="bx bx-receipt"></i>
-                                <h4>Visi</h4>
-                                <p>Mewujudkan Peserta Didik yang Religius dalam Karakter,  Mumpuni dalam Akademik dan Non Akademik, serta Berprestasi dalam Kejuaraan dengan Menguasai Teknologi Informasi Komunikasi dan Berwawasan Lingkungan</p>
+                            <div class="section-title" data-aos="fade-up">
+                                <h2>Our Goals</h2>
+                                <p>Visi & Misi</p>
                             </div>
-                            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-                                <i class="bx bx-cube-alt"></i>
-                                <h4>Misi</h4>
-                                <p>1. Mengembangkan karakter religius dan mewujudkan profil pelajar Pancasila</p>
-                                <p>2. Mengembangkan porensi kecerdasan intelektual</p>
-                                <p>3. Mengembangkan prestasi untuk meraih berbagai kejuaraan</p>
-                                <p>4. Meningkatkan kualitas dan kuantitas lulusan untuk bisa diterima di Perguruan Tinggi terbaik</p>
-                                <p>5. Meningkatkan kemampuan dalam Teknologi Informasi dan Komunikasi</p>
-                                <p>6. Meningkatkan kepedulian terhadap lingkungan hidup</p>
+                            <div class="col-lg-12 mt-5" data-aos="fade-left" data-aos-delay="100">
+                                <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+                                    <i class="bx bx-receipt"></i>
+                                    <h4>Visi</h4>
+                                    <p>Mewujudkan Peserta Didik yang Religius dalam Karakter,  Mumpuni dalam Akademik dan Non Akademik, serta Berprestasi dalam Kejuaraan dengan Menguasai Teknologi Informasi Komunikasi dan Berwawasan Lingkungan</p>
+                                </div>
+                                <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+                                    <i class="bx bx-cube-alt"></i>
+                                    <h4>Misi</h4>
+                                    <p>1. Mengembangkan karakter religius dan mewujudkan profil pelajar Pancasila</p>
+                                    <p>2. Mengembangkan porensi kecerdasan intelektual</p>
+                                    <p>3. Mengembangkan prestasi untuk meraih berbagai kejuaraan</p>
+                                    <p>4. Meningkatkan kualitas dan kuantitas lulusan untuk bisa diterima di Perguruan Tinggi terbaik</p>
+                                    <p>5. Meningkatkan kemampuan dalam Teknologi Informasi dan Komunikasi</p>
+                                    <p>6. Meningkatkan kepedulian terhadap lingkungan hidup</p>
+                                </div>
+                                <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+                                    <i class="bx bx-images"></i>
+                                    <h4>Semboyan</h4>
+                                    <p>SMAN 1 Margaasih must be Magnificent, Good, and Amazing to reach our goal.</p>
+                                </div>
                             </div>
-                            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-                                <i class="bx bx-images"></i>
-                                <h4>Semboyan</h4>
-                                <p>SMAN 1 Margaasih must be Magnificent, Good, and Amazing to reach our goal.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
-                <!-- Kolom 2: Swiper -->
-                <div class="col-12 col-sm-6 ps-5 mt-5" data-aos="fade-right" data-aos-delay="100">
-                    <div class="section-title" data-aos="fade-up">
-                        <h2>Extracurricular</h2>
-                        <p>Check our extracurricular</p>
-                    </div>
-                        <div class="swiper-container swiper-container-galery" style="height: 300px;">
-                            <div class="swiper-wrapper">
-                                <!-- Isi slide swiper di sini -->
-                                <div class="swiper-slide">
-                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0L_BfGdS-Ts?si=O8CAkSbgEY4jwfwv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                                <div class="swiper-slide">
-                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/f6QUiHJDAd0?si=YsNe6jK1Env6Xhsn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                                <div class="swiper-slide">
-                                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JWBnyZySqkE?si=92AZWUw5-h7YYzB-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                                <!-- Tambahkan slide sesuai kebutuhan -->
-                            </div>
-                            <div class="swiper-pagination swiper-pagination-galery"></div>
-                        </div>
-                </div>
-            </div>
         </section><!-- End Features Section -->
 
         <!-- ======= Services Section ======= -->
@@ -247,54 +222,15 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4><a href="">Basket ball</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                    @foreach ($extras as $extra)
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="icon-box">
+                                <div class="icon"><img src="{{ asset('/') }}storage/{{$extra->logo}}" alt=""></div>
+                                <h4><a href="{{ route('extra', $extra->id) }}">{{$extra->name}}</a></h4>
+                                <p>{!! $extra->description !!}</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">Sed ut perspiciatis</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4><a href="">Magni Dolores</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4><a href="">Nemo Enim</a></h4>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-slideshow"></i></div>
-                            <h4><a href="">Dele cardo</a></h4>
-                            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-arch"></i></div>
-                            <h4><a href="">Divera don</a></h4>
-                            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
 
             </div>
