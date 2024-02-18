@@ -24,3 +24,4 @@ Route::get('/article/{id}', [home::class, 'show'])->name('article.show');
 Route::get('/extra/{id}', [extra::class, 'render'])->name('extra');
 Route::get('/search', [home::class, 'search'])->name('search');
 Route::get('/teachers', [home::class, 'teachers'])->name('teachers');
+Route::post('/contact', [home::class, 'contact'])->name('contact');

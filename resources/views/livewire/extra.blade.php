@@ -21,12 +21,16 @@
 <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
+        <div class="section-title">
+            <h2>Extracurricular</h2>
+            <p>- {{ $id->name }} -</p>
+        </div>
         <div class="col-lg-12">
             <table class="table table-bordered">
                 <tbody>
                     <tr>
                         <th scope="row">Nama</th>
-                        <td>{{ $id->name }}</td>
+                        <td><b>{{ $id->name }}</b></td>
                     </tr>
                     <tr>
                         <th scope="row">Logo</th>
