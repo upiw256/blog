@@ -57,21 +57,15 @@
 <script src="{{ asset('/') }}assets/pendor/glightbox/js/glightbox.min.js"></script>
 <script src="{{ asset('/') }}assets/pendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js?render=6LdaKXcpAAAAANfZZZj97aqoMrVoTNNViRe7ct8F"></script>
+{{-- <script src="https://www.google.com/recaptcha/api.js"></script> --}}
+{{-- <script src="https://www.google.com/recaptcha/api.js?render=6LdaKXcpAAAAAEOTf6IfGJaep0gX-t449_qf2FW2"></script> --}}
+{{-- @stack('scripts') --}}
 {{-- <script src="{{ asset('/') }}assets/pendor/php-email-form/validate.js"></script> --}}
 @livewireScripts
 <!-- Template Main JS File -->
 <script src="{{ asset('/') }}assets/js/main.js"></script>
+@stack('scripts')
 <script>
-    function onClick(e) {
-        e.preventDefault();
-        grecaptcha.ready(function() {
-          grecaptcha.execute('6LdaKXcpAAAAANfZZZj97aqoMrVoTNNViRe7ct8F', {action: 'submit'}).then(function(token) {
-                    document.getElementById('recaptchaToken').value = token;
-                    document.getElementById('contactForm').submit();
-          });
-        });
-      }
     var swiper = new Swiper('.swiper-container-news', {
 
         breakpoints: {
