@@ -18,9 +18,16 @@ class AchievementImgRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('achievement_id')
+                Forms\Components\FileUpload::make('img')
+                    ->maxSize(1024)
+                    ->image()
+                    ->label('Gambar')
+                    ->required(),
+                Forms\Components\TextInput::make('description')
+                    ->label('Deskripsi')
+                    ->maxLength(255)
                     ->required()
-                    ->maxLength(255),
+                    ->columnSpan(2),
             ]);
     }
 
@@ -29,7 +36,8 @@ class AchievementImgRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('achievement_id')
             ->columns([
-                Tables\Columns\TextColumn::make('achievement_id'),
+                Tables\Columns\ImageColumn::make('img')->label('Foto Kegiatan'),
+                Tables\Columns\TextColumn::make('description')->label('Geskripsi Gambar')->limit(100),
             ])
             ->filters([
                 //

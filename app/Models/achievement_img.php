@@ -11,7 +11,8 @@ class achievement_img extends Model
     use HasFactory;
     protected $fillable = [
         'achievement_id',
-        'image'
+        'img',
+        'description',
     ];
     public function achievement(): BelongsTo
     {

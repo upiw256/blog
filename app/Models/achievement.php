@@ -11,7 +11,7 @@ class achievement extends Model
     use HasFactory;
     protected $fillable = ['name', 'category', 'description', 'level', 'champion_to', 'year'];
 
-    public function achievement_member(): HasMany
+    public function student(): HasMany
     {
         return $this->hasMany(achievement_member::class);
     }

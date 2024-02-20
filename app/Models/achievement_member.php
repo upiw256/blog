@@ -18,15 +18,9 @@ class achievement_member extends Model
         return $this->belongsTo(Achievement::class);
     }
 
-    public function achievement_member(): BelongsTo
+    public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class);
     }
-    public function nameWithProfileData()
-    {
-        return Student::query()
-            ->select('nama')
-            ->where('student_id', $this->student_id)
-            ->first()?->nama; // Return null if no user found
-    }
+
 }

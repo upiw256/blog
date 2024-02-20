@@ -4,8 +4,10 @@ namespace App\Filament\Resources\AchievementResource\RelationManagers;
 
 use App\Models\Student;
 use Filament\Forms;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -13,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class StudentRelationManager extends RelationManager
 {
-    protected static string $relationship = 'achievement_member';
+    protected static string $relationship = 'student';
 
     public function form(Form $form): Form
     {
@@ -25,9 +27,10 @@ class StudentRelationManager extends RelationManager
                     ->disableOptionsWhenSelectedInSiblingRepeaterItems()
                     ->searchable()
                     ->live()
-                    ->relationship('achievement_member', 'nama')
+                    ->relationship('student', 'nama')
                     ->required()
             ]);
+
     }
 
     public function table(Table $table): Table
@@ -35,11 +38,10 @@ class StudentRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('student_id')
             ->columns([
-                Tables\Columns\TextColumn::make('student_id')
-                    ->getValueUsing(function ($record) {
-                        $otherModel = Student::where('student_id', $record->student_id)->first();
-                        return $otherModel ? $otherModel->nama : '-';
-                    })
+                Tables\Columns\TextColumn::make('student.nisn')->label('NISN')->searchable(),
+                Tables\Columns\TextColumn::make('student.nama')->label('Nama Siswa')->searchable(),
+                Tables\Columns\TextColumn::make('student.nama_rombel')->label('Kelas')->searchable(),
+
             ])
             ->filters([
                 //
