@@ -17,7 +17,7 @@ class ExtracurricularActivityResource extends Resource
 {
     protected static ?string $model = ExtracurricularActivity::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-trophy';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
     protected static ?string $navigationGroup = 'Master';
     public static function form(Form $form): Form
     {
