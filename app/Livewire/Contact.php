@@ -14,6 +14,23 @@ use Mews\Captcha\Facades\Captcha;
 class Contact extends Component
 {
 
+    public $name;
+    public $email;
+    public $subject;
+    public $message;
+    public $captcha;
+
+    public $captchaUrl;
+    public function mount()
+    {
+        $this->refreshCaptcha();
+    }
+    
+    public function refreshCaptcha()
+    {
+        // Reset nilai captcha untuk memuat ulang CAPTCHA
+        $this->captchaUrl = route('captcha') . '?' . time();
+    }
     #[Validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email',
@@ -21,12 +38,6 @@ class Contact extends Component
         'message' => 'required|string',
         'captcha' => 'required|captcha',
     ])]
-    public $name;
-    public $email;
-    public $subject;
-    public $message;
-    public $captcha;
-   
     public function store()
     {
 
@@ -40,6 +51,7 @@ class Contact extends Component
         }
 
         $this->reset();
+        $this->refreshCaptcha();
         // return redirect()->to('/');
 
     }
