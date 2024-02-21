@@ -56,416 +56,32 @@
     <main id="main">
 
         <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container" data-aos="fade-up">
+        @include('layout.content.section.about')
+        <!-- End About Section -->
 
-                <div class="row">
-                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="{{ asset('/') }}assets/img/about.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-                        <h3>Informasi singkat SMAN 1 Margaasih</h3>
-                        <p class="fst-italic">
-                            SMAN 1 Margaasih adalah sekolah negeri yang didirikan pada tahun 2006. denagn SK 421.5/Kep.359-Disdikbud/2015
-                        </p>
-                        <ul>
-                            <li><i class="ri-check-double-line"></i> ALAMAT SMAN 1 MARGAASIH</li>
-                            <p class="fst-italic">SMAN 1 MARGAASIH beralamat di JL. TERUSAN TAMAN KOPO INDAH 3, Mekar Rahayu, Kec. Margaasih, Kab. Bandung, Jawa Barat, dengan kode pos 40218.</p>
-                            <li><i class="ri-check-double-line"></i> JAM PEMBELAJARAN DI SMAN 1 MARGAASIH</li>
-                            <p class="fst-italic">
-                                Pembelajaran di SMAN 1 MARGAASIH dilakukan pada Sehari Penuh. Dalam seminggu, pembelajaran dilakukan selama 5 hari.
-                            </p>
-                            <li><i class="ri-check-double-line"></i> AKREDITASI SMAN 1 MARGAASIH</li>
-                            <p class="fst-italic">SMAN 1 MARGAASIH memiliki akreditasi A, berdasarkan sertifikat 763/BAN-SM/SK/2019.</p>
-                        </ul>
-                        <div class="container">
-                            <h2 class="text-center">Identitas Satuan Pendidikan</h2>
-                            <div class="mx-auto"> <!-- Menengahkan tabel -->
-                                <table class="table table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">Nama</th>
-                                            <td>SMAN 1 MARGAASIH</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">NPSN</th>
-                                            <td>20227907</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Alamat</th>
-                                            <td>JL. TERUSAN TAMAN KOPO INDAH 3</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Kode Pos</th>
-                                            <td>40218</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Desa / Kelurahan</th>
-                                            <td>Mekar Rahayu</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Kecamatan / Kota (LN)</th>
-                                            <td>Kec. Margaasih</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Kab. / Kota / Negara (LN)</th>
-                                            <td>Kab. Bandung</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Provinsi / Luar Negeri</th>
-                                            <td>Jawa Barat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Status Sekolah</th>
-                                            <td>negeri</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Waktu Penyelenggaraan</th>
-                                            <td>5 / Sehari Penuh hari</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Jenjang Pendidikan</th>
-                                            <td>SMA</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- ======= news Section ======= -->
+        @include('layout.content.section.news')
+        <!-- End Clients Section -->
 
-            </div>
-        </section><!-- End About Section -->
+        <!-- ======= visimisi Section ======= -->
+        @include('layout.content.section.visimisi')
+        <!-- End Features Section -->
 
-        <!-- ======= Clients Section ======= -->
-        <section id="news" class="clients">
-            <div class="container" data-aos="zoom-in">
-                <div class="section-title" data-aos="fade-up">
-                    <h2>News</h2>
-                    <p>News Update</p>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <form action="{{ route('search') }}" method="GET">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Search News" aria-label="Recipient's username" aria-describedby="button-addon2" name="query">
-                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class='bx bx-search-alt-2'></i></button>
-                        </div>
-                    </form>
-                    </div>
-                </div>
-                <!-- Slider main container -->
-                <div class="swiper-container-news">
-                    <div class="swiper-wrapper">
-                        @foreach($article as $article)
-                        <div class="swiper-slide">
-                            <a href="{{ route('article.show', $article->id) }}">
-                                <div class="card">
-                                    <img src="{{ asset('/') }}storage/{{$article->image}}" alt="Image">
-                                    <div class="card-content p-3">
-                                        <h3>{{$article->title}}</h3>
-                                        <p>{!! substr(strip_tags($article->content), 0, 150) !!}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        @endforeach
-                        <!-- Tambah slide tambahan sesuai kebutuhan -->
-                        <div class="swiper-pagination-news"></div>
-                    </div>
-                </div>
-        </section><!-- End Clients Section -->
+        <!-- ======= ekstra Section ======= -->
+        @include('layout.content.section.extra')
+        <!-- End Services Section -->
 
-        <!-- ======= Features Section ======= -->
-        <section id="visimisi" class="features">
-            <div class="container">
-            <div class="row">
-                <!-- Kolom 1: Text -->
-                        <div class="col-12 col-sm-6 putih z-2">
-                            <div class="section-title" data-aos="fade-up">
-                                <h2>Our Goals</h2>
-                                <p>Visi & Misi</p>
-                            </div>
-                            <div class="col-lg-12 mt-5" data-aos="fade-left" data-aos-delay="100">
-                                <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
-                                    <i class="bx bx-receipt"></i>
-                                    <h4>Visi</h4>
-                                    <p>Mewujudkan Peserta Didik yang Religius dalam Karakter,  Mumpuni dalam Akademik dan Non Akademik, serta Berprestasi dalam Kejuaraan dengan Menguasai Teknologi Informasi Komunikasi dan Berwawasan Lingkungan</p>
-                                </div>
-                                <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-                                    <i class="bx bx-cube-alt"></i>
-                                    <h4>Misi</h4>
-                                    <p>1. Mengembangkan karakter religius dan mewujudkan profil pelajar Pancasila</p>
-                                    <p>2. Mengembangkan porensi kecerdasan intelektual</p>
-                                    <p>3. Mengembangkan prestasi untuk meraih berbagai kejuaraan</p>
-                                    <p>4. Meningkatkan kualitas dan kuantitas lulusan untuk bisa diterima di Perguruan Tinggi terbaik</p>
-                                    <p>5. Meningkatkan kemampuan dalam Teknologi Informasi dan Komunikasi</p>
-                                    <p>6. Meningkatkan kepedulian terhadap lingkungan hidup</p>
-                                </div>
-                                <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-                                    <i class="bx bx-images"></i>
-                                    <h4>Semboyan</h4>
-                                    <p>SMAN 1 Margaasih must be Magnificent, Good, and Amazing to reach our goal.</p>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-        </section><!-- End Features Section -->
+        <!-- ======= guru Section ======= -->
+        @include('layout.content.section.guru')
+        <!-- End Cta Section -->
 
-        <!-- ======= Services Section ======= -->
-        <section id="ekstra" class="services">
-            <div class="container" data-aos="fade-up">
+        <!-- ======= achievement Section ======= -->
+        @include('layout.content.section.achievement')
+        <!-- End Portfolio Section -->
 
-                <div class="section-title">
-                    <h2>Extracurricular</h2>
-                    <p>Check our extracurricular</p>
-                </div>
-
-                <div class="row">
-                    @foreach ($extras as $extra)
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="icon-box">
-                                <div class="icon"><img src="{{ asset('/') }}storage/{{$extra->logo}}" alt=""></div>
-                                <h4><a href="{{ route('extra', $extra->id) }}">{{$extra->name}}</a></h4>
-                                <p>{!! $extra->description !!}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-        </section><!-- End Services Section -->
-
-        <!-- ======= Cta Section ======= -->
-        <section id="cta" class="cta">
-            <div class="container" data-aos="zoom-in">
-
-                <div class="text-center">
-                    <h3>Data Guru</h3>
-                    <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Jangan setengah hati menjadi guru, karena anak didik kita telah membuka sepenuh hatinya.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                    </p>
-                    <p>
-
-                        - Ki Hajar Dewantara
-                    </p>
-                    <a class="cta-btn" href="{{ route('teachers') }}">Buka Data</a>
-                </div>
-
-            </div>
-        </section><!-- End Cta Section -->
-
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-title">
-                    <h2>Achievement</h2>
-                    <p>Check our achievement</p>
-                </div>
-
-                <div class="row" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">App</li>
-                            <li data-filter=".filter-card">Card</li>
-                            <li data-filter=".filter-web">Web</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 1</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('/') }}assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                                    <a href="" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 3</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 2</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 2</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('/') }}assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 2</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('/') }}assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 3</h4>
-                                <p>App</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('/') }}assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 1</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('/') }}assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Card 3</h4>
-                                <p>Card</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('/') }}assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="{{ asset('/') }}assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web 3</h4>
-                                <p>Web</p>
-                                <div class="portfolio-links">
-                                    <a href="{{ asset('/') }}assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Portfolio Section -->
-
-        <!-- ======= Counts Section ======= -->
-        <section id="counts" class="counts">
-            <div class="container" data-aos="fade-up">
-
-                <div class="row no-gutters">
-                    <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
-                    <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
-                        <div class="content d-flex flex-column justify-content-center">
-                            <h3>Profile Kepla Sekolah</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                            </p>
-                            <div class="row">
-                                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                                    <div class="count-box">
-                                        <i class="bi bi-emoji-smile"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2" class="purecounter"></span>
-                                        <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam
-                                            architecto ut.</p>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                                    <div class="count-box">
-                                        <i class="bi bi-journal-richtext"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2" class="purecounter"></span>
-                                        <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium
-                                            et quia dere tan</p>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                                    <div class="count-box">
-                                        <i class="bi bi-clock"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="4" class="purecounter"></span>
-                                        <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam
-                                            ducimus aut voluptate non vel</p>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                                    <div class="count-box">
-                                        <i class="bi bi-award"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="4" class="purecounter"></span>
-                                        <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et
-                                            nemo pad der</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End .content-->
-                    </div>
-                </div>
-
-            </div>
-        </section><!-- End Counts Section -->
+        <!-- ======= kepsek Section ======= -->
+        @include('layout.content.section.kepsek')
+        <!-- End Counts Section -->
 
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
@@ -585,8 +201,7 @@
                 </div>
 
                 <div class="row mt-5">
-
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 bg-custom">
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
@@ -616,7 +231,7 @@
 
                     </div>
 
-                    <div class="col-lg-8 mt-5 mt-lg-0">
+                    <div class="col-lg-8 mt-5 mt-lg-0 p-3 ">
 
                         @livewire('contact')
 

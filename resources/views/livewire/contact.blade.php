@@ -1,5 +1,5 @@
-<div>
-    <form wire:submit.prevent="store" class="php-email-form" id="contactForm">
+<div class="bg-custom">
+    <form wire:submit.prevent="store" class="php-email-form" id="contactForm" class="p-3">
         @csrf
         <div class="row">
             <div class="col-md-6 form-group">

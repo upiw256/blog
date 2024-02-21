@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [home::class, 'index'])->name('home');
-Route::get('/article/{id}', [home::class, 'show'])->name('article.show');
+Route::get('/article/{slug}', [home::class, 'show'])->name('article.show');
 // Route::get('/extra/{id}', function ($id) {
 //     return Livewire::mount('extra', ['id' => $id]);
 // });

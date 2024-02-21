@@ -36,6 +36,16 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
     <style>
+        .bg-custom {
+            background-color: #EFEFEF; /* Warna AFAFAF */
+        }
+        .swiper-pagination-bullet {
+            background-color: orange;
+            width: 15px; /* Lebar titik */
+            height: 15px; /* Tinggi titik */
+            /* Atau, jika Anda ingin titik menjadi lingkaran */
+            border-radius: 50%; /* Mengubah warna latar belakang titik */
+        }
         .news-wrapper {
         display: flex;
         }
@@ -96,7 +106,7 @@
     </style>
 </head>
 
-<body>
+<body class="bg-custom">
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top header-inner-pages">
         <div class="container d-flex align-items-center justify-content-lg-between">
@@ -112,8 +122,8 @@
                     <li><a class="nav-link scrollto" href="#news">News</a></li>
                     <li><a class="nav-link scrollto" href="#visimisi">Visi & Misi</a></li>
                     <li><a class="nav-link scrollto" href="#ekstra">Ekstra kulikuler</a></li>
-                    <li><a class="nav-link scrollto" href="#cta">Data Guru</a></li>
-                    <li><a class="nav-link scrollto " href="#portfolio">Achievement</a></li>
+                    <li><a class="nav-link scrollto" href="#guru">Data Guru</a></li>
+                    <li><a class="nav-link scrollto " href="#achievement">Achievement</a></li>
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>

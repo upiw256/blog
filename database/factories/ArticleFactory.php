@@ -16,8 +16,15 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
+        // $this->faker = Faker\Factory::create('id_ID');
+        
         return [
-            //
+        'title' => $this->faker->realText(40),
+        'slug' => $this->faker->unique()->slug,
+        'content' => $this->faker->realText(500),
+        'image' => $this->faker->imageUrl(256, 256),
+        // 'user_id' => factory(App\Models\User::class)->create()->id,
+        'is_published' => true,
         ];
     }
 }

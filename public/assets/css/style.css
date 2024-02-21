@@ -654,6 +654,12 @@ section {
   padding: 80px 20px;
   transition: all ease-in-out 0.3s;
   background: #fff;
+  width: 300px; /* Atur lebar box */
+  height: 300px; /* Atur tinggi box */
+}
+.services .icon-box img {
+  width: 50px; /* Lebar gambar */
+  height: 50px; /* Tinggi gambar */
 }
 
 .services .icon-box .icon {

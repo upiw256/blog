@@ -66,8 +66,8 @@ class ArticleResource extends Resource
         return $table
             ->columns([
 
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('user.name')->label('Author'),
+                Tables\Columns\TextColumn::make('title')->searchable(),
+                Tables\Columns\TextColumn::make('user.name')->label('Author')->searchable(),
                 Tables\Columns\ImageColumn::make('image')->label('Image'),
                 Tables\Columns\ToggleColumn::make('is_published')->label('Published'),
             ])
