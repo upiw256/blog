@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->text('description');
             $table->string('level');
             $table->string('champion_to');
+            $table->string('img');
             $table->year('year');
             $table->timestamps();
         });

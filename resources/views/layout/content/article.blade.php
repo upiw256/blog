@@ -21,10 +21,10 @@
       <div class="container">
         <div class="col-lg-12">
         @if(Str::startsWith($article->image, 'http'))
-                                    <img src="{{ $article->image }}" alt="Image" style="width: 30%; height: 30%;" class="rounded mx-auto d-block">
-                                @else
-                                    <img src="{{ asset('storage/' . $article->image) }}" alt="Image" style="width: 30%; height: 30%;" class="rounded mx-auto d-block">
-                                @endif          
+            <img src="{{ $article->image }}" alt="Image" style="width: 30%; height: 30%;" class="rounded mx-auto d-block">
+        @else
+            <img src="{{ asset('storage/' . $article->image) }}" alt="Image" style="width: 30%; height: 30%;" class="rounded mx-auto d-block">
+        @endif          
 
             <p><em>Created by: {{$article->user->name}}</em></p>
             <p><em>{{$article->updated_at->format('Y-m-d')}}</em></p>

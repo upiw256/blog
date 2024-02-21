@@ -1,6 +1,9 @@
 <section id="kepsek" class="counts">
             <div class="container" data-aos="fade-up">
-
+                <div class="section-title">
+                    <h2>profile</h2>
+                    <p>Kepala Sekolah</p>
+                </div>
                 <div class="row no-gutters">
                     <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
                     <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">

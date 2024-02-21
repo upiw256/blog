@@ -1,5 +1,9 @@
 <div>
     <div>
+        <div class="section-title">
+            <h2>Data</h2>
+            <p>Guru SMAN 1 Margaasih</p>
+        </div>
         <input type="text" wire:model.live="search" class="form-control" placeholder="Cari nama...">
         <div class="table-responsive mt-3">
             <table class="table table-striped table-hover table-bordered">
@@ -25,6 +29,8 @@
                 </tbody>
             </table>
         </div>
-        {{ $teachers->links() }}
+        <div class="d-flex justify-content-center">
+            @include('vendor.pagination.bootstrap-5', ['paginator' => $teachers])
+        </div>
     </div>
     

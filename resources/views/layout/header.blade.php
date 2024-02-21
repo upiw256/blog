@@ -101,8 +101,23 @@
             background-color: white;
             padding-left: 10px;
         }
+        .pagination .page-link {
+        color: white;
+        background-color: orange;
+        margin-left: 5px;
+        margin-right: 5px
+        }
+        .pagination .page-item.active .page-link {
+            color: orange;
+            background-color: white;
+            border-color: orange;
+        }
 
-        
+        .pagination .page-link:hover {
+        color: orange;
+        background-color: white
+        }
+
     </style>
 </head>
 
@@ -124,6 +139,7 @@
                     <li><a class="nav-link scrollto" href="#ekstra">Ekstra kulikuler</a></li>
                     <li><a class="nav-link scrollto" href="#guru">Data Guru</a></li>
                     <li><a class="nav-link scrollto " href="#achievement">Achievement</a></li>
+                    <li><a class="nav-link scrollto " href="#kepsek">Profile Kepsek</a></li>
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>

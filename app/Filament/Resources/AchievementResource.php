@@ -35,12 +35,19 @@ class AchievementResource extends Resource
                     ->required()
                     ->options([
                         'Academic' => 'Academic',
-                        'Non Academic' => 'Non Academic',
+                        'non-academic' => 'Non Academic',
                     ]),
                 Forms\Components\RichEditor::make('description')
                     ->required()
                     ->maxLength(65535)
                     ->columnSpan(2),
+                Forms\Components\FileUpload::make('img')
+                    ->image()
+                    ->directory('achivements')
+                    ->imageEditor()
+                    ->columnSpan(2)
+                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/jpg'])
+                    ->maxSize(1024),
                 Forms\Components\Select::make('level')
                     ->required()
                     ->options([

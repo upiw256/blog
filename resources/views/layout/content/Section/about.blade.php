@@ -23,7 +23,7 @@
                 <div class="container">
                     <h2 class="text-center">Identitas Satuan Pendidikan</h2>
                     <div class="mx-auto"> <!-- Menengahkan tabel -->
-                        <table class="table table-bordered">
+                        <table class="table table-striped table-hover table-bordered border-3 border-dark">
                             <tbody>
                                 <tr>
                                     <th scope="row">Nama</th>

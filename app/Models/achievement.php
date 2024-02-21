@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class achievement extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'category', 'description', 'level', 'champion_to', 'year'];
+    protected $fillable = ['name', 'category', 'description', 'level', 'img', 'champion_to', 'year'];
 
     public function student(): HasMany
     {

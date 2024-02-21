@@ -12,6 +12,7 @@ npm install
 php artisan migrate
 php artisan make:filament-user
 php artisan storage:link
+php artisan vendor:publish --tag=laravel-pagination
 ```
 
 ## Pada AppServiceProvider.php
