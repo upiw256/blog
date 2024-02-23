@@ -3,6 +3,7 @@
 use App\Http\Controllers\home;
 use App\Livewire\extra;
 use App\Livewire\contact;
+use App\Livewire\AchievementShow;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::get('/article/{slug}', [home::class, 'show'])->name('article.show');
 //     return Livewire::mount('extra', ['id' => $id]);
 // });
 Route::get('/extra/{id}', [extra::class, 'render'])->name('extra');
+Route::get('/achievement/{id}', [AchievementShow::class, 'render'])->name('achievement');
 Route::get('/search', [home::class, 'search'])->name('search');
 Route::get('/teachers', [home::class, 'teachers'])->name('teachers');
 Route::post('/contact', [home::class, 'contact'])->name('contact');

@@ -37,7 +37,7 @@
                                     @else
                                         <a href="{{ asset('storage/' . $achievenent->img) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $achievenent->name }}"><i class="bx bx-plus"></i></a>
                                     @endif
-                                        <a href="" title="More Details"><i class="bx bx-link"></i></a>
+                                        <a href="{{route('achievement',$achievenent->id)}}" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
                         </div>

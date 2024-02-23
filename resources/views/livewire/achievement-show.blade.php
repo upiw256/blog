@@ -19,43 +19,34 @@
     </section><!-- End Breadcrumbs -->
 
 <!-- ======= Portfolio Details Section ======= -->
-    @if($id)
+    @if($achievement)
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
         <div class="section-title">
             <h2>Extracurricular</h2>
-            <p>- {{ $id->name }} -</p>
+            <p>- {{ $achievement->name }} -</p>
         </div>
         <div class="col-lg-12">
             <table class="table table-bordered">
                 <tbody>
                     <tr>
                         <th scope="row">Nama</th>
-                        <td><b>{{ $id->name }}</b></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Logo</th>
-                        <td><img src="{{ asset('/') }}storage/{{ $id->logo }}" alt="" width="50"></td>
+                        <td><b>{{ $achievement->name }}</b></td>
                     </tr>
                     <tr>
                         <th scope="row">Deskripsi</th>
-                        <td>{!! $id->description !!}</td>
+                        <td>{!! $achievement->description !!}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Jumlah Member</th>
-                        <td>{!! $member !!}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Anggota</th>
-                        <td> 
+                        <th scope="row">Peserta</th>
+                        <td>
                             <ul>
-                                @foreach($students as $student)
+                            @foreach($students as $student)
                                     <li>- {{ $student->student->nama }}</li>
                                 @endforeach
-                        </ul>
-                        <td>
+                            </ul>
+                        </td>
                     </tr>
-                    
                 </tbody>
             </table>
       </div>
