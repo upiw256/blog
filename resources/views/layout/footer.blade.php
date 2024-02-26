@@ -90,25 +90,31 @@
         loop: true,
     });
     const swiper2 = new Swiper('.swiper', {
-    // Swiper options (customize based on your requirements)
-    slidesPerView: 1,
-    breakpoints: {
-        // Ketika lebar layar <= 768px
-        768: {
-            slidesPerView: 3,
-            spaceBetween: 20,
+        // Swiper options (customize based on your requirements)
+        slidesPerView: 1,
+        breakpoints: {
+            // Ketika lebar layar <= 768px
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
         },
-    },
-    spaceBetween: 10,
-    loop: true,
-    autoplay: {
-        delay: 3000,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-});
+        spaceBetween: 10,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+    var swiperAcivements = new Swiper('.swiper-container-acivements', {
+        effect: "cards",
+        autoplay: {
+            delay: 3000,
+        },
+    });
     
 </script>
 

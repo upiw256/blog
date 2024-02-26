@@ -61,7 +61,10 @@
             height: 30rem;
             width: 25rem;
         } */
-
+        .swiper-container-acivements{
+            width: 80%;
+            height: 80%;
+        }
         .btn-primary {
             background-color: #FFC451 !important;
             border-color: #FFC451 !important;

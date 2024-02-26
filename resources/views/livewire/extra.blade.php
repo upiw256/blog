@@ -2,75 +2,56 @@
 
 @section('title', 'Extra')
 @section('content')
-<main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-end align-items-center">
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li>Ekstra kulikuler</li>
-          </ol>
-        </div>
-          <h1></h1>
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-<!-- ======= Portfolio Details Section ======= -->
-    @if($id)
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
+<main id="main" class="counts my-5 py-5">
+    <div class="container" data-aos="fade-up">
         <div class="section-title">
-            <h2>Extracurricular</h2>
-            <p>- {{ $id->name }} -</p>
+            <h2>profile</h2>
+            <p>Extra Kulikuler</p>
         </div>
-        <div class="col-lg-12">
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th scope="row">Nama</th>
-                        <td><b>{{ $id->name }}</b></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Logo</th>
-                        <td><img src="{{ asset('/') }}storage/{{ $id->logo }}" alt="" width="50"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Deskripsi</th>
-                        <td>{!! $id->description !!}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Jumlah Member</th>
-                        <td>{!! $member !!}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Anggota</th>
-                        <td> 
-                            <ul>
-                                @foreach($students as $student)
-                                    <li>- {{ $student->student->nama }}</li>
-                                @endforeach
-                        </ul>
-                        <td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-      </div>
-    </section><!-- End Portfolio Details Section -->
-    @else
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-        <div class="section-title">
-            <h2>Extracurricular</h2>
-            <p>- Not Found -</p>
+        <div class="row no-gutters">
+            <div class="col-xl-5 d-flex justify-content-center justify-content-lg-start"  data-aos="fade-right" data-aos-delay="100"><img src="{{ asset('/') }}storage/{{ $id->logo }}" alt=""></div>
+            <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
+                <div class="content d-flex flex-column justify-content-center">
+                    <h3>Profile Eskul {{$id->name}}</h3>
+                    <p>
+                        {!! $id->description !!}
+                    </p>
+                    <div class="row p-3">
+                        <div class="col-12 d-md-flex align-items-md-stretch">
+                            <div class="count-box ">
+                                <div class="col">
+                                    <p>Jumlah anggota</p>
+                                    <span data-purecounter-start="0" data-purecounter-end="{{$member}}" data-purecounter-duration="2" class="purecounter mb-3"></span>
+                                </div>
+                                {{-- <input type="text" wire:model.live="search" class="form-control" placeholder="Cari nama..."> --}}
+                                <table class="table col-12 table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Kelas</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $no=1; ?> 
+                                    @foreach ($students as $student)
+                                    <tr>
+                                      <th scope="row">{{$no++}}</th>
+                                      <td>{{$student->student->nama}}</td>
+                                      <td>{{$student->student->nama_rombel}}</td>
+                                    </tr>
+                                    @endforeach 
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        @include('vendor.pagination.bootstrap-5', ['paginator' => $students])
+                    </div>
+                </div><!-- End .content-->
+            </div>
         </div>
-        <div class="col-lg-12">
-            <h1>Data tidak ada</h1>
-      </div>
-    </section>
-    @endif
+
+    </div>
 </main><!-- End #main --> 
 @endsection
