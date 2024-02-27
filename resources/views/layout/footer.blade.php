@@ -25,11 +25,18 @@
 
 
                 <div class="col-lg-5 col-md-6 footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
-                    </form>
+                    <h4>Link Terkait</h4>
+                    <ul>
+                        <li>
+                            <a href="https://sman1mga.sch.id/">SMAN 1 Margaasih</a>
+                        </li>
+                        <li>
+                            <a href="https://disdik.jabarprov.go.id/">Disdik Jabar</a>
+                        </li>
+                        <li>
+                            <a href="hhttps://dapo.kemdikbud.go.id/">Dapodik</a>
+                        </li>
+                    </ul>
 
                 </div>
 

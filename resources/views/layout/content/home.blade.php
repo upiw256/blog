@@ -18,23 +18,17 @@
                     <div class="icon-box">
                         <i class="bi bi-backpack2"></i>
                         <h3><a href="">Jumlah Siswa</a></h3>
-                        <h3><a href="">1300</a></h3>
+                        <h3><a href="">{{$student}}</a></h3>
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-4">
                     <div class="icon-box">
                         <i class="i bi-person-badge"></i>
                         <h3><a href="">Jumlah Guru</a></h3>
-                        <h3><a href="">57</a></h3>
+                        <h3><a href="">{{$teacher}}</a></h3>
                     </div>
                 </div>
-                <div class="col-xl-2 col-md-4">
-                    <div class="icon-box">
-                        <i class="bi bi-person-vcard"></i>
-                        <h3><a href="">Jumlah Tendik</a></h3>
-                        <h3><a href="">30</a></h3>
-                    </div>
-                </div>
+                
                 <div class="col-xl-2 col-md-4">
                     <div class="icon-box">
                         <i class="bi bi-building"></i>
@@ -46,7 +40,7 @@
                     <div class="icon-box">
                         <i class="bi bi-person-video2"></i>
                         <h3><a href="">Jumlah Rombel</a></h3>
-                        <h3><a href="">32</a></h3>
+                        <h3><a href="">{{$classRoom}}</a></h3>
                     </div>
                 </div>
             </div>
@@ -99,93 +93,8 @@
         </section><!-- End Testimonials Section -->
 
         <!-- ======= Team Section ======= -->
-        <section id="team" class="team">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-title">
-                    <h2>Team</h2>
-                    <p>Management Team</p>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="100">
-                            <div class="member-img">
-                                <img src="{{ asset('/') }}assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Wahyu</h4>
-                                <span>Wakil Kepala sekolah Bagian Humas</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="200">
-                            <div class="member-img">
-                                <img src="{{ asset('/') }}assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Wiwin Widarni</h4>
-                                <span>Wakil Kepala sekolah Bagian Sarana</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="300">
-                            <div class="member-img">
-                                <img src="{{ asset('/') }}assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Aziz</h4>
-                                <span>Wakil Kepala sekolah Bagian Kurikulum</span>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="400">
-                            <div class="member-img">
-                                <img src="{{ asset('/') }}assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Zubaedah Khoiriyah</h4>
-                                <span>Wakil Kepala sekolah Bagian Kesiswaan</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Team Section -->
+        @include('layout.content.section.team')
+       <!-- End Team Section -->
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">

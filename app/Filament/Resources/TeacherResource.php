@@ -37,7 +37,8 @@ class TeacherResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nuptk')->label('NUPTK'),
-                Tables\Columns\TextColumn::make('nama'),
+                Tables\Columns\TextColumn::make('nama')->searchable(),
+                Tables\Columns\TextColumn::make('bidang_studi_terakhir'),
             ])
             ->filters([
                 //

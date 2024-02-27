@@ -12,6 +12,9 @@ class AchievementShow extends Component
     public function render($id)
     {
         $achievement = achievement::find($id);
+        if (!$achievement) {
+            return view('errors.404');
+        }
         $student = achievement_member::with("student")->where("achievement_id", $achievement->id)->paginate(5);
         $img = achievement_img::where("achievement_id", $achievement->id)->get();
         return view('livewire.achievement-show', [

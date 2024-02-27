@@ -7,6 +7,9 @@ use App\Models\article;
 use App\Models\contact;
 use App\Models\ExtracurricularActivity;
 use App\Models\achievement_img;
+use App\Models\ClassRoom;
+use App\Models\staf;
+use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -17,10 +20,18 @@ class home extends Controller
         $articles = Article::where('is_published', true)->get();
         $extras = ExtracurricularActivity::all();
         $achievenent = Achievement::latest()->limit(10)->get();
+        $student = Student::count();
+        $teacher = Teacher::count();
+        $classRoom = ClassRoom::count();
+        $staf = staf::all();
         return view('layout.content.home', [
             'article' => $articles,
             'extras' => $extras,
-            'achievenent' => $achievenent
+            'achievenent' => $achievenent,
+            'student' => $student,
+            'teacher' => $teacher,
+            'classRoom' => $classRoom,
+            'staf' => $staf
         ]);
     }
     public function show($slug)

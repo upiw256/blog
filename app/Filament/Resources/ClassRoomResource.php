@@ -38,10 +38,10 @@ class ClassRoomResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama'),
-                Tables\Columns\TextColumn::make('tingkat_pendidikan_id_str'),
-                Tables\Columns\TextColumn::make('kurikulum_id_str'),
-                Tables\Columns\TextColumn::make('ptk_id_str'),
+                Tables\Columns\TextColumn::make('nama')->searchable(),
+                Tables\Columns\TextColumn::make('tingkat_pendidikan_id_str')->label('Tingkat'),
+                Tables\Columns\TextColumn::make('kurikulum_id_str')->label('Kurikulum'),
+                Tables\Columns\TextColumn::make('ptk_id_str')->label('Wali Kelas'),
             ])
             ->filters([
                 //

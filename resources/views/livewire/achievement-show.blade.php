@@ -29,14 +29,13 @@
                     <div class="row p-3">
                         <div class="col-12 d-md-flex align-items-md-stretch">
                             <div class="count-box ">
-                                <div class="col">
-                                    <p>Peserta</p>
-                                </div>
+                                <h1>Peserta</h1>
                                 {{-- <input type="text" wire:model.live="search" class="form-control" placeholder="Cari nama..."> --}}
                                 <table class="table col-12 table-striped">
                                     <thead>
                                       <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">NIS</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Kelas</th>
                                       </tr>
@@ -46,6 +45,7 @@
                                     @foreach ($students as $student)
                                     <tr>
                                       <th scope="row">{{$no++}}</th>
+                                      <td>{{$student->student->nipd}}</td>
                                       <td>{{$student->student->nama}}</td>
                                       <td>{{$student->student->nama_rombel}}</td>
                                     </tr>
