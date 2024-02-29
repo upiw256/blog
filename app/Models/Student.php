@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Http;
+use Laravel\Sanctum\HasApiTokens;
 
 class Student extends Model
 {
-    use HasFactory;
+    use HasFactory,HasApiTokens;
     protected $fillable = [
         'peserta_didik_id',
         'nipd',

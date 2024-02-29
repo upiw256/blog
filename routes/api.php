@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\apiClassRoom;
 use App\Http\Controllers\ApiStudent;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::middleware('auth:sanctum')->get('/api/students', [ApiStudent::class, 'index']);
+Route::middleware('VerifyToken')->get('/students', [ApiStudent::class, 'index']);
+Route::middleware('VerifyToken')->get('/article', [ArticleController::class, 'index']);
+Route::middleware('VerifyToken')->get('/classroom', [apiClassRoom::class, 'index']);
 

@@ -6,7 +6,6 @@ use App\Models\achievement;
 use App\Models\article;
 use App\Models\contact;
 use App\Models\ExtracurricularActivity;
-use App\Models\achievement_img;
 use App\Models\ClassRoom;
 use App\Models\staf;
 use App\Models\Student;
