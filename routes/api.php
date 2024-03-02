@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\apiClassRoom;
+use App\Http\Controllers\apiExtracurricular;
 use App\Http\Controllers\ApiStudent;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
@@ -24,4 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('VerifyToken')->get('/students', [ApiStudent::class, 'index']);
 Route::middleware('VerifyToken')->get('/article', [ArticleController::class, 'index']);
 Route::middleware('VerifyToken')->get('/classroom', [apiClassRoom::class, 'index']);
+Route::middleware('VerifyToken')->get('/extracurricular', [apiExtracurricular::class, 'index']);
+Route::middleware('VerifyToken')->get('/extracurricular/{id}', [apiExtracurricular::class, 'show']);
 
