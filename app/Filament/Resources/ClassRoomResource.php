@@ -30,7 +30,7 @@ class ClassRoomResource extends Resource
     {
         return $form
             ->schema([
-                //
+
             ]);
     }
 
@@ -48,6 +48,7 @@ class ClassRoomResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -85,7 +86,8 @@ class ClassRoomResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+                //
+            RelationManagers\ScheduleRelationManager::class
         ];
     }
 
@@ -94,7 +96,7 @@ class ClassRoomResource extends Resource
         return [
             'index' => Pages\ClassRoom::route('/'),
             'create' => Pages\CreateClassRoom::route('/create'),
-            // 'edit' => Pages\EditClassRoom::route('/{record}/edit'),
+            'edit' => Pages\EditClassRoom::route('/{record}/edit'),
         ];
     }
 }
