@@ -43,6 +43,7 @@ class apiExtracurricular extends Controller
                 'name' => $data->student->nama,
                 'kelas'=> $data->student->nama_rombel,
                 'jenis_kelamin' => $data->student->jenis_kelamin
+                
             ];
         }
         $response = [
