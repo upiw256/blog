@@ -16,17 +16,17 @@ class schedule extends Model
         'end_time',
     ];
 
-    public function classRoom() : BelongsTo
+    public function classRoom() : HasMany
     {
-        return $this->BelongsTo(ClassRoom::class);
+        return $this->HasMany(ClassRoom::class);
     }
-    function teacher() : BelongsTo {
-        return $this->BelongsTo(Teacher::class);
+    function teacher() : HasMany {
+        return $this->HasMany(Teacher::class);
     }
 
-    function subject() : BelongsTo
+    function subject() : HasMany
     {
-        return $this->BelongsTo(Subject::class);
+        return $this->HasMany(Subject::class);
     }
 
 }

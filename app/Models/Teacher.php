@@ -50,4 +50,9 @@ class Teacher extends Model
 
         return false;
     }
+
+    public function ptk(): BelongsTo
+    {
+        return $this->belongsTo(schedule::class);
+    }
 }
