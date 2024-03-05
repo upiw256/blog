@@ -50,31 +50,31 @@
     <main id="main">
 
         <!-- ======= About Section ======= -->
-        @include('layout.content.section.about')
+        @include('layout.content.Section.about')
         <!-- End About Section -->
 
         <!-- ======= news Section ======= -->
-        @include('layout.content.section.news')
+        @include('layout.content.Section.news')
         <!-- End Clients Section -->
 
         <!-- ======= visimisi Section ======= -->
-        @include('layout.content.section.visimisi')
+        @include('layout.content.Section.visimisi')
         <!-- End Features Section -->
 
         <!-- ======= ekstra Section ======= -->
-        @include('layout.content.section.extra')
+        @include('layout.content.Section.extra')
         <!-- End Services Section -->
 
         <!-- ======= guru Section ======= -->
-        @include('layout.content.section.guru')
+        @include('layout.content.Section.guru')
         <!-- End Cta Section -->
 
         <!-- ======= achievement Section ======= -->
-        @include('layout.content.section.achievement')
+        @include('layout.content.Section.achievement')
         <!-- End Portfolio Section -->
 
         <!-- ======= kepsek Section ======= -->
-        @include('layout.content.section.kepsek')
+        @include('layout.content.Section.kepsek')
         <!-- End Counts Section -->
 
         <!-- ======= Testimonials Section ======= -->
@@ -93,7 +93,8 @@
         </section><!-- End Testimonials Section -->
 
         <!-- ======= Team Section ======= -->
-        @include('layout.content.section.team')
+        @include('layout.content.Section.team')
+        
        <!-- End Team Section -->
 
         <!-- ======= Contact Section ======= -->
