@@ -54,7 +54,9 @@ class HeadmasterResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make("teacher.nama"),
+                Tables\Columns\TextColumn::make("back_title"),
+                Tables\Columns\ImageColumn::make("image"),
             ])
             ->filters([
                 //
