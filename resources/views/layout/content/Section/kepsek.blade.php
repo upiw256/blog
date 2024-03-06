@@ -6,7 +6,6 @@
                 </div>
                 <div class="row no-gutters">
                     <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100">
-                        <!-- <img src="{{ asset('storage/' . $kepsek->image) }}" alt="Image" style="min-height: 400px; background-size: cover;"> -->
                     </div>
                     <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
                         <div class="content d-flex flex-column justify-content-center">
