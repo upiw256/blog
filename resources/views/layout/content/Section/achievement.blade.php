@@ -20,7 +20,7 @@
                     @foreach($achievenent as $achievenent)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-{{$achievenent->category}}">        
                         <div class="section-title">
-                            <h2>{{ $achievenent->name }}</h2>
+                            <h2>{{ implode(' ', array_slice(explode(' ', $achievement->name), 0, 4)) }}</h2>
                         </div>
                         
                         <div class="portfolio-wrap">
