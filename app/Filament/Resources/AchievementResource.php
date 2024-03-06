@@ -43,6 +43,7 @@ class AchievementResource extends Resource
                     ->columnSpan(2),
                 Forms\Components\FileUpload::make('img')
                     ->image()
+                    ->disk('public')
                     ->directory('achivements')
                     ->imageEditor()
                     ->columnSpan(2)
