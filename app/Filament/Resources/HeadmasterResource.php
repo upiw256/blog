@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\HeadmasterResource\Pages;
 use App\Filament\Resources\HeadmasterResource\RelationManagers;
-use App\Models\Headmaster;
+use App\Models\headmaster;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class HeadmasterResource extends Resource
 {
-    protected static ?string $model = Headmaster::class;
+    protected static ?string $model = headmaster::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?string $navigationGroup = 'Master';
