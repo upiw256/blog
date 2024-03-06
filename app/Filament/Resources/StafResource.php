@@ -26,8 +26,6 @@ class StafResource extends Resource
             ->schema([
                 Forms\Components\Select::make('teacher_id')
                     ->label('Teachers')
-                    ->unique()
-                    ->disableOptionsWhenSelectedInSiblingRepeaterItems()
                     ->searchable()
                     ->live()
                     ->relationship('teacher', 'nama')
