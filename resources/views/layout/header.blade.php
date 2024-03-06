@@ -100,7 +100,7 @@
         }
 
         .counts .image {
-        background: url({{ asset('storage/' . $kepsek->image) }}) center center no-repeat;
+        background: url({{ isset($kepsek->image) ? asset('storage/' . $kepsek->image) : '' }}) center center no-repeat;
         background-size: cover;
         min-height: 400px;
         }
