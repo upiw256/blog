@@ -16,8 +16,8 @@
                     </div>
                     <div class="member-info">
                         <h4>{{$s->teacher->nama}}</h4>
-                        <span>NIP. {{$s->teacher->nip}}s</span>
-                        <span>{{$s->jabatan}}s</span>
+                        <span>NIP. {{$s->teacher->nip}}</span>
+                        <span>{{$s->jabatan}}</span>
                     </div>
                 </div>
         </div>

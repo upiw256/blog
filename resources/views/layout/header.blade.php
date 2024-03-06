@@ -54,13 +54,6 @@
             flex: 0 0 33.3333%;
             max-width: 33.3333%;
         }
-        /* .swiper-slide {
-            margin-left: 80px;
-        } */
-        /* .news {
-            height: 30rem;
-            width: 25rem;
-        } */
         .swiper-container-acivements{
             width: 80%;
             height: 80%;
@@ -75,21 +68,6 @@
             background-color: #FFC451 !important;
             border-color: #FFC451 !important;
         }
-
-        /* 
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-        } */
-
-        /* .swiper-slide {
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin: 20px;
-        } */
 
         .card {
             height: 30rem;
@@ -119,6 +97,18 @@
         .pagination .page-link:hover {
         color: orange;
         background-color: white
+        }
+
+        .counts .image {
+        background: url({{ asset('storage/' . $kepsek->image) }}) center center no-repeat;
+        background-size: cover;
+        min-height: 400px;
+        }
+        ol {
+        list-style-type: decimal;
+        }
+        ul {
+            list-style-type: disc;
         }
 
     </style>

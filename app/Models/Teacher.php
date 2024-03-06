@@ -5,12 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Http;
 
 class Teacher extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function headmaster(): HasMany
+    {
+        return $this->hasMany(Headmaster::class);
+    }
 
     public function sync()
     {

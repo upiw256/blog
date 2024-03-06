@@ -7,6 +7,7 @@ use App\Models\article;
 use App\Models\contact;
 use App\Models\ExtracurricularActivity;
 use App\Models\ClassRoom;
+use App\Models\headmaster;
 use App\Models\staf;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -23,6 +24,8 @@ class home extends Controller
         $teacher = Teacher::count();
         $classRoom = ClassRoom::count();
         $staf = staf::all();
+        $kepsek = headmaster::latest()->first();
+        // dd($kepsek);
         return view('layout.content.home', [
             'article' => $articles,
             'extras' => $extras,
@@ -30,7 +33,8 @@ class home extends Controller
             'student' => $student,
             'teacher' => $teacher,
             'classRoom' => $classRoom,
-            'staf' => $staf
+            'staf' => $staf,
+            'kepsek'=>$kepsek
         ]);
     }
     public function show($slug)
