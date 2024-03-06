@@ -12,6 +12,7 @@ use App\Models\staf;
 use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class home extends Controller
 {
@@ -34,16 +35,19 @@ class home extends Controller
             'teacher' => $teacher,
             'classRoom' => $classRoom,
             'staf' => $staf,
-            'kepsek'=>$kepsek
+            'kepsek' => $kepsek
         ]);
     }
     public function show($slug)
     {
+        // $user = Auth::user();
         $article = Article::where('slug', $slug)->firstOrFail();
+        $suggestedArticles = Article::where('is_published', '=', true)->inRandomOrder()->limit(5)->get();
+        // dd($suggestedArticles);
         if ($article->is_published == 0) {
             return redirect('/');
         }
-        return view('layout.content.article', ['article' => $article]);
+        return view('layout.content.article', ['article' => $article, 'suggestedArticles' => $suggestedArticles]);
     }
     public function search(Request $request)
     {

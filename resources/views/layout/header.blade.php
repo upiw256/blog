@@ -139,6 +139,13 @@ blockquote:after {
     margin-left: 0.25em;
     vertical-align: -0.4em;
 }
+.card-container {
+    display: flex;
+}
+
+.card {
+    margin-right: 10px; /* Jarak antara kartu */
+}
 
 
     </style>
