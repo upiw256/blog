@@ -110,6 +110,36 @@
         ul {
             list-style-type: disc;
         }
+        blockquote {
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #333;
+    font-style: italic;
+}
+
+blockquote p {
+    margin: 0;
+    padding: 0;
+}
+
+blockquote:before {
+    content: open-quote;
+    font-size: 4em;
+    color: #333;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+}
+
+blockquote:after {
+    content: close-quote;
+    font-size: 4em;
+    color: #333;
+    line-height: 0.1em;
+    margin-left: 0.25em;
+    vertical-align: -0.4em;
+}
+
 
     </style>
 </head>
