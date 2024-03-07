@@ -10,7 +10,7 @@
     <meta content="Informasi seputar SMAN 1 Margaasih" name="keywords">
     <base href="/" />
     <!-- Favicons -->
-    <link href="{{ asset('/') }}assets/img/favicon.png" rel="icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link href="{{ asset('/') }}assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     @vite('resources/css/app.css')
     <!-- Google Fonts -->
