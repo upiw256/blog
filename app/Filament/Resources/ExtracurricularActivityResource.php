@@ -51,6 +51,8 @@ class ExtracurricularActivityResource extends Resource
                     ->image()
                     ->avatar()
                     ->directory('extracurricular')
+                    ->disk('public')
+                    ->maxSize(1028)
                     ->imageEditor()
                     ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/jpg'])
                     ->required(),
