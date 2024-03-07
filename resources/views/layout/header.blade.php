@@ -9,10 +9,10 @@
     <meta content="ini website SMAN 1 Margaasih" name="description">
     <meta content="Informasi seputar SMAN 1 Margaasih" name="keywords">
     <base href="/" />
-    
+
     <!-- Favicons -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <link href="{{ asset('/') }}assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <meta property="og:image" content="{{ asset('/') }}assets/img/logo.png">
     @vite('resources/css/app.css')
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
