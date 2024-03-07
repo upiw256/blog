@@ -43,6 +43,10 @@ class StafResource extends Resource
                         'staf wakasek kurikulum' => 'Staf Wakasek Kurikulum',
                     ])
                     ->required(),
+                Forms\Components\TextInput::make('front_title')
+                    ->label('Gelar Depan'),
+                Forms\Components\TextInput::make('back_title')
+                    ->label('Gelar Belakang'),
                 Forms\Components\FileUpload::make('img')
                     ->image()
                     ->required()

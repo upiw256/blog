@@ -14,6 +14,8 @@ class staf extends Model
         'teacher_id',
         'jabatan',
         'img',
+        'front_title',
+        'back_title',
     ];
 
     public function Teacher(): BelongsTo
