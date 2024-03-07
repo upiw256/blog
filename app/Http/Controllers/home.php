@@ -75,13 +75,14 @@ class home extends Controller
     }
     public function teachers()
     {
-        Teacher::where('jenis_ptk_id_str', 'Guru Mapel')
-            ->orWhere('jenis_ptk_id_str', 'Guru BK')
-            ->orWhere('jenis_ptk_id_str', 'Guru TIK')
-            ->orWhere('jenis_ptk_id_str', 'Kepala Sekolah')
+        $teachers = Teacher::all();
+        $tu = Teacher::where('jenis_ptk_id_str', 'Tenaga Administrasi Sekolah')
+            ->orWhere('jenis_ptk_id_str', 'Petugas Keamanan')
+            ->orWhere('jenis_ptk_id_str', 'Tenaga Perpustakaan')
             ->get();
         return view('layout.content.teachers', [
-            'teachers' => Teacher::all()
+            'teachers' => $teachers,
+            'tu' => $tu
         ]);
     }
     public function contact(Request $request)

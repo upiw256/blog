@@ -12,11 +12,14 @@ class SearchTeacher extends Component
     public function render()
     {
         $teachers = Teacher::where('nama', 'like', '%' . $this->search . '%')
-            // ->first()
             ->paginate($this->perPage);
+        $tu = Teacher::where('jenis_ptk_id_str', 'Tenaga Administrasi Sekolah')
+            ->orWhere('jenis_ptk_id_str', 'Petugas Keamanan')
+            ->orWhere('jenis_ptk_id_str', 'Tenaga Perpustakaan')
+            ->get();
         // dd($teachers);
 
-        return view('livewire.search-teacher', ['teachers' => $teachers]);
+        return view('livewire.search-teacher', ['teachers' => $teachers, 'tu' => $tu]);
 
     }
 }

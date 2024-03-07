@@ -168,7 +168,7 @@ blockquote:after {
                     <ul>
                         <li><a class="nav-link scrollto" href="#visimisi">Visi & Misi</a></li>
                         <li><a class="nav-link scrollto" href="#ekstra">Ekstra kulikuler</a></li>
-                        <li><a class="nav-link scrollto" href="#guru">Data Guru</a></li>
+                        <li><a class="nav-link scrollto" href="#guru">Data Guru dan Staf Administrasi</a></li>
                         <li><a class="nav-link scrollto " href="#achievement">Achievement</a></li>
                         <li><a class="nav-link scrollto " href="#kepsek">Profile Kepsek</a></li>
                         <li><a class="nav-link scrollto" href="#team">Team Management</a></li>
