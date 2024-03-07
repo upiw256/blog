@@ -22,8 +22,16 @@ class home extends Controller
         $extras = ExtracurricularActivity::all();
         $achievenent = Achievement::latest()->limit(10)->get();
         $student = Student::count();
-        $teacher = Teacher::count();
-        $classRoom = ClassRoom::count();
+        $teacher = Teacher::where('jenis_ptk_id_str', 'Guru Mapel')
+            ->orWhere('jenis_ptk_id_str', 'Guru BK')
+            ->orWhere('jenis_ptk_id_str', 'Guru TIK')
+            ->orWhere('jenis_ptk_id_str', 'Kepala Sekolah')
+            ->count();
+        $tu = Teacher::where('jenis_ptk_id_str', 'Tenaga Administrasi Sekolah')
+            ->orWhere('jenis_ptk_id_str', 'Petugas Keamanan')
+            ->orWhere('jenis_ptk_id_str', 'Tenaga Perpustakaan')
+            ->count();
+        $classRoom = ClassRoom::where('jenis_rombel_str', 'Kelas')->count();
         $staf = staf::all();
         $kepsek = headmaster::latest()->first();
         // dd($kepsek);
@@ -35,7 +43,8 @@ class home extends Controller
             'teacher' => $teacher,
             'classRoom' => $classRoom,
             'staf' => $staf,
-            'kepsek' => $kepsek
+            'kepsek' => $kepsek,
+            'tu' => $tu
         ]);
     }
     public function show($slug)
@@ -66,7 +75,11 @@ class home extends Controller
     }
     public function teachers()
     {
-        Teacher::all();
+        Teacher::where('jenis_ptk_id_str', 'Guru Mapel')
+            ->orWhere('jenis_ptk_id_str', 'Guru BK')
+            ->orWhere('jenis_ptk_id_str', 'Guru TIK')
+            ->orWhere('jenis_ptk_id_str', 'Kepala Sekolah')
+            ->get();
         return view('layout.content.teachers', [
             'teachers' => Teacher::all()
         ]);

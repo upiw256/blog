@@ -31,9 +31,16 @@
                 
                 <div class="col-xl-2 col-md-4">
                     <div class="icon-box">
+                        <i class="bi bi-person-gear"></i>
+                        <h3><a href="">Staf Administrasi</a></h3>
+                        <h3><a href="">{{$tu}}</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4">
+                    <div class="icon-box">
                         <i class="bi bi-building"></i>
                         <h3><a href="">Ruang Kelas</a></h3>
-                        <h3><a href="">32</a></h3>
+                        <h3><a href="">35</a></h3>
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-4">
