@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Http;
-
 class ClassRoom extends Model
 {
     use HasFactory;
@@ -21,7 +21,10 @@ class ClassRoom extends Model
         'ptk_id_str',
         'jurusan_id_str',
     ];
-
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }
 
     public function sync()
     {

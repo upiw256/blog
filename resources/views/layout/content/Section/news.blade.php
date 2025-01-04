@@ -17,23 +17,16 @@
                 <!-- Slider main container -->
                 <div class="swiper-container-news">
                     <div class="swiper-wrapper">
-                        @foreach($article as $article)
-                        <div class="swiper-slide">
-                            <a href="{{ route('article.show', $article->slug) }}">
-                                <div class="card">
-                                @if(Str::startsWith($article->image, 'http'))
-                                    <img src="{{ $article->image }}" alt="Image">
-                                @else
-                                    <img src="{{ asset('storage/' . $article->image) }}" alt="Image">
-                                @endif
-                                    <div class="card-content p-3">
-                                        <h3>{{$article->title}}</h3>
-                                        <p>{!! substr(strip_tags($article->content), 0, 150) !!}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        @endforeach
+                        @if(isset($article) && count($article) > 0)
+                            <!-- Tampilkan artikel -->
+                            @foreach($artikel as $art)
+                                <h2>{{$art->judul}}</h2>
+                                <p>{{$art->isi}}</p>
+                            @endforeach
+                        @else
+                            <!-- Tampilkan pesan jika artikel belum ada -->
+                            <p>Maaf, belum ada artikel yang tersedia. Silakan cek kembali nanti.</p>
+                        @endif
                         <!-- Tambah slide tambahan sesuai kebutuhan -->
                     </div>
                     <div class="container-fluid d-flex justify-content-center">

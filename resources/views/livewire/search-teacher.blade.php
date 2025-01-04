@@ -13,8 +13,8 @@
             </li>
           </ul>
           <div class="tab-content mt-3" id="myTabContent">
+              <input type="text" wire:model.live="search" class="form-control" placeholder="Cari nama...">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <input type="text" wire:model.live="search" class="form-control" placeholder="Cari nama...">
                 <div class="table-responsive mt-3">
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
@@ -44,6 +44,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                
                 <div class="table-responsive mt-3">
                     <table class="table table-striped table-hover table-bordered">
                         <thead>

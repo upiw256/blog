@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\ExtracurricularActivityResource\RelationManagers;
+namespace App\Filament\Resources\SubjectResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,42 +10,41 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MemberExtraRelationManager extends RelationManager
+class TeacherSubjectRelationManager extends RelationManager
 {
-    protected static string $relationship = 'member_extra';
+    protected static string $relationship = 'TeacherSubject';
+
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('student_id')
-                    ->label('Student')
-                    ->unique()
-                    ->disableOptionsWhenSelectedInSiblingRepeaterItems()
+                Forms\Components\Select::make('teacher_id')
+                    ->relationship('teacher', 'nama')
                     ->searchable()
                     ->live()
-                    ->relationship('student', 'nama')
-                    ->required()
+                    ->required(),
             ]);
     }
 
     public function table(Table $table): Table
     {
-
+        // dd($table->recordTitleAttribute('ptk_id'));
         return $table
-            ->recordTitleAttribute('student_id')
+            ->recordTitleAttribute('teacher_id')
             ->columns([
-                Tables\Columns\TextColumn::make('student.nama'),
+                Tables\Columns\TextColumn::make('teacher.nama')->searchable()->label('Nama Guru'),
+                Tables\Columns\TextColumn::make('teacher.jenis_kelamin')->label('Jenis Kelamin'),
             ])
             ->filters([
                 //
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                    ->label('Add Member'),
+                    ->label('Add Teacher'),
             ])
             ->actions([
-                // Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

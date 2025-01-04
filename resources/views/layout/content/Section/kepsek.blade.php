@@ -10,11 +10,15 @@
                     <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
                         <div class="content d-flex flex-column justify-content-center">
                             <h3>Profile Kepala Sekolah</h3>
-                            @if($kepsek->teacher)
-    <p><b>Nama: </b>{{$kepsek->front_title}}{{$kepsek->teacher->nama}}, {{$kepsek->back_title}}</p>
-    <p><b>NIP: </b>{{$kepsek->teacher->nip}}</P>
-    <p><b>Tempat Tanggal Lahir: </b>{{$kepsek->teacher->tempat_lahir}}, {{strftime('%e %B %Y', strtotime($kepsek->teacher->tanggal_lahir))}}</P>
-@endif
+                            @if($kepsek)
+                                <!-- Tampilkan informasi tentang kepsek -->
+                                <p><b>Nama: </b>{{$kepsek->nama}}</p>
+                                <p><b>NIP: </b>{{$kepsek->nip}}</p>
+                                <p><b>Tempat Tanggal Lahir: </b>{{$kepsek->tempat_lahir}}, {{strftime('%e %B %Y', strtotime($kepsek->tanggal_lahir))}}</p>
+                            @else
+                                <!-- Tampilkan pesan jika data kepsek kosong -->
+                                <p>Data kepsek belum tersedia.</p>
+                            @endif
                             <div class="row">
                                 <div class="col-md-12 d-md-flex align-items-md-stretch">
                                     <div class="count-box">
