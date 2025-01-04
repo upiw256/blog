@@ -20,7 +20,7 @@ class Teacher extends Model
 
     public function sync()
     {
-        $url = env('APP_URL_API', 'http://192.168.5.163:3001/api/');
+        $url = env('APP_URL_API', 'http://app.sman1mga.sch.id:30000/api/');
         // set_time_limit(10015);
         // TODO: Implement sync() method.
         $response = Http::withHeaders([
