@@ -70,7 +70,30 @@ class ScheduleResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('classRoom.nama')
+                    ->label('Class Room')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('teacherSubject.teacher.nama')
+                    ->label('Teacher')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('day_of_week')
+                    ->label('Hari')
+                    ->formatStateUsing(function (string $state) {
+                        return match (strtolower($state)) {
+                            'monday' => 'Senin',
+                            'tuesday' => 'Selasa',
+                            'wednesday' => 'Rabu',
+                            'thursday' => 'Kamis',
+                            'friday' => 'Jumat',
+                            default => ucfirst($state), // Untuk nilai tak terduga
+                        };
+                    }),
+                Tables\Columns\TextColumn::make('start_time')
+                    ->label('Start Time'),
+                Tables\Columns\TextColumn::make('end_time')
+                    ->label('End Time'),
             ])
             ->filters([
                 //
@@ -99,5 +122,9 @@ class ScheduleResource extends Resource
             'create' => Pages\CreateSchedule::route('/create'),
             'edit' => Pages\EditSchedule::route('/{record}/edit'),
         ];
+    }
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
     }
 }
