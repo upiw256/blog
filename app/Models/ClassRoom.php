@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Http;
-
 class ClassRoom extends Model
 {
     use HasFactory;
@@ -21,20 +21,28 @@ class ClassRoom extends Model
         'ptk_id_str',
         'jurusan_id_str',
     ];
-
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }
 
     public function sync()
     {
-
         $url = env('APP_URL_API', 'http://192.168.5.163:3001/api/');
-        // TODO: Implement sync() method.
+
         $response = Http::withHeaders([
             'X-Barrier' => 'margaasih',
         ])->get($url . 'rombel');
 
         if ($response->ok()) {
             $datas = $response->json();
+
             foreach ($datas['rows'] as $data) {
+                // Abaikan data jika jenis_rombel_str adalah "Ekstrakurikuler"
+                if (strtolower($data['jenis_rombel_str']) === 'ekstrakurikuler' || $data['jenis_rombel_str'] === 'Matapelajaran Pilihan' || $data['jenis_rombel_str'] === 'Teori') {
+                    continue;
+                }
+
                 $this->updateOrCreate(
                     [
                         'rombongan_belajar_id' => $data['rombongan_belajar_id'],
@@ -58,4 +66,5 @@ class ClassRoom extends Model
 
         return false;
     }
+
 }

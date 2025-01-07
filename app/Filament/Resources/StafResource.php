@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\StafResource\Pages;
 use App\Filament\Resources\StafResource\RelationManagers;
-use App\Models\Staf;
+use App\Models\staf;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -26,8 +26,6 @@ class StafResource extends Resource
             ->schema([
                 Forms\Components\Select::make('teacher_id')
                     ->label('Teachers')
-                    ->unique()
-                    ->disableOptionsWhenSelectedInSiblingRepeaterItems()
                     ->searchable()
                     ->live()
                     ->relationship('teacher', 'nama')
@@ -45,10 +43,16 @@ class StafResource extends Resource
                         'staf wakasek kurikulum' => 'Staf Wakasek Kurikulum',
                     ])
                     ->required(),
+                Forms\Components\TextInput::make('front_title')
+                    ->label('Gelar Depan'),
+                Forms\Components\TextInput::make('back_title')
+                    ->label('Gelar Belakang'),
                 Forms\Components\FileUpload::make('img')
                     ->image()
                     ->required()
                     ->label('Image')
+                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/jpg'])
+                    ->disk('public')
                     ->maxSize(1024)
                     ->directory('wakasek')
                     ->imageResizeMode('cover')

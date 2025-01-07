@@ -9,9 +9,10 @@
     <meta content="ini website SMAN 1 Margaasih" name="description">
     <meta content="Informasi seputar SMAN 1 Margaasih" name="keywords">
     <base href="/" />
+
     <!-- Favicons -->
-    <link href="{{ asset('/') }}assets/img/favicon.png" rel="icon">
-    <link href="{{ asset('/') }}assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <meta property="og:image" content="{{ asset('/') }}assets/img/logo.png">
     @vite('resources/css/app.css')
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -54,13 +55,6 @@
             flex: 0 0 33.3333%;
             max-width: 33.3333%;
         }
-        /* .swiper-slide {
-            margin-left: 80px;
-        } */
-        /* .news {
-            height: 30rem;
-            width: 25rem;
-        } */
         .swiper-container-acivements{
             width: 80%;
             height: 80%;
@@ -75,21 +69,6 @@
             background-color: #FFC451 !important;
             border-color: #FFC451 !important;
         }
-
-        /* 
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-        } */
-
-        /* .swiper-slide {
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin: 20px;
-        } */
 
         .card {
             height: 30rem;
@@ -121,6 +100,55 @@
         background-color: white
         }
 
+        .counts .image {
+        background: url({{ isset($kepsek->image) ? asset('storage/' . $kepsek->image) : '' }}) center center no-repeat;
+        background-size: cover;
+        min-height: 400px;
+        }
+        ol {
+        list-style-type: decimal;
+        }
+        ul {
+            list-style-type: disc;
+        }
+        blockquote {
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #333;
+    font-style: italic;
+}
+
+blockquote p {
+    margin: 0;
+    padding: 0;
+}
+
+blockquote:before {
+    content: open-quote;
+    font-size: 4em;
+    color: #333;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+}
+
+blockquote:after {
+    content: close-quote;
+    font-size: 4em;
+    color: #333;
+    line-height: 0.1em;
+    margin-left: 0.25em;
+    vertical-align: -0.4em;
+}
+.card-container {
+    display: flex;
+}
+
+.card {
+    margin-right: 10px; /* Jarak antara kartu */
+}
+
+
     </style>
 </head>
 
@@ -141,7 +169,7 @@
                     <ul>
                         <li><a class="nav-link scrollto" href="#visimisi">Visi & Misi</a></li>
                         <li><a class="nav-link scrollto" href="#ekstra">Ekstra kulikuler</a></li>
-                        <li><a class="nav-link scrollto" href="#guru">Data Guru</a></li>
+                        <li><a class="nav-link scrollto" href="#guru">Data Guru dan Staf Administrasi</a></li>
                         <li><a class="nav-link scrollto " href="#achievement">Achievement</a></li>
                         <li><a class="nav-link scrollto " href="#kepsek">Profile Kepsek</a></li>
                         <li><a class="nav-link scrollto" href="#team">Team Management</a></li>

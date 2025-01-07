@@ -13,7 +13,15 @@ class EditClassRoom extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\Action::make('back')
+                ->label('Kembali')
+                ->icon('heroicon-o-arrow-left')
+                ->color('success')
+                ->url(fn() => route('filament.admin.resources.class-rooms.index')), // Sesuaikan dengan rute yang benar
         ];
+    }
+    protected function getFormActions(): array
+    {
+        return []; // Mengembalikan array kosong akan menghilangkan tombol Save
     }
 }

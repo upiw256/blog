@@ -31,6 +31,7 @@ class MemberExtraRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
+
         return $table
             ->recordTitleAttribute('student_id')
             ->columns([

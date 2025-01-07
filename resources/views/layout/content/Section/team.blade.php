@@ -15,9 +15,9 @@
                         <img src="{{ asset('/') }}storage/{{$s->img}}" class="img-fluid" alt="">
                     </div>
                     <div class="member-info">
-                        <h4>{{$s->teacher->nama}}</h4>
-                        <span>NIP. {{$s->teacher->nip}}s</span>
-                        <span>{{$s->jabatan}}s</span>
+                        <h4>{{$s->front_title}} {{$s->teacher->nama}} {{$s->back_title}}</h4>
+                        <span>NIP. {{$s->teacher->nip}}</span>
+                        <span>{{$s->jabatan}}</span>
                     </div>
                 </div>
         </div>

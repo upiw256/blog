@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AchievementResource\Pages;
 use App\Filament\Resources\AchievementResource\RelationManagers;
-use App\Models\Achievement;
+use App\Models\achievement;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -43,6 +43,7 @@ class AchievementResource extends Resource
                     ->columnSpan(2),
                 Forms\Components\FileUpload::make('img')
                     ->image()
+                    ->disk('public')
                     ->directory('achivements')
                     ->imageEditor()
                     ->columnSpan(2)

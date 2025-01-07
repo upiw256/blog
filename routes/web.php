@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\home;
-use App\Livewire\extra;
-use App\Livewire\contact;
+use App\Livewire\Extra;
+use App\Livewire\Contact;
 use App\Livewire\AchievementShow;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;

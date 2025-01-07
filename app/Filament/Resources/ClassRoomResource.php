@@ -30,7 +30,11 @@ class ClassRoomResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nama')
+                    ->label('Nama Kelas')
+                    ->readOnly()
+                    ->required(),
+
             ]);
     }
 
@@ -47,6 +51,7 @@ class ClassRoomResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
@@ -85,7 +90,7 @@ class ClassRoomResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ScheduleRelationManager::class
         ];
     }
 
@@ -94,7 +99,7 @@ class ClassRoomResource extends Resource
         return [
             'index' => Pages\ClassRoom::route('/'),
             'create' => Pages\CreateClassRoom::route('/create'),
-            // 'edit' => Pages\EditClassRoom::route('/{record}/edit'),
+            'edit' => Pages\EditClassRoom::route('/{record}/edit'),
         ];
     }
 }

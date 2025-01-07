@@ -21,6 +21,9 @@ class AchievementImgRelationManager extends RelationManager
                 Forms\Components\FileUpload::make('img')
                     ->maxSize(1024)
                     ->image()
+                    ->disk('public')
+                    ->directory('achievement_img')
+                    ->maxSize(1024)
                     ->label('Gambar')
                     ->required(),
                 Forms\Components\TextInput::make('description')

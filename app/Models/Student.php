@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Student extends Model
 {
-    use HasFactory,HasApiTokens;
+    use HasFactory, HasApiTokens;
     protected $fillable = [
         'peserta_didik_id',
         'nipd',
@@ -59,7 +59,6 @@ class Student extends Model
                         'tempat_lahir' => $data['tempat_lahir'],
                         'tanggal_lahir' => $data['tanggal_lahir'],
                         'agama_id_str' => $data['agama_id_str'],
-                        'alamat_jalan' => $data['alamat_jalan'],
                         'nomor_telepon_seluler' => $data['nomor_telepon_seluler'],
                         'nama_ayah' => $data['nama_ayah'],
                         'pekerjaan_ayah_id_str' => $data['pekerjaan_ayah_id_str'],
