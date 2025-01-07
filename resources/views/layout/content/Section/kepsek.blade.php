@@ -15,19 +15,19 @@
                                 <p><b>Nama: </b>{{$kepsek->nama}}</p>
                                 <p><b>NIP: </b>{{$kepsek->nip}}</p>
                                 <p><b>Tempat Tanggal Lahir: </b>{{$kepsek->tempat_lahir}}, {{strftime('%e %B %Y', strtotime($kepsek->tanggal_lahir))}}</p>
-                            @else
-                                <!-- Tampilkan pesan jika data kepsek kosong -->
-                                <p>Data kepsek belum tersedia.</p>
-                            @endif
-                            <div class="row">
+                                <div class="row">
                                 <div class="col-md-12 d-md-flex align-items-md-stretch">
                                     <div class="count-box">
                                         <h1>Prestasi: </h1>
                                         {!! $kepsek->performance !!}
                                     </div>
                                 </div>
-
-                                
+                            </div>
+                            @else
+                                <!-- Tampilkan pesan jika data kepsek kosong -->
+                                <p>Data kepsek belum tersedia.</p>
+                            @endif
+                            
                         </div><!-- End .content-->
                     </div>
                 </div>

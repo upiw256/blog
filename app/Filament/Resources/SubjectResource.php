@@ -45,7 +45,8 @@ class SubjectResource extends Resource
                     ->badge()
                     ->label('Guru Yang Mengajar')
                     ->listWithLineBreaks()
-                    ->color(fn() => ['warning', 'success', 'info'][rand(0, 2)]),
+                    ->color(fn() => ['warning', 'success', 'info'][rand(0, 2)])
+                    ->formatStateUsing(fn($state) => $state ?? 'Belum ada guru'),
             ])
             ->filters([
                 //
