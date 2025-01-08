@@ -25,6 +25,10 @@ class ClassRoom extends Model
     {
         return $this->hasMany(Schedule::class);
     }
+    public function student(): HasMany
+    {
+        return $this->hasMany(Student::class);
+    }
 
     public function sync()
     {

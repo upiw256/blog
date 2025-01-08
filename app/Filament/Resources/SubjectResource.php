@@ -26,10 +26,10 @@ class SubjectResource extends Resource
             ->schema([
                 forms\Components\TextInput::make("kode_subject")
                     ->label("Kode Mata Pelajaran")
-                    ->required(),
+                    ->readOnly(),
                 forms\Components\TextInput::make("name")
                     ->label("Nama Mata Pelajaran")
-                    ->required()
+                    ->readOnly(),
             ]);
     }
 
@@ -38,7 +38,8 @@ class SubjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make("name")
-                    ->label("Mata Pelajaran"),
+                    ->label("Mata Pelajaran")
+                    ->searchable(),
                 Tables\Columns\TextColumn::make("kode_subject")
                     ->label("Kode Mata Pelajaran"),
                 Tables\Columns\TextColumn::make('teachers.nama')
