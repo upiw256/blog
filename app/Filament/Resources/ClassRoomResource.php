@@ -90,7 +90,8 @@ class ClassRoomResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\ScheduleRelationManager::class
+            RelationManagers\ScheduleRelationManager::class,
+            //RelationManagers\StudentRelationManager::class
         ];
     }
 
