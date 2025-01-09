@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Validation\ValidationException;
 
 class Schedule extends Model
 {
@@ -37,4 +38,33 @@ class Schedule extends Model
     // {
     //     return $this->teacherSubject->subject();  // Mengakses mata pelajaran melalui relasi TeacherSubject
     // }
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($schedule) {
+            // Validasi bentrok jadwal sebelum data disimpan
+            if ($schedule->isScheduleConflict($schedule->day_of_week, $schedule->start_time)) {
+                throw ValidationException::withMessages([
+                    'start_time' => 'Jadwal dengan waktu dan hari yang sama sudah ada.',
+                ]);
+            }
+        });
+
+        static::updating(function ($schedule) {
+            // Validasi bentrok jadwal sebelum data diperbarui
+            if ($schedule->isScheduleConflict($schedule->day_of_week, $schedule->start_time)) {
+                throw ValidationException::withMessages([
+                    'start_time' => 'Jadwal dengan waktu dan hari yang sama sudah ada.',
+                ]);
+            }
+        });
+    }
+
+    public function isScheduleConflict($day, $startTime)
+    {
+        return self::where('day_of_week', $day)
+            ->where('start_time', $startTime)
+            ->exists();
+    }
 }

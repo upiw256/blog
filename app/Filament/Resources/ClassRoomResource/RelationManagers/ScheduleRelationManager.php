@@ -13,16 +13,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use App\Models\Schedule;
+use Filament\Forms\Components\Field;
+
 class ScheduleRelationManager extends RelationManager
 {
     protected static string $relationship = 'schedules'; // Ubah ke huruf kecil
-    protected function isScheduleConflict($day, $startTime)
-    {
-        return Schedule::where('day_of_week', $day)
-            ->where('start_time', $startTime)
-            ->exists(); // Cek apakah ada jadwal dengan start_time yang sama pada hari tersebut
-    }
 
+    // Fungsi untuk memeriksa apakah ada jadwal yang bentrok
     public function form(Form $form): Form
     {
         return $form
@@ -35,18 +32,12 @@ class ScheduleRelationManager extends RelationManager
                                     ->default('monday'),
                                 Forms\Components\TimePicker::make('start_time')
                                     ->label('Jam Mulai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
-                                    // ->rule(function ($attribute, $value, $fail) {
-                                    //     // Mengecek bentrok pada Senin
-                                    //     if ($this->isScheduleConflict('monday', $value)) {
-                                    //         $fail('Jadwal bentrok pada Senin di jam ini.');
-                                    //     }
-                                    // })
                                     ->required(),
                                 Forms\Components\TimePicker::make('end_time')
                                     ->label('Jam Selesai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                             ]),
@@ -129,9 +120,6 @@ class ScheduleRelationManager extends RelationManager
                     ->required(),
             ]);
     }
-
-
-
     public function table(Table $table): Table
     {
         return $table
@@ -154,11 +142,10 @@ class ScheduleRelationManager extends RelationManager
                         'wednesday' => 'Rabu',
                         'thursday' => 'Kamis',
                         'friday' => 'Jumat',
-                        default => ucfirst($state),
-                    }),
+                    } ?? ucfirst($state)),
                 Tables\Columns\TextColumn::make('start_time')
                     ->label('Jam Masuk')
-                    ->dateTime('H:i'), // Format waktu lebih spesifik
+                    ->dateTime('H:i'),
                 Tables\Columns\TextColumn::make('end_time')
                     ->label('Jam Keluar')
                     ->dateTime('H:i'),
