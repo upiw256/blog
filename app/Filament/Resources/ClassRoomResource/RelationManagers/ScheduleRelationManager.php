@@ -13,6 +13,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use App\Models\Schedule;
+use Closure;
+use Filament\Forms\Components\Component;
+use Filament\Forms\Get;
 class ScheduleRelationManager extends RelationManager
 {
     protected static string $relationship = 'schedules'; // Ubah ke huruf kecil
@@ -23,7 +26,7 @@ class ScheduleRelationManager extends RelationManager
             ->exists(); // Cek apakah ada jadwal dengan start_time yang sama pada hari tersebut
     }
 
-    public function form(Form $form): Form
+    public function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
@@ -31,82 +34,101 @@ class ScheduleRelationManager extends RelationManager
                     ->tabs([
                         Tab::make('Senin')
                             ->schema([
-                                Forms\Components\Hidden::make('day_of_week')
-                                    ->default('monday'),
+                                Forms\Components\Radio::make('day_of_week')
+                                    ->label('Pilih Hari')
+                                    ->options([
+                                        'monday' => 'Senin',
+                                    ])
+                                    ->default('monday')
+                                    ->required(),
                                 Forms\Components\TimePicker::make('start_time')
                                     ->label('Jam Mulai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
-                                    // ->rule(function ($attribute, $value, $fail) {
-                                    //     // Mengecek bentrok pada Senin
-                                    //     if ($this->isScheduleConflict('monday', $value)) {
-                                    //         $fail('Jadwal bentrok pada Senin di jam ini.');
-                                    //     }
-                                    // })
                                     ->required(),
                                 Forms\Components\TimePicker::make('end_time')
                                     ->label('Jam Selesai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                             ]),
                         Tab::make('Selasa')
                             ->schema([
-                                Forms\Components\Hidden::make('day_of_week')
-                                    ->default('tuesday'),
+                                Forms\Components\Radio::make('day_of_week')
+                                    ->label('Pilih Hari')
+                                    ->options([
+                                        'tuesday' => 'Selasa',
+                                    ])
+                                    ->default('tuesday')
+                                    ->required(),
                                 Forms\Components\TimePicker::make('start_time')
                                     ->label('Jam Mulai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                                 Forms\Components\TimePicker::make('end_time')
                                     ->label('Jam Selesai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                             ]),
                         Tab::make('Rabu')
                             ->schema([
-                                Forms\Components\Hidden::make('day_of_week')
-                                    ->default('wednesday'),
+                                Forms\Components\Radio::make('day_of_week')
+                                    ->label('Pilih Hari')
+                                    ->options([
+                                        'wednesday' => 'Rabu',
+                                    ])
+                                    ->default('wednesday')
+                                    ->required(),
                                 Forms\Components\TimePicker::make('start_time')
                                     ->label('Jam Mulai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                                 Forms\Components\TimePicker::make('end_time')
                                     ->label('Jam Selesai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                             ]),
                         Tab::make('Kamis')
                             ->schema([
-                                Forms\Components\Hidden::make('day_of_week')
-                                    ->default('thursday'),
+                                Forms\Components\Radio::make('day_of_week')
+                                    ->label('Pilih Hari')
+                                    ->options([
+                                        'thursday' => 'Kamis',
+                                    ])
+                                    ->default('thursday')
+                                    ->required(),
                                 Forms\Components\TimePicker::make('start_time')
                                     ->label('Jam Mulai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                                 Forms\Components\TimePicker::make('end_time')
                                     ->label('Jam Selesai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                             ]),
                         Tab::make('Jumat')
                             ->schema([
-                                Forms\Components\Hidden::make('day_of_week')
-                                    ->default('friday'),
+                                Forms\Components\Radio::make('day_of_week')
+                                    ->label('Pilih Hari')
+                                    ->options([
+                                        'friday' => 'Jumat',
+                                    ])
+                                    ->default('friday')
+                                    ->required(),
                                 Forms\Components\TimePicker::make('start_time')
                                     ->label('Jam Mulai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                                 Forms\Components\TimePicker::make('end_time')
                                     ->label('Jam Selesai')
-                                    ->withoutSeconds()
+                                    ->seconds(false)
                                     ->format('H:i')
                                     ->required(),
                             ]),
@@ -128,6 +150,7 @@ class ScheduleRelationManager extends RelationManager
                     ->searchable(['subjects.name', 'teachers.nama'])
                     ->required(),
             ]);
+
     }
 
 

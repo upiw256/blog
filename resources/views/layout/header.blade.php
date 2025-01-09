@@ -147,6 +147,13 @@ blockquote:after {
 .card {
     margin-right: 10px; /* Jarak antara kartu */
 }
+.card-header {
+    background-color: #007bff;
+    color: white;
+}
+.card-body {
+    font-size: 1.1rem;
+}
 
 
     </style>

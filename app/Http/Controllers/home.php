@@ -8,6 +8,7 @@ use App\Models\contact;
 use App\Models\ExtracurricularActivity;
 use App\Models\ClassRoom;
 use App\Models\headmaster;
+use App\Models\Schedule;
 use App\Models\staf;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -21,7 +22,9 @@ class home extends Controller
         $articles = Article::where('is_published', true)->get();
         $extras = ExtracurricularActivity::all();
         $achievenent = Achievement::latest()->limit(10)->get();
+        $schedules = Schedule::with(['teacherSubject.teacher', 'teacherSubject.subject', 'classRoom'])->get();
         $student = Student::count();
+        $classRooms = ClassRoom::where('jenis_rombel_str', 'Kelas')->get();
         $teacher = Teacher::where('jenis_ptk_id_str', 'Guru Mapel')
             ->orWhere('jenis_ptk_id_str', 'Guru BK')
             ->orWhere('jenis_ptk_id_str', 'Guru TIK')
@@ -44,7 +47,9 @@ class home extends Controller
             'classRoom' => $classRoom,
             'staf' => $staf,
             'kepsek' => $kepsek,
-            'tu' => $tu
+            'tu' => $tu,
+            'schedules' => $schedules,
+            'classRooms' => $classRooms
         ]);
     }
     public function show($slug)
