@@ -40,51 +40,50 @@
                                         Lihat Jadwal
                                     </button>
                                     <!-- Modal untuk Jadwal -->
-<div class="modal fade" id="scheduleModal{{ $teacher->id }}" tabindex="-1" aria-labelledby="scheduleModalLabel{{ $teacher->id }}" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="scheduleModalLabel{{ $teacher->id }}">Jadwal {{ $teacher->nama }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <ul class="nav nav-tabs" id="scheduleTab{{ $teacher->id }}" role="tablist">
-                    @foreach(['monday', 'tuesday', 'wednesday', 'thursday', 'friday'] as $index => $day)
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $index === 0 ? 'active' : '' }}" id="{{ $day }}-tab-{{ $teacher->id }}" data-bs-toggle="tab" data-bs-target="#{{ $day }}-{{ $teacher->id }}" type="button" role="tab" aria-controls="{{ $day }}-{{ $teacher->id }}" aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
-                                {{ ucfirst($day) }}
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
-                <div class="tab-content mt-3" id="scheduleTabContent{{ $teacher->id }}">
-                    @foreach(['monday', 'tuesday', 'wednesday', 'thursday', 'friday'] as $index => $day)
-                        <div class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}" id="{{ $day }}-{{ $teacher->id }}" role="tabpanel" aria-labelledby="{{ $day }}-tab-{{ $teacher->id }}">
-                            @php
-                                $daySchedules = $teacher->schedules->filter(fn($schedule) => $schedule->day_of_week === $day);
-                            @endphp
-                            @if($daySchedules->isNotEmpty())
-                                <ul class="list-group">
-                                    @foreach($daySchedules as $schedule)
-                                        <li class="list-group-item">
-                                            <strong>{{ $schedule->classRoom->nama }}</strong> - {{ $schedule->teacherSubject->subject->name }} <br>
-                                            {{ \Carbon\Carbon::createFromFormat('H:i:s', $schedule->start_time)->format('H:i') }} - {{ \Carbon\Carbon::createFromFormat('H:i:s', $schedule->end_time)->format('H:i') }}
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <p>Tidak ada jadwal untuk hari ini.</p>
-                            @endif
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
+                                    <div class="modal fade" id="scheduleModal{{ $teacher->id }}" tabindex="-1" aria-labelledby="scheduleModalLabel{{ $teacher->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="scheduleModalLabel{{ $teacher->id }}">Jadwal {{ $teacher->nama }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        @foreach(['monday', 'tuesday', 'wednesday', 'thursday', 'friday'] as $index => $day)
+                                                            <div class="col-md-3 mb-3">
+                                                                <div class="card" style="height: 220px;"> <!-- Menyesuaikan tinggi card -->
+                                                                    <div class="card-header text-center">
+                                                                        <strong>{{ ucfirst($day) }}</strong>
+                                                                    </div>
+                                                                    <div class="card-body" style="height: calc(100% - 40px); padding: 5px;">
+                                                                        @php
+                                                                            $daySchedules = $teacher->schedules->filter(fn($schedule) => $schedule->day_of_week === $day);
+                                                                        @endphp
+                                                                        @if($daySchedules->isNotEmpty())
+                                                                            <ul class="list-group" style="padding: 0;">
+                                                                                @foreach($daySchedules as $schedule)
+                                                                                    <li class="list-group-item" style="font-size: 12px; padding: 5px;">
+                                                                                        <strong>{{ $schedule->classRoom->nama }}</strong> - {{ $schedule->teacherSubject->subject->name }} <br>
+                                                                                        {{ \Carbon\Carbon::createFromFormat('H:i:s', $schedule->start_time)->format('H:i') }} - {{ \Carbon\Carbon::createFromFormat('H:i:s', $schedule->end_time)->format('H:i') }}
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        @else
+                                                                            <p>Tidak ada jadwal untuk hari ini.</p>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
 
                                 </td>
                             </tr>

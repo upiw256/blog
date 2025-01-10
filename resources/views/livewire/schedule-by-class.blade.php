@@ -1,9 +1,8 @@
-<div> <!-- Ini adalah elemen root -->
+<div class="p-3"> <!-- Ini adalah elemen root -->
     <!-- Form untuk memilih kelas -->
-    <div class="container mt-4">
+    <div class="container">
         <form wire:submit.prevent="loadSchedule">
             <div class="form-group">
-                <label for="classSelect">Pilih Kelas</label>
                 <select id="classSelect" wire:model="selectedClassId" class="form-control">
                     <option value="">Pilih Kelas</option>
                     @foreach ($classRooms as $classRoom)
