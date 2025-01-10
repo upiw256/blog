@@ -16,30 +16,42 @@
         </form>
     </div>
 
-    <!-- Tampilkan jadwal jika sudah dipilih -->
-    <div class="row p-3 "> <!-- Container untuk card -->
-        @if ($schedules && $schedules->isNotEmpty())
-            @foreach ($schedules as $schedule)
-                <div class="col-md-4 mb-2"> <!-- Setiap card berada dalam kolom -->
-                    <!-- Card untuk setiap jadwal dengan tinggi yang lebih pendek -->
-                    <div class="card" style="max-width: 20rem; height: 12rem;"> <!-- Menetapkan lebar dan tinggi card -->
-                        <div class="card-header p-1">
-                            <h6 class="card-title text-center fs-7">{{ ucfirst($schedule->day_of_week) }}</h6> <!-- Mengurangi ukuran font dan tengah -->
-                        </div>
-                        <div class="card-body p-1" style="height: 8rem;"> <!-- Membatasi tinggi card-body -->
-                            <p class="fs-6 mb-1"><strong>{{ $schedule->teacherSubject->subject->name }}</strong> <em>({{ $schedule->teacherSubject->teacher->nama }})</em></p>
-                            <p class="fs-6 mb-0"><strong>{{ \Carbon\Carbon::parse($schedule->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($schedule->end_time)->format('H:i') }}</strong>
-                            </p>
-                        </div>
+    <div class="row p-3">
+        @php
+            $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+        @endphp
+        
+        @foreach ($daysOfWeek as $day)
+            @php
+                $daySchedules = collect($schedules)->where('day_of_week', $day);
+            @endphp
+    
+            <div class="col-md-4 mb-2">
+                <div class="card" style="max-width: 20rem; height: auto;">
+                    <div class="card-header p-1">
+                        <h6 class="card-title text-center fs-7">{{ ucfirst($day) }}</h6>
+                    </div>
+                    <div class="card-body p-1">
+                        @if ($daySchedules->isNotEmpty())
+                            @foreach ($daySchedules->sortBy('start_time') as $schedule)
+                                <p class="fs-6 mb-1">
+                                    <strong>{{ $schedule->teacherSubject->subject->name }}</strong> 
+                                    <em>({{ $schedule->teacherSubject->teacher->nama }})</em>
+                                </p>
+                                <p class="fs-6 mb-0">
+                                    <strong>{{ \Carbon\Carbon::parse($schedule->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($schedule->end_time)->format('H:i') }}</strong>
+                                </p>
+                                <hr class="my-1">
+                            @endforeach
+                        @else
+                            <p class="fs-6 mb-0 text-center text-muted">Jadwal Kosong</p>
+                        @endif
                     </div>
                 </div>
-            @endforeach
-        @else
-            <div class="col-12">
-                <p>Jadwal tidak ditemukan.</p>
             </div>
-        @endif
+        @endforeach
     </div>
+    
     
     
 </div>
