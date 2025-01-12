@@ -75,7 +75,9 @@
         <!-- ======= guru Section ======= -->
         @include('layout.content.Section.guru')
         <!-- End Cta Section -->
-
+        <!-- ======= sechedule Section ======= -->
+        @include('layout.content.Section.schedule')
+        <!-- End sechedule Section -->
         <!-- ======= achievement Section ======= -->
         @include('layout.content.Section.achievement')
         <!-- End Portfolio Section -->
