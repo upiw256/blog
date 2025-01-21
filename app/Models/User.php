@@ -10,9 +10,17 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Implement your logic here to determine if the user has access to the panel
+        // For example:
+        return $this->hasRole('web') || $this->hasPermissionTo('all');
+    }
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**

@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,6 @@ Route::middleware('VerifyToken')->get('/article', [ArticleController::class, 'in
 Route::middleware('VerifyToken')->get('/classroom', [apiClassRoom::class, 'index']);
 Route::middleware('VerifyToken')->get('/extracurricular', [apiExtracurricular::class, 'index']);
 Route::middleware('VerifyToken')->get('/extracurricular/{id}', [apiExtracurricular::class, 'show']);
+Route::middleware('VerifyToken')->get('/schedules', [ScheduleController::class, 'index']);
+Route::middleware('VerifyToken')->get('/schedules/{id}', [ScheduleController::class, 'show']);
 
