@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::middleware('VerifyToken')->get('/students', [ApiStudent::class, 'index']);
-Route::middleware('VerifyToken')->get('/article', [ArticleController::class, 'index']);
-Route::middleware('VerifyToken')->get('/classroom', [apiClassRoom::class, 'index']);
-Route::middleware('VerifyToken')->get('/extracurricular', [apiExtracurricular::class, 'index']);
-Route::middleware('VerifyToken')->get('/extracurricular/{id}', [apiExtracurricular::class, 'show']);
+
+Route::group(['middleware' => 'VerifyToken'], function () {
+    Route::get('/students', [ApiStudent::class, 'index']);
+    Route::get('/article', [ArticleController::class, 'index']);
+    Route::get('/classroom', [apiClassRoom::class, 'index']);
+    Route::get('/extracurricular', [apiExtracurricular::class, 'index']);
+    Route::get('/extracurricular/{id}', [apiExtracurricular::class, 'show']);
+    Route::get('/schedules', [ScheduleController::class, 'index']);
+    Route::get('/schedules/{id}', [ScheduleController::class, 'show']);
+});
+
+Route::fallback(function () {
+    return response()->json(['error' => 'Page Not Found'], 404);
+});
 

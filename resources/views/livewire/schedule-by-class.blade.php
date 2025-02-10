@@ -1,5 +1,4 @@
-<div class="p-3"> <!-- Ini adalah elemen root -->
-    <!-- Form untuk memilih kelas -->
+<div class="p-3">
     <div class="container">
         <form wire:submit.prevent="loadSchedule">
             <div class="form-group">
@@ -10,12 +9,11 @@
                     @endforeach
                 </select>
             </div>
-    
             <button type="submit" class="btn btn-primary mt-3 mb-3">Tampilkan Jadwal</button>
+            <button type="button" onclick="printSchedule()" class="btn btn-secondary mt-3 mb-3">Print Jadwal</button>
         </form>
     </div>
-
-    <div class="row p-3">
+    <div class="row p-3" id="schedule-card">
         @php
             $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
         @endphp
@@ -50,7 +48,15 @@
             </div>
         @endforeach
     </div>
-    
-    
-    
 </div>
+
+<script>
+    function printSchedule() {
+        var printContents = document.getElementById("schedule-card").innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>
+
