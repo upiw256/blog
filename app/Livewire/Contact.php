@@ -67,3 +67,4 @@ class Contact extends Component
         ]);
     }
 }
+
