@@ -20,13 +20,14 @@ class ListSubjects extends ListRecords
         return [
             Actions\CreateAction::make(),
             Action::make('sync')
-                ->label('Syncron Dapodik')
+                ->label('1. Syncron Data Kelas')
                 ->action(fn() => $subject->sync())
                 ->color('success'),
-                Action::make('sync')
-                ->label('Syncron Pengajar')
+                Action::make('sync-mapel')
+                ->label('2. Syncron Pengajar')
                 ->action(fn() => $teacherSubject->sync())
-                ->color('danger'),
+                ->color('info'),
+            
         ];
     }
 }

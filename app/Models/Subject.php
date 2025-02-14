@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 class Subject extends Model
 {
     use HasFactory;
@@ -33,7 +34,10 @@ class Subject extends Model
 
         if ($response->ok()) {
             $datas = $response->json();
-
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            $this->truncate();
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+            
             // Looping through the 'rows' array
             foreach ($datas['rows'] as $data) {
                 // Loop through the 'pembelajaran' array to get the 'nama_mata_pelajaran'
