@@ -19,7 +19,7 @@ class home extends Controller
 {
     public function index()
     {
-        $articles = Article::where('is_published', true)->get();
+        $articles = Article::where('is_published', 1)->get();
         $extras = ExtracurricularActivity::all();
         $achievenent = Achievement::latest()->limit(10)->get();
         $schedules = Schedule::with(['teacherSubject.teacher', 'teacherSubject.subject', 'classRoom'])->get();

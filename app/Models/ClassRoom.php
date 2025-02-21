@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -51,7 +52,10 @@ class ClassRoom extends Model
                 if (strtolower($data['jenis_rombel_str']) === 'ekstrakurikuler' || $data['jenis_rombel_str'] === 'Matapelajaran Pilihan' || $data['jenis_rombel_str'] === 'Teori') {
                     continue;
                 }
-
+                DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+                $this->truncate();
+                DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+                
                 $this->updateOrCreate(
                     [
                         'rombongan_belajar_id' => $data['rombongan_belajar_id'],
