@@ -54,6 +54,7 @@ class StafResource extends Resource
                     ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/jpg'])
                     ->disk('public')
                     ->maxSize(1024)
+                    ->imageEditor()
                     ->directory('wakasek')
                     ->imageResizeMode('cover')
                     ->imageResizeTargetWidth('720')
