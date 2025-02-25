@@ -15,24 +15,24 @@
                     </div>
                 </div>
                 <!-- Slider main container -->
-                <div class="swiper-container-news">
+                <div class="swiper-container-news ">
                     <div class="swiper-wrapper">
                         {{-- @dd($article) --}}
                         @if(isset($article) && count($article) > 0)
                             <!-- Tampilkan artikel -->
                             @foreach($article as $art)
-                                <div class="col-12 col-sm-6 col-lg-4 d-flex align-items-stretch" data-aos="fade-up">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/' . $art->image) }}" class="card-img-top" alt="{{ $art->title }}">
-                                        <div class="card-header">
-                                            <h4 class="card-title"><a href="{{ route('article.show', $art->slug) }}">{{$art->title}}</a></h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="card-text">{!! Str::limit($art->content, 150) !!}</p>
-                                            <a href="{{ route('article.show', $art->slug) }}" class="btn btn-primary">Read More</a>
-                                        </div>
+                            <div class="col-lg-3 col-md-6 d-flex align-items-stretch bg-light p-3 rounded">
+                                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="member-img">
+                                        <img src="{{ asset('/') }}storage/{{$art->image}}" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="member-info">
+                                        <h4><a href="{{ route('article.show', $art->slug) }}" class="text-primary">{{$art->title}}</a></h4>
+                                        <span>{!! Str::limit($art->content, 150) !!}</span>
+                                        <span><a href="{{ route('article.show', $art->slug) }}" class="btn btn-primary">Read More</a></span>
                                     </div>
                                 </div>
+                            </div>
                             @endforeach
                         @else
                             <!-- Tampilkan pesan jika artikel belum ada -->
