@@ -36,7 +36,7 @@ class home extends Controller
             ->count();
         $classRoom = ClassRoom::where('jenis_rombel_str', 'Kelas')->count();
         $staf = staf::all();
-        $kepsek = headmaster::latest()->first();
+        $kepsek = headmaster::with('teacher')->latest()->first();
         // dd($kepsek);
         return view('layout.content.home', [
             'article' => $articles,

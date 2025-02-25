@@ -12,13 +12,13 @@
                             <h3>Profile Kepala Sekolah</h3>
                             @if($kepsek)
                                 <!-- Tampilkan informasi tentang kepsek -->
-                                <p><b>Nama: </b>{{$kepsek->nama}}</p>
-                                <p><b>NIP: </b>{{$kepsek->nip}}</p>
-                                <p><b>Tempat Tanggal Lahir: </b>{{$kepsek->tempat_lahir}}, {{strftime('%e %B %Y', strtotime($kepsek->tanggal_lahir))}}</p>
+                                <p><b>Nama: </b>{{$kepsek->front_title}} {{$kepsek->teacher->nama}}, {{$kepsek->back_title}}</p>
+                                <p><b>NIP: </b>{{$kepsek->teacher->nip}}</p>
+                                <p><b>Tempat Tanggal Lahir: </b>{{$kepsek->teacher->tempat_lahir}}, {{strftime('%e %B %Y', strtotime($kepsek->teacher->tanggal_lahir))}}</p>
                                 <div class="row">
                                 <div class="col-md-12 d-md-flex align-items-md-stretch">
                                     <div class="count-box">
-                                        <h1>Prestasi: </h1>
+                                        <h1>Sambutan: </h1>
                                         {!! $kepsek->performance !!}
                                     </div>
                                 </div>
