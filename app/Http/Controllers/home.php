@@ -25,14 +25,11 @@ class home extends Controller
         $schedules = Schedule::with(['teacherSubject.teacher', 'teacherSubject.subject', 'classRoom'])->get();
         $student = Student::count();
         $classRooms = ClassRoom::where('jenis_rombel_str', 'Kelas')->get();
-        $teacher = Teacher::where('jenis_ptk_id_str', 'Guru Mapel')
-            ->orWhere('jenis_ptk_id_str', 'Guru BK')
+        $teacher = Teacher::where('jenis_ptk_id_str', 'Guru')
             ->orWhere('jenis_ptk_id_str', 'Guru TIK')
             ->orWhere('jenis_ptk_id_str', 'Kepala Sekolah')
             ->count();
-        $tu = Teacher::where('jenis_ptk_id_str', 'Tenaga Administrasi Sekolah')
-            ->orWhere('jenis_ptk_id_str', 'Petugas Keamanan')
-            ->orWhere('jenis_ptk_id_str', 'Tenaga Perpustakaan')
+        $tu = Teacher::where('jenis_ptk_id_str', 'Tenaga Kependidikan')
             ->count();
         $classRoom = ClassRoom::where('jenis_rombel_str', 'Kelas')->count();
         $staf = staf::all();
