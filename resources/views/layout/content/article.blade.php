@@ -2,6 +2,9 @@
 
 @section('title', 'Article')
 @section('content')
+@section('meta_description', 'Selamat datang di SMAN 1 Margaasih, sekolah unggulan dengan prestasi akademik dan non-akademik terbaik di Bandung.')
+@section('meta_keywords', 'SMAN 1 Margaasih, Sekolah Terbaik di Bandung, Pendidikan Berkualitas, Ekstrakurikuler, Prestasi Siswa')
+
 <main id="main">
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
