@@ -3,23 +3,25 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\StudentResource\Pages;
-use App\Filament\Resources\StudentResource\RelationManagers;
 use App\Models\Student;
-use Filament\Forms;
 use Filament\Infolists\Components\Section;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\Column;
-use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\Actions\Action;
+use Filament\Support\Colors\Color;
+use Illuminate\Support\Facades\Storage;
 
 class StudentResource extends Resource
 {
+    public $studentId;
+    public $student;
+
     protected static ?string $model = Student::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
@@ -45,7 +47,7 @@ class StudentResource extends Resource
                 
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make(),           
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -53,20 +55,34 @@ class StudentResource extends Resource
                 ]),
             ]);
     }
+    
+
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
             ->schema([
-                Section::make('Data Diri - Perubahan data lakukan di aplikasi dapodik')->schema([
+                Section::make('Data Diri - Perubahan data lakukan di aplikasi dapodik')
+                ->schema([
                     TextEntry::make('nama')->label('Nama :'),
                     TextEntry::make('jenis_kelamin')->label('Jenis Kelamin :'),
                     TextEntry::make('tempat_lahir')->label('Tempat Lahir :'),
                     TextEntry::make('tanggal_lahir')->label('Tanggal Lahir :'),
                     TextEntry::make('alamat_jalan')->label('Alamat Jalan :'),
                     TextEntry::make('nama_ibu')->label('Nama Ibu :'),
+                    TextEntry::make('peserta_didik_id')
+                    ->label('QR Code')
+                    ->formatStateUsing(function ($record) {
+                        $filePath = 'qrcodes/' . $record->peserta_didik_id . '.svg';
+                        if (Storage::exists($filePath)) {
+                            return '<img src="' . Storage::url($filePath) . '" alt="QR Code">';
+                        }
+                        return '<p style="font-size: 12px; color: red;">QR Code Tidak Tersedia</p>';
+                    })
+                    ->html(),
                 ]),
             ]);
     }
+
     public static function getRelations(): array
     {
         return [
@@ -79,7 +95,8 @@ class StudentResource extends Resource
         return [
             'index' => Pages\Student::route('/'),
             'create' => Pages\CreateStudent::route('/create'),
-            // 'edit' => Pages\EditStudent::route('/{record}/edit'),
+            'list' => Pages\ListStudents::route('/{record}/list'),
         ];
     }
+
 }

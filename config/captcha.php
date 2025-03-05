@@ -1,6 +1,6 @@
 <?php
 
-use function env;
+// use function env;
 
 return [
     'disable' => env('CAPTCHA_DISABLE', false),
