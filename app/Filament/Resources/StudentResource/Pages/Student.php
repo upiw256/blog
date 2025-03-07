@@ -33,7 +33,10 @@ class Student extends ListRecords
         $students->each(function ($student) {
             $filePath = 'qrcodes/' . $student->peserta_didik_id . '.svg';
             if (!Storage::exists($filePath)) {
-                $qrCode = QrCode::format('svg')->size(200)->generate((string)$student->peserta_didik_id);
+                $qrCode = QrCode::format('svg')
+                ->size(200)
+                ->margin(2)
+                ->generate((string)$student->peserta_didik_id);
                 Storage::put($filePath, $qrCode);
             }
         });

@@ -74,7 +74,7 @@ class StudentResource extends Resource
                     ->formatStateUsing(function ($record) {
                         $filePath = 'qrcodes/' . $record->peserta_didik_id . '.svg';
                         if (Storage::exists($filePath)) {
-                            return '<img src="' . Storage::url($filePath) . '" alt="QR Code">';
+                            return '<img src="' . Storage::url($filePath) . '" alt="QR Code" style="border: 1px solid #000; border-radius: 8px;">';
                         }
                         return '<p style="font-size: 12px; color: red;">QR Code Tidak Tersedia</p>';
                     })
