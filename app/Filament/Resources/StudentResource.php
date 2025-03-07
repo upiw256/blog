@@ -15,6 +15,7 @@ use Filament\Tables\Table;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Actions\Action;
 use Filament\Support\Colors\Color;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class StudentResource extends Resource
@@ -31,7 +32,7 @@ class StudentResource extends Resource
     {
         return $form
             ->schema([
-                //
+                // ...existing code...
             ]);
     }
 
@@ -44,10 +45,24 @@ class StudentResource extends Resource
                 Tables\Columns\TextColumn::make('nama_rombel')->label('Kelas'),
             ])
             ->filters([
-                
+                // ...existing code...
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),           
+                Tables\Actions\ViewAction::make(),
+                Tables\Actions\Action::make('downloadPng')
+                    ->label('Download PNG')
+                    ->action(function ($record) {
+                        $filePath = 'qrcodes/' . $record->peserta_didik_id . '.png';
+                        $qrCode = Storage::exists($filePath) ? Storage::url($filePath) : null;
+                        // $image = Image::make(view('pdf.business-card', [
+                        //     'record' => $record,
+                        //     'qrCode' => $qrCode,
+                        // ])->render())->encode('png');
+                        // return response()->streamDownload(function () use ($image) {
+                        //     echo $image;
+                        // }, $record->peserta_didik_id . '.png');
+                    })
+                    ->color('primary'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -55,7 +70,6 @@ class StudentResource extends Resource
                 ]),
             ]);
     }
-    
 
     public static function infolist(Infolist $infolist): Infolist
     {
@@ -70,15 +84,15 @@ class StudentResource extends Resource
                     TextEntry::make('alamat_jalan')->label('Alamat Jalan :'),
                     TextEntry::make('nama_ibu')->label('Nama Ibu :'),
                     TextEntry::make('peserta_didik_id')
-                    ->label('QR Code')
-                    ->formatStateUsing(function ($record) {
-                        $filePath = 'qrcodes/' . $record->peserta_didik_id . '.svg';
-                        if (Storage::exists($filePath)) {
-                            return '<img src="' . Storage::url($filePath) . '" alt="QR Code">';
-                        }
-                        return '<p style="font-size: 12px; color: red;">QR Code Tidak Tersedia</p>';
-                    })
-                    ->html(),
+                        ->label('QR Code')
+                        ->formatStateUsing(function ($record) {
+                            $filePath = 'qrcodes/' . $record->peserta_didik_id . '.png';
+                            if (Storage::exists($filePath)) {
+                                return '<img src="' . Storage::url($filePath) . '" alt="QR Code" style="background-color: white; border-radius: 8px; padding: 3px;">';
+                            }
+                            return '<p style="font-size: 12px; color: red;">QR Code Tidak Tersedia</p>';
+                        })
+                        ->html(),
                 ]),
             ]);
     }
@@ -86,7 +100,7 @@ class StudentResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // ...existing code...
         ];
     }
 
@@ -98,5 +112,4 @@ class StudentResource extends Resource
             'list' => Pages\ListStudents::route('/{record}/list'),
         ];
     }
-
 }
