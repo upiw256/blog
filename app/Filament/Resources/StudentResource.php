@@ -47,7 +47,13 @@ class StudentResource extends Resource
                 
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),           
+                Tables\Actions\ViewAction::make(),
+                Tables\Actions\Action::make('download')
+                    ->label('Download PNG')
+                    ->action(function (Student $record) {
+                        return redirect()->route('student.download', $record);
+                    })
+                    ->color('primary'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
