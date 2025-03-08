@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TeachersController;
+use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------

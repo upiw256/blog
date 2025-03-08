@@ -48,7 +48,7 @@ class Subject extends Model
                             [
                                 'kode_subject' => $pembelajaran['mata_pelajaran_id'],
                                 'name' => $pembelajaran['nama_mata_pelajaran'],
-                                'updated_at' => now(),
+                                'updated_at' => \Carbon\Carbon::now(),
                             ]
                         );
                     }

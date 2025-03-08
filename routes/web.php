@@ -6,6 +6,7 @@ use App\Livewire\Contact;
 use App\Livewire\AchievementShow;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
+use App\Filament\Resources\StudentResource\Pages\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::get('/search', [home::class, 'search'])->name('search');
 Route::get('/teachers', [home::class, 'teachers'])->name('teachers');
 Route::post('/contact', [home::class, 'contact'])->name('contact');
 Route::get('/capctha/{config?}', [contact::class, 'flat'])->name('captcha');
+Route::get('/student/{record}/download', [Student::class, 'downloadStudentData'])->name('student.download')->where('record', '[0-9]+');
