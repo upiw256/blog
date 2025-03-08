@@ -19,7 +19,7 @@ class TeacherSubjectRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('teacher_id')
+                Forms\Components\Select::make('ptk_id')
                     ->relationship('teacher', 'nama')
                     ->searchable()
                     ->live()
@@ -31,7 +31,7 @@ class TeacherSubjectRelationManager extends RelationManager
     {
         // dd($table->recordTitleAttribute('ptk_id'));
         return $table
-            ->recordTitleAttribute('teacher_id')
+            ->recordTitleAttribute('ptk_id')
             ->columns([
                 Tables\Columns\TextColumn::make('teacher.nama')->searchable()->label('Nama Guru'),
                 Tables\Columns\TextColumn::make('teacher.jenis_kelamin')->label('Jenis Kelamin'),

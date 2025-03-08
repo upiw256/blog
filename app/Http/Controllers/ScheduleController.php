@@ -59,9 +59,9 @@ class ScheduleController extends Controller
          // Ambil data jadwal berdasarkan class_room_id dengan relasi
          $schedules = Schedule::select('schedules.*')
          ->join('teacher_subjects', 'schedules.teacher_subject_id', '=', 'teacher_subjects.id')
-         ->join('teachers', 'teacher_subjects.teacher_id', '=', 'teachers.id')
+         ->join('teachers', 'teacher_subjects.ptk_id', '=', 'teachers.ptk_id')
          ->join('class_rooms', 'schedules.class_room_id', '=', 'class_rooms.id')
-         ->where('teachers.id', $id)
+         ->where('teachers.ptk_id', $id)
          ->orderBy('schedules.day_of_week')
          ->orderBy('schedules.start_time')
          ->get();
@@ -69,7 +69,7 @@ class ScheduleController extends Controller
      // Format respons JSON
      $filteredSchedules = $schedules->map(function ($schedule) {
          return [
-             'teacher_id' => $schedule->teacherSubject->teacher->id,
+             'ptk_id' => $schedule->teacherSubject->teacher->ptk_id,
              'day_of_week' => $schedule->day_of_week,
              'class_name' => $schedule->classRoom->nama,
              'teacher_name' => $schedule->teacherSubject->teacher->nama,

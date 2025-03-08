@@ -20,9 +20,9 @@ class Subject extends Model
     {
         return $this->hasMany(TeacherSubject::class);
     }
-    public function teachers()
+    public function teachers(): BelongsToMany
     {
-        return $this->belongsToMany(Teacher::class, 'teacher_subjects', 'subject_id', 'teacher_id');
+        return $this->belongsToMany(Teacher::class, 'teacher_subjects', 'subject_id', 'ptk_id', 'id', 'ptk_id');
     }
     public function sync()
     {
@@ -33,11 +33,7 @@ class Subject extends Model
         ])->get($url . 'rombel');
 
         if ($response->ok()) {
-            $datas = $response->json();
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-            $this->truncate();
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-            
+            $datas = $response->json();            
             // Looping through the 'rows' array
             foreach ($datas['rows'] as $data) {
                 // Loop through the 'pembelajaran' array to get the 'nama_mata_pelajaran'

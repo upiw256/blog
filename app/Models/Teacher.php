@@ -21,15 +21,15 @@ class Teacher extends Model
     }
     public function subjects(): BelongsToMany
     {
-        return $this->belongsToMany(Subject::class, 'teacher_subjects', 'teacher_id', 'subject_id');
+        return $this->belongsToMany(Subject::class, 'teacher_subjects', 'ptk_id', 'subject_id');
     }
     function TeacherSubject(): HasMany
     {
-        return $this->hasMany(TeacherSubject::class);
+        return $this->hasMany(TeacherSubject::class, 'ptk_id');
     }
     public function schedules(): HasManyThrough
     {
-        return $this->hasManyThrough(Schedule::class, TeacherSubject::class, 'teacher_id', 'teacher_subject_id');
+        return $this->hasManyThrough(Schedule::class, TeacherSubject::class, 'ptk_id', 'teacher_subject_id');
     }
 
 

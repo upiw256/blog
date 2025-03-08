@@ -14,7 +14,7 @@ class TeacherSubject extends Model
     use HasFactory;
 
     protected $fillable = [
-        'teacher_id',
+        'ptk_id',
         'subject_id'
     ];
 
@@ -42,11 +42,6 @@ class TeacherSubject extends Model
 
         if ($response->ok()) {
             $datas = $response->json();
-            
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-            $this->truncate();
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-            
             foreach ($datas['rows'] as $data) {
                 foreach ($data['pembelajaran'] as $pembelajaran) {
                     $mapel = Subject::where('kode_subject', $pembelajaran['mata_pelajaran_id'])->first();
@@ -55,11 +50,11 @@ class TeacherSubject extends Model
                         if ($guru) {
                             $this->updateOrCreate(
                                 [
-                                    'teacher_id' => $guru->id,
+                                    'ptk_id' => $guru->ptk_id,
                                     'subject_id' => $mapel->id,
                                 ],
                                 [
-                                    'teacher_id' => $guru->id,
+                                    'ptk_id' => $guru->ptk_id,
                                     'subject_id' => $mapel->id,
                                 ]
                             );
