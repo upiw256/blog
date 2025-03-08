@@ -164,7 +164,6 @@ return [
          * Application Service Providers...
          */
         Mews\Captcha\CaptchaServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -186,7 +185,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
-        'Image' => Intervention\Image\Facades\Image::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
