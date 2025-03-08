@@ -52,7 +52,7 @@ class ScheduleResource extends Resource
                         modifyQueryUsing: fn(Builder $query) =>
                         // Lakukan join dan pilih data yang dibutuhkan
                         $query->join('subjects', 'subjects.id', '=', 'teacher_subjects.subject_id')
-                            ->join('teachers', 'teachers.id', '=', 'teacher_subjects.teacher_id')
+                            ->join('teachers', 'teachers.ptk_id', '=', 'teacher_subjects.ptk_id')
                             ->select('teacher_subjects.id', 'subjects.name as subject_name', 'teachers.nama as teacher_name')
                             ->orderBy('teacher_subjects.id', 'asc')
                     )
