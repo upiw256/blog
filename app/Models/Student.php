@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Student extends Model
 {
     use HasFactory, HasApiTokens;
+    protected $foreignKey = 'peserta_didik_id';
     protected $fillable = [
         'peserta_didik_id',
         'nipd',
@@ -77,4 +78,5 @@ class Student extends Model
 
         return false;
     }
+
 }
