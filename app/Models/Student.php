@@ -55,6 +55,7 @@ class Student extends Model
                         'nipd' => $data['nipd'],
                         'sekolah_asal' => $data['sekolah_asal'],
                         'nama' => $data['nama'],
+                        'nisn' => $data['nisn'],
                         'jenis_kelamin' => $data['jenis_kelamin'] == 'P' ? 'Perempuan' : 'Laki-Laki',
                         'nik' => $data['nik'],
                         'tempat_lahir' => $data['tempat_lahir'],

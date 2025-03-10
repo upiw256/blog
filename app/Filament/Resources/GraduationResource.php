@@ -46,9 +46,11 @@ class GraduationResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('student.nama')
-                    ->label('Student Name'),
+                    ->label('Student Name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('student.nama_rombel')
-                    ->label('Class Name'),
+                    ->label('Class Name')
+                    ->searchable(),
                 Tables\Columns\ToggleColumn::make('information')
                     ->label('Graduation Status')
                     ->beforeStateUpdated(function ($state) {
