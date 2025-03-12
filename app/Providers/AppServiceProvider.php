@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // ...existing code...
     }
 
     /**
@@ -24,5 +25,9 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         Paginator::useBootstrapFive();
         Paginator::useBootstrapFour();
+        
+        // Register Livewire components
+        Livewire::component('search-graduation', \App\Http\Livewire\SearchGraduation::class);
+        // ...existing code...
     }
 }

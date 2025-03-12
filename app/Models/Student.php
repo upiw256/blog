@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Student extends Model
 {
     use HasFactory, HasApiTokens;
+    protected $foreignKey = 'peserta_didik_id';
     protected $fillable = [
         'peserta_didik_id',
         'nipd',
@@ -54,6 +55,7 @@ class Student extends Model
                         'nipd' => $data['nipd'],
                         'sekolah_asal' => $data['sekolah_asal'],
                         'nama' => $data['nama'],
+                        'nisn' => $data['nisn'],
                         'jenis_kelamin' => $data['jenis_kelamin'] == 'P' ? 'Perempuan' : 'Laki-Laki',
                         'nik' => $data['nik'],
                         'tempat_lahir' => $data['tempat_lahir'],
@@ -77,4 +79,5 @@ class Student extends Model
 
         return false;
     }
+
 }
