@@ -36,6 +36,7 @@ Route::group(['middleware' => 'VerifyToken'], function () {
     Route::get('/schedules', [ScheduleController::class, 'index']);
     Route::get('/schedules/{id}', [ScheduleController::class, 'show']);
     Route::get('/teacher/{id}', [ScheduleController::class, 'teacher']);
+    Route::get('/teachers', [TeachersController::class, 'index']);
     Route::post('/attendance', [AttendanceController::class, 'store']);
 });
 

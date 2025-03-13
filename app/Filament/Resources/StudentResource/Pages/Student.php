@@ -46,7 +46,7 @@ class Student extends ListRecords
 
         if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === TRUE) {
             foreach ($students as $student) {
-                $cardPath = storage_path('app/card/' . $student->peserta_didik_id . '.png');
+                $cardPath = storage_path('app/public/card/' . $student->peserta_didik_id . '.png');
                 if (!Storage::exists('card/' . $student->peserta_didik_id . '.png')) {
                     $this->downloadStudentData($student);
                 }
@@ -85,8 +85,8 @@ class Student extends ListRecords
                'Nama Ibu: ' . $record->nama_ibu;
         
         // Path file QR code (misalnya PNG atau SVG)
-        $filePath = storage_path('app/qrcodes/' . $record->peserta_didik_id . '.png');  // Sesuaikan dengan lokasi dan nama file QR Code Anda
-        $cardPath = storage_path('app/card/' . $record->peserta_didik_id . '.png');  // Sesuaikan dengan lokasi dan nama file QR Code Anda
+        $filePath = storage_path('app/public/qrcodes/' . $record->peserta_didik_id . '.png');  // Sesuaikan dengan lokasi dan nama file QR Code Anda
+        $cardPath = storage_path('app/public/card/' . $record->peserta_didik_id . '.png');  // Sesuaikan dengan lokasi dan nama file QR Code Anda
         
         // Membuat ImageManager instance dengan Imagick driver
         $manager = new ImageManager(Driver::class);
