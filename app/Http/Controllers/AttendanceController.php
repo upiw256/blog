@@ -19,6 +19,7 @@ class AttendanceController extends Controller
             'student_id' => 'required|exists:students,id',
             'date' => 'required|date',
             'present' => 'required|boolean',
+            'keterangan' => 'nullable|string',
         ]);
 
         $attendance = Attendance::create($validatedData);
