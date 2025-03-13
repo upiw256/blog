@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TeachersController;
 use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,19 +36,10 @@ Route::group(['middleware' => 'VerifyToken'], function () {
     Route::get('/schedules', [ScheduleController::class, 'index']);
     Route::get('/schedules/{id}', [ScheduleController::class, 'show']);
     Route::get('/teacher/{id}', [ScheduleController::class, 'teacher']);
-
+    Route::post('/attendance', [AttendanceController::class, 'store']);
 });
 
 Route::fallback(function () {
     return response()->json(['error' => 'Page Not Found'], 404);
 });
-Route::middleware('VerifyToken')->get('/students', [ApiStudent::class, 'index']);
-Route::middleware('VerifyToken')->get('/article', [ArticleController::class, 'index']);
-Route::middleware('VerifyToken')->get('/classroom', [apiClassRoom::class, 'index']);
-Route::middleware('VerifyToken')->get('/extracurricular', [apiExtracurricular::class, 'index']);
-Route::middleware('VerifyToken')->get('/extracurricular/{id}', [apiExtracurricular::class, 'show']);
-Route::middleware('VerifyToken')->get('/schedules', [ScheduleController::class, 'index']);
-Route::middleware('VerifyToken')->get('/schedules/{id}', [ScheduleController::class, 'show']);
-Route::middleware('VerifyToken')->get('/teachers', [TeachersController::class, 'index']);
-Route::middleware('VerifyToken')->get('/teachers/{id}', [ScheduleController::class, 'teacher']);
 

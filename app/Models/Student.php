@@ -36,6 +36,12 @@ class Student extends Model
         'nama_rombel',
         'extracurricular_activity_id',
     ];
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
     public function sync()
     {
 

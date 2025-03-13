@@ -4,23 +4,24 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class VerifyToken
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        $token = $request->bearerToken();
+        $authorizationHeader = $request->header('Authorization');
 
-        // Periksa keberadaan dan format token
-        if (!str_starts_with($token, env('BARRIER_TOKEN'))) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+        if (!$authorizationHeader || !preg_match('/Bearer\s(\S+)/', $authorizationHeader, $matches)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
+
+        $token = $matches[1];
+
+        // Implement your token verification logic here
+        if ($token !== 'Sman1margaasih*') {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
         return $next($request);
     }
 }
