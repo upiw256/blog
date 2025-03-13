@@ -9,7 +9,7 @@ class AttendanceController extends Controller
 {
     public function store(Request $request)
     {
-        if (empty($request->department)) {
+        if ($request->isMethod('post') && empty($request->all())) {
             return response()->json([
                 'error' => 'Request body cannot be empty',
             ], Response::HTTP_BAD_REQUEST);
