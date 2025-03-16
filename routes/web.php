@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 use App\Filament\Resources\StudentResource\Pages\Student;
 use App\Http\Livewire\SearchGraduation;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\apiClassRoom;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +40,9 @@ Route::get('/graduations', function () {
     return view('graduations.index');
 });
 Route::get('/download-certificate/{id}', [CertificateController::class, 'download'])->name('download-certificate');
+
+Route::middleware(['auth', 'role:kurikulum'])->group(function () {
+    Route::get('/classes', [apiClassRoom::class, 'index'])->name('classes.index');
+    Route::get('/attendances', [AttendanceController::class, 'index'])->name('attendances.index');
+    Route::get('/schedules', [ScheduleController::class, 'index'])->name('schedules.index');
+});

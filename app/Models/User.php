@@ -16,13 +16,12 @@ use Filament\Panel;
 
 class User extends Authenticatable implements FilamentUser
 {
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+
     public function canAccessPanel(Panel $panel): bool
     {
-        // Implement your logic here to determine if the user has access to the panel
-        // For example:
-        return $this->hasRole('web') || $this->hasPermissionTo('all');
+        return $this->hasRole(['admin', 'kurikulum', 'teacher','web']) || $this->hasPermissionTo('access panel');
     }
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
