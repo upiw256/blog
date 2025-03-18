@@ -195,7 +195,7 @@
             </table>
         </div>
         <div class="footer">
-            <p>Margaasih, {{ now()->translatedFormat('d F Y') }}</p>
+            <p>Margaasih, {{ \Carbon\Carbon::now()->locale('id')->translatedFormat('d F Y') }}</p>
             <p>Kepala Sekolah</p>
             <br><br><br><br>
             <p class="signature">[Nama Kepala Sekolah]</p>
