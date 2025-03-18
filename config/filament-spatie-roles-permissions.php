@@ -1,18 +1,23 @@
 <?php
 
-use Illuminate\Support\Facades\App;
-
 return [
+
+    'resources' => [
+        'PermissionResource' => \Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource::class,
+        'RoleResource' => \Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource::class,
+    ],
 
     'preload_roles' => true,
 
     'preload_permissions' => true,
 
-    'navigation_section_group' => 'Setting', // Default uses language constant
+    'navigation_section_group' => 'filament-spatie-roles-permissions::filament-spatie.section.roles_and_permissions', // Default uses language constant
 
-    //   'team_model' => \App\Models\Team::class,
+    'team_model' => null, // Replace with the correct model class or set to null if not used
 
     'scope_to_tenant' => true,
+
+    'super_admin_role_name' => 'Super Admin',
 
     /*
      * Set as false to remove from navigation.
@@ -20,6 +25,56 @@ return [
     'should_register_on_navigation' => [
         'permissions' => true,
         'roles' => true,
+    ],
+
+    'should_show_permissions_for_roles' => true,
+
+    /*
+     * Set as true to use simple modal resource.
+     */
+    'should_use_simple_modal_resource' => [
+        'permissions' => false,
+        'roles' => false,
+    ],
+
+    /*
+     * Set as true to remove empty state actions.
+     */
+    'should_remove_empty_state_actions' => [
+        'permissions' => false,
+        'roles' => false,
+    ],
+
+    /**
+     * Set to true to redirect to the resource index instead of the view
+     */
+    'should_redirect_to_index' => [
+        'permissions' => [
+            'after_create' => false,
+            'after_edit' => false
+        ],
+        'roles' => [
+            'after_create' => false,
+            'after_edit' => false
+        ],
+    ],
+
+    /**
+     * Set to true to display relation managers in the resources
+     */
+    'should_display_relation_managers' => [
+        'permissions' => true,
+        'users' => true,
+        'roles' => true,
+    ],
+
+    /*
+     * If you want to place the Resource in a Cluster, then set the required Cluster class.
+     * Eg. \App\Filament\Clusters\Cluster::class
+     */
+    'clusters' => [
+        'permissions' => null,
+        'roles' => null,
     ],
 
     'guard_names' => [
@@ -36,11 +91,31 @@ return [
         ],
     ],
 
-    'default_guard_name' => 'web',
+    'default_guard_name' => null,
+
+    // if false guard option will not be show on screen. You should set a default_guard_name in this case
+    'should_show_guard' => true,
 
     'model_filter_key' => 'return \'%\'.$value;', // Eg: 'return \'%\'.$key.'\%\';'
 
     'user_name_column' => 'name',
+
+    /*
+     * If user_name_column is an accessor from a model, then list columns to search.
+     * Default: null, will search by user_name_column
+     *
+     * Example:
+     *
+     * 'user_name_searchable_columns' => ['first_name', 'last_name']
+     *
+     * and in your model:
+     *
+     * public function getFullNameAttribute() {
+     *    return $this->first_name . ' ' . $this->last_name;
+     * }
+     *
+     */
+    'user_name_searchable_columns' => ['name'],
 
     /*
      * Icons to use for navigation
@@ -77,14 +152,13 @@ return [
             'createPermission' => 'create',
             'updatePermission' => 'update',
             'deletePermission' => 'delete',
+            'deleteAnyPermission' => 'delete-any',
+            'replicatePermission' => 'replicate',
             'restorePermission' => 'restore',
+            'restoreAnyPermission' => 'restore-any',
+            'reorderPermission' => 'reorder',
             'forceDeletePermission' => 'force-delete',
-
-            /*
-             * Additional Resource Permissions
-             */
-            'replicate',
-            'reorder',
+            'forceDeleteAnyPermission' => 'force-delete-any',
         ],
 
         /*

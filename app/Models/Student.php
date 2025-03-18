@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\HasApiTokens;
 
 class Student extends Model
 {
+    
     use HasFactory, HasApiTokens;
     protected $foreignKey = 'peserta_didik_id';
     protected $fillable = [
