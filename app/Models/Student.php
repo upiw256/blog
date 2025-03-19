@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -40,6 +41,14 @@ class Student extends Model
     public function attendances()
     {
         return $this->hasMany(Attendance::class);
+    }
+
+    /**
+     * Get the graduation record associated with the student.
+     */
+    public function graduation(): HasOne
+    {
+        return $this->hasOne(Graduation::class, 'student_id');
     }
 
     public function sync()

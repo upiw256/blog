@@ -9,6 +9,8 @@ use App\Models\Student;
 use App\Models\Graduation;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Schema;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\GraduationsExport;
 
 class ListGraduations extends ListRecords
 {
@@ -17,7 +19,6 @@ class ListGraduations extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            // Actions\CreateAction::make(),
             Actions\Action::make('sync')
                 ->label('Synchronize')
                 ->action('syncGraduations'),
@@ -25,6 +26,9 @@ class ListGraduations extends ListRecords
                 ->label('Hapus data')
                 ->action('truncateGraduationsTable')
                 ->color('danger'),
+            Actions\Action::make('download_excel')
+                ->label('Download Excel')
+                ->action('downloadExcel'),
         ];
     }
 
@@ -55,5 +59,10 @@ class ListGraduations extends ListRecords
             ->body('Graduations table truncated successfully.')
             ->success()
             ->send();
+    }
+
+    public function downloadExcel()
+    {
+        return Excel::download(new GraduationsExport, 'graduations.xlsx');
     }
 }

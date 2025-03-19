@@ -14,6 +14,10 @@ class EditGraduation extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            Actions\Action::make('download_pdf')
+                ->label('Download SKL')
+                ->url(fn () => route('download-certificate', ['id' => $this->record->student_id]))
+                ->openUrlInNewTab(),
         ];
     }
 }
