@@ -8,6 +8,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Models\Student;
 use App\Models\Graduation;
 use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Schema;
 
 class ListGraduations extends ListRecords
 {
@@ -20,6 +21,10 @@ class ListGraduations extends ListRecords
             Actions\Action::make('sync')
                 ->label('Synchronize')
                 ->action('syncGraduations'),
+            Actions\Action::make('delete')
+                ->label('Hapus data')
+                ->action('truncateGraduationsTable')
+                ->color('danger'),
         ];
     }
 
@@ -37,6 +42,17 @@ class ListGraduations extends ListRecords
         Notification::make()
             ->title('Success')
             ->body('Graduations synchronized successfully.')
+            ->success()
+            ->send();
+    }
+
+    public function truncateGraduationsTable()
+    {
+        Graduation::truncate();
+
+        Notification::make()
+            ->title('Success')
+            ->body('Graduations table truncated successfully.')
             ->success()
             ->send();
     }
