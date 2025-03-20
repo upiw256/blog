@@ -47,10 +47,6 @@ class ClassRoom extends Model
 
         if ($response->ok()) {
             $datas = $response->json();
-
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-            $this->truncate();
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
             foreach ($datas['rows'] as $data) {
                 // Abaikan data jika jenis_rombel_str adalah "Ekstrakurikuler"
                 if (strtolower($data['jenis_rombel_str']) === 'ekstrakurikuler' || $data['jenis_rombel_str'] === 'Matapelajaran Pilihan' || $data['jenis_rombel_str'] === 'Teori') {
