@@ -47,13 +47,15 @@ class ClassRoom extends Model
 
         if ($response->ok()) {
             $datas = $response->json();
+            $existingIds = []; // To track IDs from the API
+
             foreach ($datas['rows'] as $data) {
                 // Abaikan data jika jenis_rombel_str adalah "Ekstrakurikuler"
                 if (strtolower($data['jenis_rombel_str']) === 'ekstrakurikuler' || $data['jenis_rombel_str'] === 'Matapelajaran Pilihan' || $data['jenis_rombel_str'] === 'Teori') {
                     continue;
                 }
-                
-                $this->updateOrCreate(
+
+                $classRoom = $this->updateOrCreate(
                     [
                         'rombongan_belajar_id' => $data['rombongan_belajar_id'],
                     ],
@@ -69,7 +71,12 @@ class ClassRoom extends Model
                         'jurusan_id_str' => $data['jurusan_id_str'],
                     ]
                 );
+
+                $existingIds[] = $classRoom->rombongan_belajar_id; // Collect the IDs of synced data
             }
+
+            // Delete classes that are not in the API response
+            $this->whereNotIn('rombongan_belajar_id', $existingIds)->delete();
 
             return true;
         }
