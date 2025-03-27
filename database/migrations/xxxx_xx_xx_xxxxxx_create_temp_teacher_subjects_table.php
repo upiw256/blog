@@ -12,7 +12,7 @@ class CreateTempTeacherSubjectsTable extends Migration
     {
         Schema::create('temp_teacher_subjects', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ptk_id');
+            $table->string('ptk_id'); // Ensure ptk_id is a string
             $table->unsignedBigInteger('subject_id');
             $table->timestamps();
 
