@@ -53,15 +53,16 @@ class Student extends Model
 
     public function sync()
     {
-
         $url = env('APP_URL_API', 'http://192.168.5.163:3001/api/');
-        // TODO: Implement sync() method.
         $response = Http::withHeaders([
             'X-Barrier' => 'margaasih',
         ])->get($url . 'siswa');
 
         if ($response->ok()) {
             $datas = $response->json();
+            $apiIds = collect($datas['rows'])->pluck('peserta_didik_id')->toArray();
+
+            // Update or create records
             foreach ($datas['rows'] as $data) {
                 $this->updateOrCreate(
                     ['peserta_didik_id' => $data['peserta_didik_id']],
@@ -88,6 +89,9 @@ class Student extends Model
                     ]
                 );
             }
+
+            // Delete records not present in the API
+            $this->whereNotIn('peserta_didik_id', $apiIds)->delete();
 
             return true;
         }

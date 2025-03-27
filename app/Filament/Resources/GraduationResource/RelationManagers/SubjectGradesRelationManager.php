@@ -100,14 +100,6 @@ class SubjectGradesRelationManager extends RelationManager
         // Import the Excel file
         Excel::import(new SubjectGradesImport($studentId), $fullPath);
 
-        // Delete the temporary file after processing
-        if (file_exists($fullPath)) {
-            unlink($fullPath);
-            Log::info("Temporary file deleted: $fullPath");
-        } else {
-            Log::warning("Temporary file not found for deletion: $fullPath");
-        }
-
         // Debugging: Log success
         Log::info("File imported successfully from path: $fullPath");
     }
