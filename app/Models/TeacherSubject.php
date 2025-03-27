@@ -56,6 +56,7 @@ class TeacherSubject extends Model
                                 [
                                     'ptk_id' => $guru->ptk_id,
                                     'subject_id' => $mapel->id,
+                                    'teacher_id' => $guru->id, // Populate the teacher_id column
                                 ]
                             );
                             $existingIds[] = [
