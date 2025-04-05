@@ -27,18 +27,22 @@ class Subject extends Model
     public function sync()
     {
         $url = env('APP_URL_API', 'http://app.sman1mga.sch.id:30000/api/');
-        // TODO: Implement sync() method.
         $response = Http::withHeaders([
             'X-Barrier' => 'margaasih',
         ])->get($url . 'rombel');
 
         if ($response->ok()) {
-            $datas = $response->json();            
+            $datas = $response->json();
+            $existingSubjects = $this->pluck('kode_subject')->toArray();
+            $apiSubjects = [];
+
             // Looping through the 'rows' array
             foreach ($datas['rows'] as $data) {
                 // Loop through the 'pembelajaran' array to get the 'nama_mata_pelajaran'
                 if (isset($data['pembelajaran']) && is_array($data['pembelajaran'])) {
                     foreach ($data['pembelajaran'] as $pembelajaran) {
+                        $apiSubjects[] = $pembelajaran['mata_pelajaran_id'];
+
                         $this->updateOrCreate(
                             ['kode_subject' => $pembelajaran['mata_pelajaran_id']],
                             [
@@ -49,18 +53,18 @@ class Subject extends Model
                         );
                     }
                 } else {
-                    // Jika 'pembelajaran' tidak ada atau bukan array
                     Log::warning("Data pembelajaran tidak ditemukan untuk peserta_didik_id: " . $data['peserta_didik_id']);
                 }
-
-
             }
+
+            // Delete subjects that are not in the API
+            $subjectsToDelete = array_diff($existingSubjects, $apiSubjects);
+            $this->whereIn('kode_subject', $subjectsToDelete)->delete();
 
             return true;
         }
 
         return false;
-
     }
 
 }

@@ -36,19 +36,16 @@ class Teacher extends Model
     public function sync()
     {
         $url = env('APP_URL_API', 'http://app.sman1mga.sch.id:30000/api/');
-        // set_time_limit(10015);
-        // TODO: Implement sync() method.
         $response = Http::withHeaders([
             'X-Barrier' => 'margaasih',
         ])->get($url . 'guru');
 
-        // dd($response);
         if ($response->ok()) {
             $data = $response->json();
+            $existingIds = [];
 
             foreach ($data['rows'] as $item) {
-
-                $this->updateOrCreate(
+                $teacher = $this->updateOrCreate(
                     ['ptk_id' => $item['ptk_id']],
                     [
                         'ptk_id' => $item['ptk_id'],
@@ -63,7 +60,11 @@ class Teacher extends Model
                         'nip' => $item['nip'],
                     ]
                 );
+                $existingIds[] = $teacher->ptk_id;
             }
+
+            // Delete teachers not present in the API response
+            $this->whereNotIn('ptk_id', $existingIds)->delete();
 
             return true;
         }

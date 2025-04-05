@@ -24,20 +24,20 @@ class GraduationResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('student_id')
-                    ->label('Student ID')
-                    ->options(Student::all()->pluck('name', 'id'))
+                    ->label('Student Name')
+                    ->options(Student::all()->pluck('nama', 'id')->toArray()) // Ensure valid options
                     ->searchable()
-                    ->required(),
-                Forms\Components\TextInput::make('class_name')
-                    ->required()
-                    ->label('Class Name'),
+                    ->disabled(),
+                Forms\Components\Placeholder::make('student_class')
+                    ->label('Class Name')
+                    ->content(fn ($record) => $record->student->nama_rombel ?? '-'),
                 Forms\Components\Select::make('information')
+                    ->label('Graduation Status')
                     ->options([
-                        'passed' => 'Passed',
-                        'not passed' => 'Not Passed',
+                        true => 'Passed',
+                        false => 'Not Passed',
                     ])
-                    ->required()
-                    ->label('Graduation Status'),
+                    ->required(),
             ]);
     }
 
@@ -52,10 +52,7 @@ class GraduationResource extends Resource
                     ->label('Class Name')
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('information')
-                    ->label('Graduation Status')
-                    ->beforeStateUpdated(function ($state) {
-                        return $state === 'passed' ? 'Passed' : 'Not Passed';
-                    }),
+                    ->label('Kelulusan'),
             ])
             ->filters([
                 //
@@ -73,7 +70,7 @@ class GraduationResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\SubjectGradesRelationManager::class,
         ];
     }
 
