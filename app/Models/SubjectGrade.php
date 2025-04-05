@@ -43,6 +43,6 @@ class SubjectGrade extends Model
      */
     public function subject(): BelongsTo
     {
-        return $this->belongsTo(Subject::class, 'kode_subject');
+        return $this->belongsTo(Subject::class, 'kode_subject', 'id');
     }
 }

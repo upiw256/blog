@@ -11,19 +11,23 @@ use Illuminate\Support\Facades\Http;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+
 class Subject extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     function TeacherSubject(): HasMany
     {
         return $this->hasMany(TeacherSubject::class);
     }
+
     public function teachers(): BelongsToMany
     {
         return $this->belongsToMany(Teacher::class, 'teacher_subjects', 'subject_id', 'ptk_id', 'id', 'ptk_id');
     }
+
     public function sync()
     {
         $url = env('APP_URL_API', 'http://app.sman1mga.sch.id:30000/api/');
@@ -66,5 +70,4 @@ class Subject extends Model
 
         return false;
     }
-
 }
