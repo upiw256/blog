@@ -121,76 +121,13 @@
             </tr>
             </thead>
             <tbody>
+            @foreach ($subjectGrades as $index => $subjectGrade)
             <tr>
-            <td style="padding: 4px;">1</td>
-            <td style="padding: 4px;">PAI</td>
-            <td style="padding: 4px; text-align: center;">85</td>
+            <td style="padding: 4px;">{{ $index + 1 }}</td>
+            <td style="padding: 4px;">{{ $subjectGrade->subject->name }}</td>
+            <td style="padding: 4px; text-align: center;">{{ $subjectGrade->value }}</td>
             </tr>
-            <tr>
-            <td style="padding: 4px;">2</td>
-            <td style="padding: 4px;">Informatika</td>
-            <td style="padding: 4px; text-align: center;">88</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">3</td>
-            <td style="padding: 4px;">PJOK</td>
-            <td style="padding: 4px; text-align: center;">90</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">4</td>
-            <td style="padding: 4px;">Sejarah Indonesia</td>
-            <td style="padding: 4px; text-align: center;">82</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">5</td>
-            <td style="padding: 4px;">Bahasa Sunda</td>
-            <td style="padding: 4px; text-align: center;">87</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">6</td>
-            <td style="padding: 4px;">PKWU</td>
-            <td style="padding: 4px; text-align: center;">84</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">7</td>
-            <td style="padding: 4px;">Bahasa Indonesia</td>
-            <td style="padding: 4px; text-align: center;">88</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">8</td>
-            <td style="padding: 4px;">Pend. Kewarganegaraan</td>
-            <td style="padding: 4px; text-align: center;">86</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">9</td>
-            <td style="padding: 4px;">Seni Budaya</td>
-            <td style="padding: 4px; text-align: center;">89</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">10</td>
-            <td style="padding: 4px;">Kimia/Sosiologi</td>
-            <td style="padding: 4px; text-align: center;">87</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">11</td>
-            <td style="padding: 4px;">Biologi/Geografi</td>
-            <td style="padding: 4px; text-align: center;">85</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">12</td>
-            <td style="padding: 4px;">Matematika/Sejarah</td>
-            <td style="padding: 4px; text-align: center;">88</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">13</td>
-            <td style="padding: 4px;">Matematika Wajib</td>
-            <td style="padding: 4px; text-align: center;">90</td>
-            </tr>
-            <tr>
-            <td style="padding: 4px;">14</td>
-            <td style="padding: 4px;">Bahasa Inggris</td>
-            <td style="padding: 4px; text-align: center;">92</td>
-            </tr>
+            @endforeach
             </tbody>
             </table>
         </div>
@@ -198,8 +135,8 @@
             <p>Margaasih, {{ \Carbon\Carbon::now()->locale('id')->translatedFormat('d F Y') }}</p>
             <p>Kepala Sekolah</p>
             <br><br><br><br>
-            <p class="signature">[Nama Kepala Sekolah]</p>
-            <p>NIP. [Nomor Induk Pegawai]</p>
+            <p class="signature">{{$headmaster->front_title}} {{ $headmaster->teacher->nama }}, {{$headmaster->back_title}}</p>
+            <p>NIP. {{ $headmaster->teacher->nip }}</p>
         </div>
     </div>
 </body>

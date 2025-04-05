@@ -48,7 +48,7 @@ class Student extends Model
      */
     public function graduation(): HasOne
     {
-        return $this->hasOne(Graduation::class, 'student_id');
+        return $this->hasOne(Graduation::class, 'student_id', 'id');
     }
 
     public function sync()

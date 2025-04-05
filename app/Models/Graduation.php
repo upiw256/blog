@@ -30,4 +30,9 @@ class Graduation extends Model
     {
         return $this->hasMany(SubjectGrade::class, 'id_graduation');
     }
+
+    public function subjectGrades()
+    {
+        return $this->hasMany(SubjectGrade::class, 'id_graduation', 'id');
+    }
 }
