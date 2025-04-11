@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('ptk_id')->nullable();
+            $table->string('ptk_id')->unique();;
             $table->string('nama')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('tempat_lahir')->nullable();

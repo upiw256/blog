@@ -11,7 +11,9 @@ class AddPtkIdToTeacherSubjectsTable extends Migration
     public function up(): void
     {
         Schema::table('teacher_subjects', function (Blueprint $table) {
-            $table->string('ptk_id')->after('id'); // Add the ptk_id column
+            if (!Schema::hasColumn('teacher_subjects', 'ptk_id')) {
+                $table->string('ptk_id')->after('id'); // Add the ptk_id column
+            }
         });
     }
 
@@ -21,7 +23,9 @@ class AddPtkIdToTeacherSubjectsTable extends Migration
     public function down(): void
     {
         Schema::table('teacher_subjects', function (Blueprint $table) {
-            $table->dropColumn('ptk_id'); // Remove the ptk_id column
+            if (Schema::hasColumn('teacher_subjects', 'ptk_id')) {
+                $table->dropColumn('ptk_id'); // Remove the ptk_id column
+            }
         });
     }
 }

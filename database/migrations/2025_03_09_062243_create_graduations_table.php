@@ -29,14 +29,12 @@ return new class extends Migration
         Schema::dropIfExists('graduations');
 
         // Check if the unique constraint exists before dropping it
-        $uniqueExists = DB::select("
-            SELECT COUNT(*) as count
-            FROM information_schema.STATISTICS
-            WHERE TABLE_NAME = 'students'
-            AND INDEX_NAME = 'students_peserta_didik_id_unique'
-        ")[0]->count;
+        $uniqueExists = DB::table('pg_indexes')
+            ->where('tablename', 'students')
+            ->where('indexname', 'students_peserta_didik_id_unique')
+            ->exists();
 
-        if ($uniqueExists > 0) {
+        if ($uniqueExists) {
             Schema::table('students', function (Blueprint $table) {
                 $table->dropUnique('students_peserta_didik_id_unique');
             });
