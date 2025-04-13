@@ -25,7 +25,7 @@ class TeacherSubject extends Model
 
     function teacher(): BelongsTo
     {
-        return $this->belongsTo(Teacher::class);
+        return $this->belongsTo(Teacher::class, 'ptk_id', 'ptk_id'); // Match 'ptk_id' in both tables
     }
     public function schedules(): HasMany
     {

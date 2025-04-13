@@ -159,8 +159,11 @@ class ScheduleRelationManager extends RelationManager
                     ->label('Guru')
                     ->sortable()
                     ->getStateUsing(function ($record) {
-                        // Combine teacher's name and subject
-                        return $record->teacherSubject->teacher->nama . ' - ' . $record->teacherSubject->subject->name;
+                        // Check if teacherSubject and its relationships exist
+                        if ($record->teacherSubject && $record->teacherSubject->teacher && $record->teacherSubject->subject) {
+                            return $record->teacherSubject->teacher->nama . ' - ' . $record->teacherSubject->subject->name;
+                        }
+                        return 'Data tidak tersedia'; // Fallback if relationships are null
                     })
                     ->searchable(),
                 Tables\Columns\TextColumn::make('day_of_week')
