@@ -17,22 +17,22 @@
         @php
             $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
         @endphp
-        
+
         @foreach ($daysOfWeek as $day)
             @php
                 $daySchedules = collect($schedules)->where('day_of_week', $day);
             @endphp
-    
+
             <div class="col-md-4 mb-2">
                 <div class="card" style="max-width: 20rem; height: auto;">
-                    <div class="card-header p-1">
+                    <div class="card-header p-1 bg-warning-subtle text-secondary">
                         <h6 class="card-title text-center fs-7">{{ ucfirst($day) }}</h6>
                     </div>
                     <div class="card-body p-1">
                         @if ($daySchedules->isNotEmpty())
                             @foreach ($daySchedules->sortBy('start_time') as $schedule)
                                 <p class="fs-6 mb-1">
-                                    <strong>{{ $schedule->teacherSubject->subject->name }}</strong> 
+                                    <strong>{{ $schedule->teacherSubject->subject->name }}</strong>
                                     <em>({{ $schedule->teacherSubject->teacher->nama }})</em>
                                 </p>
                                 <p class="fs-6 mb-0">

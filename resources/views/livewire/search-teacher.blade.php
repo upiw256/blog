@@ -44,15 +44,15 @@
                                         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="scheduleModalLabel{{ $teacher->id }}">Jadwal {{ $teacher->nama }}</h5>
+                                                    <h5 class="modal-title" id="scheduleModalLabel{{ $teacher->id }}">Jadwal {{ $teacher->nama }} diluar jadwal P5</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body ">
                                                     <div class="row">
                                                         @foreach(['monday', 'tuesday', 'wednesday', 'thursday', 'friday'] as $index => $day)
-                                                            <div class="col-md-3 mb-3">
-                                                                <div class="card" style="height: 220px;"> <!-- Menyesuaikan tinggi card -->
-                                                                    <div class="card-header text-center">
+                                                            <div class="col-md-3 mb-3 ">
+                                                                <div class="card " style="height: 220px;"> <!-- Menyesuaikan tinggi card -->
+                                                                    <div class="card-header text-center bg-warning-subtle text-secondary">
                                                                         <strong>{{ ucfirst($day) }}</strong>
                                                                     </div>
                                                                     <div class="card-body" style="height: calc(100% - 40px); padding: 5px;">
