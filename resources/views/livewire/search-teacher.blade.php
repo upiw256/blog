@@ -21,9 +21,9 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Bidang Studi Terakhir</th>
-                                <th scope="col">Tempat Lahir</th>
-                                <th scope="col">Tanggal Lahir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Bidang Studi Terakhir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Tempat Lahir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Tanggal Lahir</th>
                                 <th scope="col">Jadwal</th>
                             </tr>
                         </thead>
@@ -32,9 +32,9 @@
                             <tr>
                                 <td>{{ $teacher->id }}</td>
                                 <td>{{ $teacher->nama }}</td>
-                                <td>{{ $teacher->bidang_studi_terakhir }}</td>
-                                <td>{{ $teacher->tempat_lahir }}</td>
-                                <td>{{ $teacher->tanggal_lahir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->bidang_studi_terakhir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->tempat_lahir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->tanggal_lahir }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#scheduleModal{{ $teacher->id }}">
                                         Lihat Jadwal
@@ -83,8 +83,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </td>
                             </tr>
                             @endforeach
@@ -102,8 +100,8 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Tempat Lahir</th>
-                                <th scope="col">Tanggal Lahir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Tempat Lahir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Tanggal Lahir</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,8 +112,8 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $teacher->nama }}</td>
-                                <td>{{ $teacher->tempat_lahir }}</td>
-                                <td>{{ $teacher->tanggal_lahir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->tempat_lahir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->tanggal_lahir }}</td>
                             </tr>
                             @endforeach
                         </tbody>
