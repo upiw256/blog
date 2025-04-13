@@ -10,28 +10,48 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Env;
+
 class Teacher extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+
+    protected $fillable = [
+        'nama',
+        'bidang_studi_terakhir',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'ptk_id',
+    ];
 
     public function headmaster(): HasMany
     {
         return $this->hasMany(Headmaster::class);
     }
+
     public function subjects(): BelongsToMany
     {
         return $this->belongsToMany(Subject::class, 'teacher_subjects', 'ptk_id', 'subject_id');
     }
+
     function TeacherSubject(): HasMany
     {
         return $this->hasMany(TeacherSubject::class, 'ptk_id');
     }
+
+    /**
+     * Define the relationship with schedules.
+     */
     public function schedules(): HasManyThrough
     {
-        return $this->hasManyThrough(Schedule::class, TeacherSubject::class, 'ptk_id', 'teacher_subject_id');
+        return $this->hasManyThrough(
+            Schedule::class,
+            TeacherSubject::class,
+            'ptk_id', // Foreign key on TeacherSubject table
+            'teacher_subject_id', // Foreign key on Schedule table
+            'ptk_id', // Local key on Teacher table
+            'id' // Local key on TeacherSubject table
+        );
     }
-
 
     public function sync()
     {

@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
 
                                 </td>
                             </tr>
@@ -92,7 +92,7 @@
                     </table>
                 </div>
                 <div class="d-flex justify-content-center">
-                    @include('vendor.pagination.bootstrap-5', ['paginator' => $teachers])
+                    {{ $teachers->links() }} <!-- Use Livewire's pagination links -->
                 </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
