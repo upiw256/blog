@@ -31,7 +31,8 @@
     <link href="{{ asset('/') }}assets/pendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}assets/pendor/remixicon/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
+    <!-- Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1122374547090145" crossorigin="anonymous"></script>
     <!-- Template Main CSS File -->
     <link href="{{ asset('/') }}assets/css/style.css" rel="stylesheet">
     @livewireStyles
