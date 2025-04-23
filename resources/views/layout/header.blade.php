@@ -167,6 +167,9 @@ blockquote:after {
 </head>
 
 <body class="bg-custom">
+    <amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-1122374547090145">
+    </amp-auto-ads>
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top header-inner-pages">
         <div class="container d-flex align-items-center justify-content-lg-between">
