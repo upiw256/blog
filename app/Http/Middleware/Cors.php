@@ -12,11 +12,17 @@ class Cors
     {
         $response = $next($request);
 
+        // Allow all origins
         $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', '*');
-        $response->headers->set('Access-Control-Allow-Headers', '*');
 
-        // Kalau OPTIONS, balikin response cepat
+        // Set other CORS headers
+        $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
+
+        // Remove credentials header if allowing all origins
+        $response->headers->remove('Access-Control-Allow-Credentials');
+
+        // Handle preflight requests
         if ($request->getMethod() === 'OPTIONS') {
             $response->setStatusCode(200);
         }
