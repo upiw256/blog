@@ -19,15 +19,17 @@
             <div class="swiper-wrapper">
                 @if(isset($article) && count($article) > 0)
                     @foreach($article as $art)
-                        <div class="swiper-slide col-lg-3 col-md-6 d-flex align-items-stretch bg-light p-3 rounded">
-                            <div class="member" data-aos="fade-up" data-aos-delay="100">
-                                <div class="member-img">
-                                    <img src="{{ asset('/') }}storage/{{$art->image}}" class="img-fluid" alt="">
-                                </div>
-                                <div class="member-info">
-                                    <h4><a href="{{ route('article.show', $art->slug) }}" class="text-primary">{{$art->title}}</a></h4>
-                                    <span>{!! Str::limit($art->content, 150) !!}</span>
-                                    <span><a href="{{ route('article.show', $art->slug) }}" class="btn btn-primary">Read More</a></span>
+                        <div class="swiper-slide">
+                            <div class="col-lg-3 col-md-6 d-flex align-items-stretch bg-light p-3 rounded">
+                                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="member-img">
+                                        <img src="{{ asset('/') }}storage/{{$art->image}}" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="member-info">
+                                        <h4><a href="{{ route('article.show', $art->slug) }}" class="text-primary">{{$art->title}}</a></h4>
+                                        <span>{!! Str::limit($art->content, 150) !!}</span>
+                                        <span><a href="{{ route('article.show', $art->slug) }}" class="btn btn-primary">Read More</a></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
