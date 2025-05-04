@@ -44,7 +44,7 @@ class StudentResource extends Resource
                 Tables\Columns\TextColumn::make('nama_rombel')->label('Kelas'),
             ])
             ->filters([
-                
+
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -61,7 +61,7 @@ class StudentResource extends Resource
                 ]),
             ]);
     }
-    
+
 
     public static function infolist(Infolist $infolist): Infolist
     {
@@ -104,5 +104,13 @@ class StudentResource extends Resource
             'list' => Pages\ListStudents::route('/{record}/list'),
         ];
     }
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->hasRole('web');
+    }
 
+    public static function getNavigationGroup(): ?string
+    {
+        return auth()->user()?->hasRole('web') ? 'Dapodik' : null;
+    }
 }

@@ -103,4 +103,13 @@ class ClassRoomResource extends Resource
             'edit' => Pages\EditClassRoom::route('/{record}/edit'),
         ];
     }
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->hasRole('web');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return auth()->user()?->hasRole('web') ? 'Dapodik' : null;
+    }
 }

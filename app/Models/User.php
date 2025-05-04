@@ -20,7 +20,7 @@ class User extends Authenticatable implements FilamentUser
     {
         // Implement your logic here to determine if the user has access to the panel
         // For example:
-        return $this->hasRole('web') || $this->hasPermissionTo('all');
+        return $this->hasRole('web') ||  $this->hasRole('admin');
     }
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 

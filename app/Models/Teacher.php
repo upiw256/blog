@@ -10,10 +10,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Env;
+use Spatie\Permission\Traits\HasRoles;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
-class Teacher extends Model
+class Teacher extends Model implements FilamentUser
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Implement your logic here to determine if the user has access to the panel
+        // For example:
+        return $this->hasRole('web');
+    }
 
     protected $fillable = [
         'nama',
