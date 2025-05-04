@@ -22,8 +22,8 @@
                 <div class="swiper-slide" style="padding: 10px;"> <!-- Tambahkan padding di sini -->
                     <div class="col-12 d-flex align-items-stretch bg-light p-3 rounded" style="min-height: 300px;">
                     <div class="member" data-aos="fade-up" data-aos-delay="100">
-                        <div class="member-img" style="width: 100%; overflow: hidden;">
-                            <img src="{{ asset('/') }}storage/{{$art->image}}" class="img-fluid" alt="" style="width: 100%; height: auto; object-fit: cover;">
+                        <div class="member-img" style="width: 100%; height: 200px; overflow: hidden;"> <!-- Tinggi tetap -->
+                            <img src="{{ asset('/') }}storage/{{$art->image}}" class="img-fluid" alt="" style="width: 100%; height: 100%; object-fit: cover;"> <!-- Gambar proporsional -->
                         </div>
                         <div class="member-info mt-3">
                             <h4><a href="{{ route('article.show', $art->slug) }}" class="text-primary">{{$art->title}}</a></h4>
