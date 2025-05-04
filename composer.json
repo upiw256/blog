@@ -9,15 +9,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "althinect/filament-spatie-roles-permissions": "^2.2",
+        "althinect/filament-spatie-roles-permissions": "^2.3",
+        "barryvdh/laravel-dompdf": "^3.1",
         "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^3.11",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
         "maatwebsite/excel": "^3.1",
         "mews/captcha": "^3.3",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-permission": "^6.4"
     },
     "require-dev": {

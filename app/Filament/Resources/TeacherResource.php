@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TeacherResource extends Resource
 {
+
     protected static ?string $model = Teacher::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -80,5 +81,14 @@ class TeacherResource extends Resource
             'create' => Pages\CreateTeacher::route('/create'),
             // 'edit' => Pages\EditTeacher::route('/{record}/edit'),
         ];
+    }
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->hasRole('web');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return auth()->user()?->hasRole('web') ? 'Dapodik' : null;
     }
 }

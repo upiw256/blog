@@ -135,7 +135,7 @@ class ScheduleRelationManager extends RelationManager
                         titleAttribute: 'subject_name',
                         modifyQueryUsing: fn(Builder $query) =>
                         $query->join('subjects', 'subjects.id', '=', 'teacher_subjects.subject_id')
-                            ->join('teachers', 'teachers.id', '=', 'teacher_subjects.teacher_id')
+                            ->join('teachers', 'teachers.ptk_id', '=', 'teacher_subjects.ptk_id')
                             ->select('teacher_subjects.id', 'subjects.name as subject_name', 'teachers.nama as teacher_name')
                             ->orderBy('teacher_subjects.id', 'asc')
                     )
@@ -159,8 +159,11 @@ class ScheduleRelationManager extends RelationManager
                     ->label('Guru')
                     ->sortable()
                     ->getStateUsing(function ($record) {
-                        // Combine teacher's name and subject
-                        return $record->teacherSubject->teacher->nama . ' - ' . $record->teacherSubject->subject->name;
+                        // Check if teacherSubject and its relationships exist
+                        if ($record->teacherSubject && $record->teacherSubject->teacher && $record->teacherSubject->subject) {
+                            return $record->teacherSubject->teacher->nama . ' - ' . $record->teacherSubject->subject->name;
+                        }
+                        return 'Data tidak tersedia'; // Fallback if relationships are null
                     })
                     ->searchable(),
                 Tables\Columns\TextColumn::make('day_of_week')

@@ -5,9 +5,15 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>@yield('title')</title>
-    <meta content="ini website SMAN 1 Margaasih" name="description">
-    <meta content="Informasi seputar SMAN 1 Margaasih" name="keywords">
+    <title>@yield('title', 'SMAN 1 Margaasih - Sekolah Unggulan di Bandung')</title>
+    <meta name="description" content="@yield('meta_description', 'SMAN 1 Margaasih adalah sekolah unggulan di Bandung yang berfokus pada pendidikan berkualitas, karakter, dan prestasi siswa.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'SMAN 1 Margaasih, Sekolah di Bandung, Pendidikan, Sekolah Unggulan, Prestasi, Ekstrakurikuler')">
+    <!-- Open Graph Meta Tags (Untuk Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="@yield('title', 'SMAN 1 Margaasih - Sekolah Unggulan di Bandung')">
+    <meta property="og:description" content="@yield('meta_description', 'SMAN 1 Margaasih adalah sekolah unggulan di Bandung yang berfokus pada pendidikan berkualitas, karakter, dan prestasi siswa.')">
+    <meta property="og:image" content="{{ asset('assets/img/logo.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
     <base href="/" />
 
     <!-- Favicons -->
@@ -25,7 +31,8 @@
     <link href="{{ asset('/') }}assets/pendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}assets/pendor/remixicon/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
+    <!-- Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1122374547090145" crossorigin="anonymous"></script>
     <!-- Template Main CSS File -->
     <link href="{{ asset('/') }}assets/css/style.css" rel="stylesheet">
     @livewireStyles
@@ -160,6 +167,9 @@ blockquote:after {
 </head>
 
 <body class="bg-custom">
+    <amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-1122374547090145">
+    </amp-auto-ads>
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top header-inner-pages">
         <div class="container d-flex align-items-center justify-content-lg-between">

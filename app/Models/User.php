@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Env;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Filament\Models\Contracts\FilamentUser;
@@ -19,7 +20,7 @@ class User extends Authenticatable implements FilamentUser
     {
         // Implement your logic here to determine if the user has access to the panel
         // For example:
-        return $this->hasRole('web') || $this->hasPermissionTo('all');
+        return $this->hasRole('web') ||  $this->hasRole('admin');
     }
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
@@ -67,7 +68,7 @@ class User extends Authenticatable implements FilamentUser
             $data = $response->json();
 
             foreach ($data['rows'] as $item) {
-                if ($item['jenis_ptk_id_str'] === 'Guru Mapel' || $item['jenis_ptk_id_str'] === 'Guru BK' || $item['jenis_ptk_id_str'] === 'Guru TIK' || $item['jenis_ptk_id_str'] === 'Kepala Sekolah') {
+                if ($item['jenis_ptk_id_str'] === 'Guru' || $item['jenis_ptk_id_str'] === 'Guru BK' || $item['jenis_ptk_id_str'] === 'Guru TIK' || $item['jenis_ptk_id_str'] === 'Kepala Sekolah') {
                     // dd(strtolower(str_replace(' ', '-', $item['nama'] . '@sman1mga.sch.id')));
                     $this->updateOrCreate(
                         ['email' => str_replace(['.', ','], '', strtolower(str_replace(' ', '-', $item['nama']))) . '@sman1mga.sch.id'],

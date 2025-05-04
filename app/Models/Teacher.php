@@ -9,45 +9,72 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Facades\Http;
-class Teacher extends Model
+use Illuminate\Support\Facades\Env;
+use Spatie\Permission\Traits\HasRoles;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+
+class Teacher extends Model implements FilamentUser
 {
-    use HasFactory;
-    protected $guarded = [];
+    use HasFactory, HasRoles;
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Implement your logic here to determine if the user has access to the panel
+        // For example:
+        return $this->hasRole('web');
+    }
+
+    protected $fillable = [
+        'nama',
+        'bidang_studi_terakhir',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'ptk_id',
+    ];
 
     public function headmaster(): HasMany
     {
         return $this->hasMany(Headmaster::class);
     }
+
     public function subjects(): BelongsToMany
     {
-        return $this->belongsToMany(Subject::class, 'teacher_subjects', 'teacher_id', 'subject_id');
-    }
-    function TeacherSubject(): HasMany
-    {
-        return $this->hasMany(TeacherSubject::class);
-    }
-    public function schedules(): HasManyThrough
-    {
-        return $this->hasManyThrough(Schedule::class, TeacherSubject::class, 'teacher_id', 'teacher_subject_id');
+        return $this->belongsToMany(Subject::class, 'teacher_subjects', 'ptk_id', 'subject_id');
     }
 
+    function TeacherSubject(): HasMany
+    {
+        return $this->hasMany(TeacherSubject::class, 'ptk_id');
+    }
+
+    /**
+     * Define the relationship with schedules.
+     */
+    public function schedules(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            Schedule::class,
+            TeacherSubject::class,
+            'ptk_id', // Foreign key on TeacherSubject table
+            'teacher_subject_id', // Foreign key on Schedule table
+            'ptk_id', // Local key on Teacher table
+            'id' // Local key on TeacherSubject table
+        );
+    }
 
     public function sync()
     {
         $url = env('APP_URL_API', 'http://app.sman1mga.sch.id:30000/api/');
-        // set_time_limit(10015);
-        // TODO: Implement sync() method.
         $response = Http::withHeaders([
             'X-Barrier' => 'margaasih',
         ])->get($url . 'guru');
 
-        // dd($response);
         if ($response->ok()) {
             $data = $response->json();
+            $existingIds = [];
 
             foreach ($data['rows'] as $item) {
-
-                $this->updateOrCreate(
+                $teacher = $this->updateOrCreate(
                     ['ptk_id' => $item['ptk_id']],
                     [
                         'ptk_id' => $item['ptk_id'],
@@ -62,7 +89,11 @@ class Teacher extends Model
                         'nip' => $item['nip'],
                     ]
                 );
+                $existingIds[] = $teacher->ptk_id;
             }
+
+            // Delete teachers not present in the API response
+            $this->whereNotIn('ptk_id', $existingIds)->delete();
 
             return true;
         }

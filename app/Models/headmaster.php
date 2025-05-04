@@ -16,7 +16,8 @@ class headmaster extends Model
         "font_title",
         "back_title"
     ];
-    public function teacher(): BelongsTo{
-        return $this->belongsTo(Teacher::class);
+    public function teacher(): BelongsTo
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
     }
 }

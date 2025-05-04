@@ -21,9 +21,9 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Bidang Studi Terakhir</th>
-                                <th scope="col">Tempat Lahir</th>
-                                <th scope="col">Tanggal Lahir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Bidang Studi Terakhir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Tempat Lahir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Tanggal Lahir</th>
                                 <th scope="col">Jadwal</th>
                             </tr>
                         </thead>
@@ -32,9 +32,9 @@
                             <tr>
                                 <td>{{ $teacher->id }}</td>
                                 <td>{{ $teacher->nama }}</td>
-                                <td>{{ $teacher->bidang_studi_terakhir }}</td>
-                                <td>{{ $teacher->tempat_lahir }}</td>
-                                <td>{{ $teacher->tanggal_lahir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->bidang_studi_terakhir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->tempat_lahir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->tanggal_lahir }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#scheduleModal{{ $teacher->id }}">
                                         Lihat Jadwal
@@ -44,15 +44,15 @@
                                         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="scheduleModalLabel{{ $teacher->id }}">Jadwal {{ $teacher->nama }}</h5>
+                                                    <h5 class="modal-title" id="scheduleModalLabel{{ $teacher->id }}">Jadwal {{ $teacher->nama }} diluar jadwal P5</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body ">
                                                     <div class="row">
                                                         @foreach(['monday', 'tuesday', 'wednesday', 'thursday', 'friday'] as $index => $day)
-                                                            <div class="col-md-3 mb-3">
-                                                                <div class="card" style="height: 220px;"> <!-- Menyesuaikan tinggi card -->
-                                                                    <div class="card-header text-center">
+                                                            <div class="col-md-3 mb-3 ">
+                                                                <div class="card " style="height: 220px;"> <!-- Menyesuaikan tinggi card -->
+                                                                    <div class="card-header text-center bg-warning-subtle text-secondary">
                                                                         <strong>{{ ucfirst($day) }}</strong>
                                                                     </div>
                                                                     <div class="card-body" style="height: calc(100% - 40px); padding: 5px;">
@@ -83,8 +83,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-
                                 </td>
                             </tr>
                             @endforeach
@@ -92,7 +90,7 @@
                     </table>
                 </div>
                 <div class="d-flex justify-content-center">
-                    @include('vendor.pagination.bootstrap-5', ['paginator' => $teachers])
+                    {{ $teachers->links() }} <!-- Use Livewire's pagination links -->
                 </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -102,8 +100,8 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Tempat Lahir</th>
-                                <th scope="col">Tanggal Lahir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Tempat Lahir</th>
+                                <th scope="col" class="d-none d-md-table-cell">Tanggal Lahir</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,8 +112,8 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $teacher->nama }}</td>
-                                <td>{{ $teacher->tempat_lahir }}</td>
-                                <td>{{ $teacher->tanggal_lahir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->tempat_lahir }}</td>
+                                <td class="d-none d-md-table-cell">{{ $teacher->tanggal_lahir }}</td>
                             </tr>
                             @endforeach
                         </tbody>

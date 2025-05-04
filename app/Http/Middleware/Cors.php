@@ -4,21 +4,27 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class Cors
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
-        $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:8000');
+
+        // Allow all origins
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        // Set other CORS headers
         $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, Application');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
+
+        // Remove credentials header if allowing all origins
+        $response->headers->remove('Access-Control-Allow-Credentials');
+
+        // Handle preflight requests
+        if ($request->getMethod() === 'OPTIONS') {
+            $response->setStatusCode(200);
+        }
 
         return $response;
     }
