@@ -68,7 +68,7 @@ class User extends Authenticatable implements FilamentUser
             $data = $response->json();
 
             foreach ($data['rows'] as $item) {
-                if ($item['jenis_ptk_id_str'] === 'Guru Mapel' || $item['jenis_ptk_id_str'] === 'Guru BK' || $item['jenis_ptk_id_str'] === 'Guru TIK' || $item['jenis_ptk_id_str'] === 'Kepala Sekolah') {
+                if ($item['jenis_ptk_id_str'] === 'Guru' || $item['jenis_ptk_id_str'] === 'Guru BK' || $item['jenis_ptk_id_str'] === 'Guru TIK' || $item['jenis_ptk_id_str'] === 'Kepala Sekolah') {
                     // dd(strtolower(str_replace(' ', '-', $item['nama'] . '@sman1mga.sch.id')));
                     $this->updateOrCreate(
                         ['email' => str_replace(['.', ','], '', strtolower(str_replace(' ', '-', $item['nama']))) . '@sman1mga.sch.id'],
