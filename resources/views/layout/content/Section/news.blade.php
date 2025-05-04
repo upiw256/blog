@@ -52,6 +52,7 @@
                 new Swiper('.swiper-container-news', {
                     slidesPerView: 1, // Tampilkan 1 slide penuh
                     spaceBetween: 0, // Tidak ada jarak antar slide
+                    loop: true, // Aktifkan loop untuk kembali ke awal setelah slide terakhir
                     navigation: {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
