@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
@@ -16,15 +18,15 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
-        // $this->faker = Faker\Factory::create('id_ID');
-        
         return [
-        'title' => $this->faker->realText(40),
-        'slug' => $this->faker->unique()->slug,
-        'content' => $this->faker->realText(500),
-        'image' => $this->faker->imageUrl(256, 256),
-        // 'user_id' => factory(App\Models\User::class)->create()->id,
-        'is_published' => true,
+            'title' => $this->faker->sentence,
+            'slug' => Str::slug($this->faker->sentence),
+            'content' => $this->faker->paragraphs(3, true),
+            'image' => 'https://picsum.photos/id/' . rand(100, 150) . '/200/300', // Generate a random image ID between 100 and 150
+            'user_id' => User::inRandomOrder()->first()->id ?? 1, // Ambil user_id secara acak atau default ke 1
+            'is_published' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
