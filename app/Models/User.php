@@ -56,35 +56,21 @@ class User extends Authenticatable implements FilamentUser
     ];
     public function sync()
     {
-        $url = env('APP_URL_API', 'http://192.168.5.163:3001/api/');
-        // set_time_limit(10015);
-        // TODO: Implement sync() method.
-        $response = Http::withHeaders([
-            'X-Barrier' => 'margaasih',
-        ])->get($url . 'guru');
+        $teachers = Teacher::all(); // Ambil semua data dari tabel teachers
 
-        // dd($response);
-        if ($response->ok()) {
-            $data = $response->json();
-
-            foreach ($data['rows'] as $item) {
-                if ($item['jenis_ptk_id_str'] === 'Guru' || $item['jenis_ptk_id_str'] === 'Guru BK' || $item['jenis_ptk_id_str'] === 'Guru TIK' || $item['jenis_ptk_id_str'] === 'Kepala Sekolah') {
-                    // dd(strtolower(str_replace(' ', '-', $item['nama'] . '@sman1mga.sch.id')));
-                    $this->updateOrCreate(
-                        ['email' => str_replace(['.', ','], '', strtolower(str_replace(' ', '-', $item['nama']))) . '@sman1mga.sch.id'],
-                        [
-                            'name' => $item['nama'],
-                            'email' => str_replace(['.', ','], '', strtolower(str_replace(' ', '-', $item['nama']))) . '@sman1mga.sch.id',
-                            'password' => '#sman1mga',
-
-                        ]
-                    );
-                }
-            }
-
-            return true;
+        foreach ($teachers as $teacher) {
+            $email = strtolower(str_replace(' ', '', $teacher->nama)).'@sman1mga.sch.id'; // Ambil email dari tabel teachers
+            $this->updateOrCreate(
+                ['email' => $teacher->email], // Gunakan email dari tabel teachers
+                [
+                    'name' => $teacher->nama, // Gunakan nama dari tabel teachers
+                    'email' => $email, // Email tetap dari tabel teachers
+                    'password' => bcrypt('#sman1mga'), // Password default
+                    'id_teacher' => $teacher->id, // Ambil id dari tabel teachers
+                ]
+            );
         }
 
-        return false;
+        return true;
     }
 }
