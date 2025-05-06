@@ -67,7 +67,7 @@ class User extends Authenticatable implements FilamentUser
         foreach ($teachers as $teacher) {
             $email = strtolower(str_replace(' ', '', $teacher->nama)).'@sman1mga.sch.id'; // Ambil email dari tabel teachers
             $user = self::updateOrCreate(
-                ['email' => $teacher->email], // Gunakan email dari tabel teachers
+                ['email' => $email], // Gunakan email dari tabel teachers
                 [
                     'name' => $teacher->nama, // Gunakan nama dari tabel teachers
                     'email' => $email, // Email tetap dari tabel teachers
