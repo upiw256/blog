@@ -45,7 +45,7 @@ return [
             'driver' => 'token', // atau bisa 'sanctum' jika pakai Sanctum
             'provider' => 'users',
             'hash' => false,
-    ],
+        ],
     ],
 
     /*
