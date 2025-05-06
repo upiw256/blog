@@ -8,15 +8,15 @@ use Laravel\Sanctum\Sanctum;
 
 class AuthController extends Controller
 {
-    function generateToken()
-    {
-        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $token = '';
-        for ($i = 0; $i < 6; $i++) {
-            $token .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        return $token;
-    }
+    // function generateToken()
+    // {
+    //     $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    //     $token = '';
+    //     for ($i = 0; $i < 6; $i++) {
+    //         $token .= $characters[rand(0, strlen($characters) - 1)];
+    //     }
+    //     return $token;
+    // }
     public function login(Request $request)
     {
         $request->validate([
@@ -27,9 +27,8 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $user = Auth::user();
+            $user = Auth::user()->load('teacher');
             $token = $user->createToken('auth_token')->plainTextToken;
-
             return response()->json([
                 'success' => true,
                 'user' => $user,

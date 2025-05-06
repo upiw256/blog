@@ -16,11 +16,16 @@ class Teacher extends Model
     use HasFactory;
 
     protected $fillable = [
+        'ptk_id',
         'nama',
-        'bidang_studi_terakhir',
+        'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',
-        'ptk_id',
+        'nuptk', 
+        'nik',
+        'bidang_studi_terakhir',
+        'jenis_ptk_id_str',
+        'nip',
     ];
 
     public function headmaster(): HasMany
@@ -63,8 +68,8 @@ class Teacher extends Model
         if ($response->ok()) {
             $data = $response->json();
             $existingIds = [];
-
             foreach ($data['rows'] as $item) {
+
                 $teacher = $this->updateOrCreate(
                     ['ptk_id' => $item['ptk_id']],
                     [

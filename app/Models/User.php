@@ -56,6 +56,10 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'id_teacher');
+    }
     public function sync()
     {
         $teachers = Teacher::all(); // Ambil semua data dari tabel teachers
