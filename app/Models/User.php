@@ -16,6 +16,7 @@ use Filament\Panel;
 
 class User extends Authenticatable implements FilamentUser
 {
+    protected $guard_name = 'api';
     public function canAccessPanel(Panel $panel): bool
     {
         // Implement your logic here to determine if the user has access to the panel
@@ -33,6 +34,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'id_teacher',
     ];
 
     /**
@@ -60,7 +62,7 @@ class User extends Authenticatable implements FilamentUser
 
         foreach ($teachers as $teacher) {
             $email = strtolower(str_replace(' ', '', $teacher->nama)).'@sman1mga.sch.id'; // Ambil email dari tabel teachers
-            $this->updateOrCreate(
+            $user = self::updateOrCreate(
                 ['email' => $teacher->email], // Gunakan email dari tabel teachers
                 [
                     'name' => $teacher->nama, // Gunakan nama dari tabel teachers
@@ -69,6 +71,9 @@ class User extends Authenticatable implements FilamentUser
                     'id_teacher' => $teacher->id, // Ambil id dari tabel teachers
                 ]
             );
+            if (!$user->hasRole('guru')) {
+                $user->assignRole('guru');
+            }
         }
 
         return true;
