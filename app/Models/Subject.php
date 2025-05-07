@@ -16,6 +16,11 @@ class Subject extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'kode_subject',
+        'name',
+    ];
+
     protected $guarded = [];
 
     function TeacherSubject(): HasMany

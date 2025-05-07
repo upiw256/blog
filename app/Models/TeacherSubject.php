@@ -9,28 +9,32 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Env;
+
 class TeacherSubject extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'teacher_id',
+        'subject_id',
         'ptk_id',
-        'subject_id'
     ];
 
-    function subject(): BelongsTo
+    public function teacher()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsTo(Teacher::class, 'teacher_id');
     }
 
-    function teacher(): BelongsTo
+    public function subject()
     {
-        return $this->belongsTo(Teacher::class, 'ptk_id', 'ptk_id'); // Match 'ptk_id' in both tables
+        return $this->belongsTo(Subject::class, 'subject_id');
     }
+
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class);
     }
+
     public function sync()
     {
         $url = env('APP_URL_API', 'http://192.168.5.163:3001/api/');

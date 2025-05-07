@@ -21,7 +21,7 @@ class Teacher extends Model
         'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',
-        'nuptk', 
+        'nuptk',
         'nik',
         'bidang_studi_terakhir',
         'jenis_ptk_id_str',
@@ -33,10 +33,10 @@ class Teacher extends Model
         return $this->hasMany(Headmaster::class);
     }
 
-    public function subjects(): BelongsToMany
-    {
-        return $this->belongsToMany(Subject::class, 'teacher_subjects', 'ptk_id', 'subject_id');
-    }
+    // public function subjects(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Subject::class, 'teacher_subjects', 'ptk_id', 'subject_id');
+    // }
 
     function TeacherSubject(): HasMany
     {
@@ -55,6 +55,18 @@ class Teacher extends Model
             'teacher_subject_id', // Foreign key on Schedule table
             'ptk_id', // Local key on Teacher table
             'id' // Local key on TeacherSubject table
+        );
+    }
+
+    public function subjects(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            Subject::class, // Model tujuan
+            TeacherSubject::class, // Model perantara
+            'teacher_id', // Foreign key di tabel teacher_subjects
+            'id', // Foreign key di tabel subjects
+            'id', // Local key di tabel teachers
+            'subject_id' // Local key di tabel teacher_subjects
         );
     }
 
