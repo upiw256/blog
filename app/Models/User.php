@@ -60,17 +60,6 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsTo(Teacher::class, 'id_teacher');
     }
-    public function subjects()
-    {
-        return $this->hasManyThrough(
-            Subject::class, // Model tujuan
-            TeacherSubject::class, // Model perantara
-            'teacher_id', // Foreign key di tabel teacher_subjects
-            'id', // Foreign key di tabel subjects
-            'id_teacher', // Local key di tabel users
-            'subject_id' // Local key di tabel teacher_subjects
-        );
-    }
     public function sync()
     {
         $teachers = Teacher::all(); // Ambil semua data dari tabel teachers

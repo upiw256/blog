@@ -12,40 +12,49 @@ class Schedule extends Model
 
     protected $fillable = [
         'teacher_subject_id',
+        'class_room_id',
         'day_of_week',
         'start_time',
         'end_time',
-        'class_room_id',
     ];
 
     /**
-     * Define the relationship with TeacherSubject.
+     * Relasi ke TeacherSubject.
      */
     public function teacherSubject(): BelongsTo
     {
-        return $this->belongsTo(TeacherSubject::class, 'teacher_subject_id', 'id');
+        return $this->belongsTo(TeacherSubject::class, 'teacher_subject_id');
     }
 
     /**
-     * Define the relationship with ClassRoom.
+     * Relasi ke ClassRoom.
      */
     public function classRoom(): BelongsTo
     {
-        return $this->belongsTo(ClassRoom::class, 'class_room_id', 'id');
+        return $this->belongsTo(ClassRoom::class, 'class_room_id');
     }
 
-    public function subject(): BelongsTo
+    /**
+     * Scope untuk filter berdasarkan hari.
+     */
+    public function scopeByDay($query, $day)
     {
-        return $this->belongsTo(Subject::class);
+        return $query->where('day_of_week', $day);
     }
 
-    public function teacher()
+    /**
+     * Scope untuk filter berdasarkan waktu mulai.
+     */
+    public function scopeByStartTime($query, $startTime)
     {
-        return $this->belongsTo(Teacher::class);
+        return $query->where('start_time', '>=', $startTime);
     }
 
-    // public function subject()
-    // {
-    //     return $this->teacherSubject->subject();  // Mengakses mata pelajaran melalui relasi TeacherSubject
-    // }
+    /**
+     * Scope untuk filter berdasarkan waktu selesai.
+     */
+    public function scopeByEndTime($query, $endTime)
+    {
+        return $query->where('end_time', '<=', $endTime);
+    }
 }
