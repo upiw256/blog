@@ -1,5 +1,5 @@
 @extends('layout.header')
-
+@section('meta_description', 'SMAN 1 Margaasih - Sekolah Unggulan di Bandung, berfokus pada pendidikan berkualitas dan prestasi siswa.')
 @section('title', 'Home')
 @section('content')
   <!-- ======= Hero Section ======= -->
@@ -28,7 +28,7 @@
                         <h3><a href="">{{$teacher}}</a></h3>
                     </div>
                 </div>
-                
+
                 <div class="col-xl-2 col-md-4">
                     <div class="icon-box">
                         <i class="bi bi-person-gear"></i>
@@ -90,7 +90,7 @@
         <section id="testimonials" class="testimonials">
             <div class="container" data-aos="zoom-in">
                 <div class="testimonial-item">
-                    
+
                     <p>
                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                         SMAN 1 Margaasih Kabupaten Bandung Jawa Barat mempunyai visi, mewujudkan peserta didik yang religius dalam akademik dan non akademik serta berprestasi dalam kejuaraan dengan menguasai TIK dan berwawasan lingkungan. Maka dari visi ini kami buat motto, MGA, Magnificent, Good, Amazing. Magnificetn dalam akademik, Good dalam karakter, dan Amazing dalam prestasi.
@@ -103,7 +103,7 @@
 
         <!-- ======= Team Section ======= -->
         @include('layout.content.Section.team')
-        
+
        <!-- End Team Section -->
 
         <!-- ======= Contact Section ======= -->
