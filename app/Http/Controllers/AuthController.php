@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -50,9 +51,10 @@ class AuthController extends Controller
         ]);
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(Request $request, $id)
     {
-        $user = Auth::user();
+        // Cari user berdasarkan id di parameter
+        $user = User::find($id);
 
         if (!$user) {
             return response()->json([
@@ -61,11 +63,13 @@ class AuthController extends Controller
             ], 404);
         }
 
+        // Validasi input
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed|min:8',
         ]);
 
+        // Cek password lama cocok dengan user
         if (!Hash::check($request->old_password, $user->password)) {
             return response()->json([
                 'success' => false,
@@ -73,12 +77,14 @@ class AuthController extends Controller
             ], 401);
         }
 
+        // Update password
         $user->password = Hash::make($request->new_password);
         $user->save();
 
         return response()->json([
             'success' => true,
-            'message' => 'Password updated successfully'
+            'message' => 'Password updated successfully',
+            'user_id' => $user->id,
         ]);
     }
 }

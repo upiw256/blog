@@ -39,7 +39,7 @@ Route::group(['middleware' => 'VerifyToken'], function () {
     Route::get('/teachers', [TeachersController::class, 'index']);
     Route::post('/attendance', [AttendanceController::class, 'store']);
     Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/update-password', [AuthController::class, 'updatePassword']);
+    Route::post('/update-password/{id}', [AuthController::class, 'updatePassword']);
 });
 
 Route::fallback(function () {
