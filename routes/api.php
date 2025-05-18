@@ -16,18 +16,16 @@ use App\Http\Controllers\AttendanceController;
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::group(['middleware' => 'VerifyToken'], function () {
+// ROUTES YANG MEMBUTUHKAN AUTHENTIKASI DENGAN TOKEN
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
     Route::get('/students', [ApiStudent::class, 'index']);
     Route::get('/article', [ArticleController::class, 'index']);
     Route::get('/classroom', [apiClassRoom::class, 'index']);
@@ -38,11 +36,11 @@ Route::group(['middleware' => 'VerifyToken'], function () {
     Route::get('/teacher/{id}', [ScheduleController::class, 'teacher']);
     Route::get('/teachers', [TeachersController::class, 'index']);
     Route::post('/attendance', [AttendanceController::class, 'store']);
-    Route::post('/login', [AuthController::class, 'login']);
+
     Route::post('/update-password', [AuthController::class, 'updatePassword']);
 });
 
+// Fallback jika route tidak ditemukan
 Route::fallback(function () {
     return response()->json(['error' => 'Page Not Found'], 404);
 });
-
