@@ -18,13 +18,13 @@ use App\Http\Controllers\AttendanceController;
 |--------------------------------------------------------------------------
 */
 
-Route::post('/login', [AuthController::class, 'login']);
 
 // ROUTES YANG MEMBUTUHKAN AUTHENTIKASI DENGAN TOKEN
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::post('/login', [AuthController::class, 'login']);
 
     Route::get('/students', [ApiStudent::class, 'index']);
     Route::get('/article', [ArticleController::class, 'index']);
